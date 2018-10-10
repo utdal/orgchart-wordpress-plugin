@@ -4,16 +4,19 @@ use OrgChart\PostTypes\Person as PersonCustomPost;
 use OrgChart\Shortcodes\Orgchart;
 use OrgChart\Shortcodes\PersonList;
 
-class OrgChartPlugin {
-
-	/** @var OrgChartLoader Maintains and registers all hooks for the plugin. */
-	protected $loader;
-
+class OrgChartPlugin
+{
 	/** @var string The string used to uniquely identify this plugin. */
 	protected $plugin_name = 'orgchart';
 
 	/** @var string The current version of the plugin. */
 	protected $version;
+
+	/** @var array The actions registered with WordPress to fire when the plugin loads. */
+	protected $actions = [];
+
+	/** @var array The filters registered with WordPress to fire when the plugin loads. */
+	protected $filters = [];
 
 	/** @var array Custom post types */
 	protected $custom_posts = [];
@@ -41,10 +44,7 @@ class OrgChartPlugin {
 	 */
 	private function load_dependencies()
 	{
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/OrgChartLoader.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb2/init.php';
-
-		$this->loader = new OrgChartLoader();
 	}
 
 	/**
@@ -53,27 +53,19 @@ class OrgChartPlugin {
 	private function define_hooks()
 	{
 		// Register custom post types
-		$this->loader->add_action( 'init', $this, 'registerCustomPosts');
+		$this->add_action('init', $this, 'registerCustomPosts');
 
 		// Register custom fields
-		$this->loader->add_action( 'cmb2_admin_init', $this, 'registerCustomFields');
+		$this->add_action('cmb2_admin_init', $this, 'registerCustomFields');
 
 		// Register the title field placeholder replacement function for custom post types
-		$this->loader->add_action( 'enter_title_here', $this, 'replaceEnterTitleHere');
+		$this->add_action('enter_title_here', $this, 'replaceEnterTitleHere');
 
-		$this->loader->add_action('wp_enqueue_scripts', $this, 'enqueue_styles');
-		$this->loader->add_action('wp_enqueue_scripts', $this, 'enqueue_scripts');
+		$this->add_action('wp_enqueue_scripts', $this, 'enqueue_styles');
+		$this->add_action('wp_enqueue_scripts', $this, 'enqueue_scripts');
 		
 		// Register shortcodes
-		$this->loader->add_action('init', $this, 'registerShortcodes');
-	}
-
-	/**
-	 * Run the loader to execute all of the hooks with WordPress.
-	 */
-	public function run()
-	{
-		$this->loader->run();
+		$this->add_action('init', $this, 'registerShortcodes');
 	}
 
 	/**
@@ -98,6 +90,48 @@ class OrgChartPlugin {
 
 		// wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/re_mods-public.js', array( 'jquery' ), $this->version, false );
 
+	}
+
+	/**
+	 * Add a new action to the collection to be registered with WordPress.
+	 *
+	 * @param string  $hook           The name of the WordPress action that is being registered.
+	 * @param object  $component      A reference to the instance of the object on which the action is defined.
+	 * @param string  $callback       The name of the function definition on the $component.
+	 * @param int     $priority       Optional. he priority at which the function should be fired. Default is 10.
+	 * @param int     $accepted_args  Optional. The number of arguments that should be passed to the $callback. Default is 1.
+	 */
+	public function add_action($hook, $component, $callback, $priority = 10, $accepted_args = 1)
+	{
+		$this->actions[] = compact('hook', 'component', 'callback', 'priority', 'accepted_args');
+	}
+
+	/**
+	 * Add a new filter to the collection to be registered with WordPress.
+	 *
+	 * @param string  $hook           The name of the WordPress filter that is being registered.
+	 * @param object  $component      A reference to the instance of the object on which the filter is defined.
+	 * @param string  $callback       The name of the function definition on the $component.
+	 * @param int     $priority       Optional. he priority at which the function should be fired. Default is 10.
+	 * @param int     $accepted_args  Optional. The number of arguments that should be passed to the $callback. Default is 1
+	 */
+	public function add_filter($hook, $component, $callback, $priority = 10, $accepted_args = 1)
+	{
+		$this->filters[] = compact('hook', 'component', 'callback', 'priority', 'accepted_args');
+	}
+
+	/**
+	 * Register the filters and actions with WordPress.
+	 */
+	public function run()
+	{
+		foreach ($this->filters as $hook) {
+			add_filter($hook['hook'], [$hook['component'], $hook['callback']], $hook['priority'], $hook['accepted_args']);
+		}
+
+		foreach ($this->actions as $hook) {
+			add_action($hook['hook'], [$hook['component'], $hook['callback']], $hook['priority'], $hook['accepted_args']);
+		}
 	}
 
 	/**
