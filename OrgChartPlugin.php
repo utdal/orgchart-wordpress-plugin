@@ -14,6 +14,9 @@ class OrgChartPlugin
 	/** @var string The current version of the plugin. */
 	protected $version;
 
+	/** @var string The url of the assets folder. */
+	protected $asset_url;
+
 	/** @var array The actions registered with WordPress to fire when the plugin loads. */
 	protected $actions = [];
 
@@ -32,10 +35,11 @@ class OrgChartPlugin
 	public function __construct($version)
 	{
 		$this->version = $version;
+		$this->asset_url = plugin_dir_url(__FILE__) . 'public';
 
 		$this->custom_posts[] = new PersonCustomPost();
-		$this->shortcodes[] = new PersonList($version);
-		$this->shortcodes[] = new Orgchart($version);
+		$this->shortcodes[] = new PersonList();
+		$this->shortcodes[] = new Orgchart();
 
 		$this->load_dependencies();
 		$this->define_hooks();
@@ -63,35 +67,29 @@ class OrgChartPlugin
 		// Register the title field placeholder replacement function for custom post types
 		$this->add_action('enter_title_here', $this, 'replaceEnterTitleHere');
 
-		$this->add_action('wp_enqueue_scripts', $this, 'enqueue_styles');
-		$this->add_action('wp_enqueue_scripts', $this, 'enqueue_scripts');
+		// Register CSS and JS
+		$this->add_action('wp_enqueue_scripts', $this, 'registerScripts');
 		
 		// Register shortcodes
 		$this->add_action('init', $this, 'registerShortcodes');
 	}
 
 	/**
-	 * Register the stylesheets for the public-facing side of the site.
+	 * Register the CSS and JavaScript for the public-facing side of the site.
 	 */
-	public function enqueue_styles()
+	public function registerScripts()
 	{
-
 		// Note: orgchart and personlist styles are only loaded when the shortcode is used
-
-		// wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/re_mods-public.css', array(), $this->version, 'all' );
-
-	}
-
-	/**
-	 * Register the JavaScript for the public-facing side of the site.
-	 */
-	public function enqueue_scripts()
-	{
+		wp_register_style('fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], '4.7.0');
+		wp_register_style('orgchart_plugin', $this->asset_url . '/css/re_mods-orgchart.css', ['fontawesome'], $this->version, 'all');
+		wp_register_style('orgchart_plugin_personlist', $this->asset_url . '/css/re_mods-personlist.css', ['fontawesome'], $this->version);
 
 		// Note: orgchart and personlist scripts are only loaded when the shortcode is used
-
-		// wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/re_mods-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_register_script('es6-promise', $this->asset_url . '/js/es6-promise.auto.min.js', [], '4.1.0');
+		wp_register_script('html2canvas', $this->asset_url . '/js/html2canvas.min.js', ['es6-promise'], '0.5.0-beta4');
+		wp_register_script('jquery-orgchart', $this->asset_url . '/js/jquery.orgchart.js', ['jquery', 'html2canvas'], '1.3.6');
+		wp_register_script('bootstrap-treeview', $this->asset_url . '/js/bootstrap-treeview.min.js', ['jquery']);
+		wp_register_script('orgchart_plugin', $this->asset_url . '/js/orgchart.js', ['bootstrap-treeview', 'jquery-orgchart'], $this->version);
 	}
 
 	/**

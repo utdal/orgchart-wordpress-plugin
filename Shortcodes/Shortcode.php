@@ -16,15 +16,11 @@ abstract class Shortcode
     /** @var array Filters to apply to attributes */
     public $attribute_filters = [];
 
-    /** @var string Plugin version */
-    protected $version;
-
     /**
      * Shortcode class constructor.
      */
-    public function __construct($version)
+    public function __construct()
     {
-        $this->version = $version;
         $this->name = $this->name ?: strtolower((new \ReflectionClass($this))->getShortName());
     }
 

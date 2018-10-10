@@ -52,9 +52,7 @@ class PersonList extends Shortcode
             ]);
             if ($loop->found_posts) {
 
-                $public_url = plugin_dir_url(dirname(__FILE__)) . 'public';
-                wp_enqueue_style('fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], '4.7.0');
-                wp_enqueue_style('re_mods_personlist', $public_url . '/css/re_mods-personlist.css', [], $this->version);
+                wp_enqueue_style('orgchart_plugin_personlist');
 
                 // Show the header
                 if ($this->attributes['header']) {

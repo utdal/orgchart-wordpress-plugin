@@ -37,8 +37,6 @@ class Orgchart extends Shortcode
      */
     public function render()
     {
-        $public_dir = plugin_dir_path(dirname(__FILE__)) . 'public';
-        $public_url = plugin_dir_url(dirname(__FILE__)) . 'public';
         $this->attributes['tag'] = $this->attributes['tag'] ? explode(',', $this->attributes['tag']) : [];
 
         $org = new Org([
@@ -61,27 +59,12 @@ class Orgchart extends Shortcode
         $show_tree = $this->attributes['tree'] === 'show';
         $js_dependencies = ['jquery'];
 
-        if ($show_graphical) {
-            wp_enqueue_script('es6-promise', $public_url . '/js/es6-promise.auto.min.js', [], '4.1.0');
-            wp_enqueue_script('html2canvas', $public_url . '/js/html2canvas.min.js', [], '0.5.0-beta4');
-            wp_enqueue_script('jquery-orgchart', $public_url . '/js/jquery.orgchart.js', ['jquery', 'html2canvas'], '1.3.6');
-            $js_dependencies[] = 'jquery-orgchart';
-        }
-
-        if ($show_tree) {
-            wp_enqueue_script('bootstrap-treeview', $public_url . '/js/bootstrap-treeview.min.js', ['jquery']);
-            $js_dependencies[] = 'bootstrap-treeview';
-        }
-
-        wp_register_script('orgchart', $public_url . '/js/orgchart.js', $js_dependencies, $this->version);
-        wp_localize_script('orgchart', 'org_data', $people);
-        wp_enqueue_script('orgchart');
-        wp_enqueue_style('fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], '4.7.0');
-        wp_enqueue_style('re_mods_orgchart', $public_url . '/css/re_mods-orgchart.css', [], $this->version, 'all' );
+        wp_localize_script('orgchart_plugin', 'org_data', $people);
+        wp_enqueue_script('orgchart_plugin');
+        wp_enqueue_style('orgchart_plugin');
 
         ob_start();
 
-        // include($public_dir . '/partials/re_mods-orgchart-display.php');
         include(plugin_dir_path(dirname(__FILE__)) . 'Views/re_mods-orgchart-display.php');
 
         return ob_get_clean();
