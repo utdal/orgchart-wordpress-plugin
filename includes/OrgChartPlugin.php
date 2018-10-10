@@ -19,8 +19,7 @@ class OrgChartPlugin {
 		$this->version = $version;
 
 		$this->load_dependencies();
-		$this->define_admin_hooks();
-		$this->define_public_hooks();
+		$this->define_hooks();
 	}
 
 	/**
@@ -37,12 +36,12 @@ class OrgChartPlugin {
 	}
 
 	/**
-	 * Register all of the hooks related to the admin area functionality
-	 * of the plugin.
+	 * Register all of the hooks needed by the plugin.
 	 */
-	private function define_admin_hooks()
+	private function define_hooks()
 	{
-		$plugin_admin = new OrgChartAdmin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new OrgChartAdmin($this->plugin_name, $this->version);
+		$plugin_public = new OrgChartPublic($this->plugin_name, $this->version);
 
 		// Register custom post types
 		$this->loader->add_action( 'init', $plugin_admin, 'registerCustomPosts');
@@ -52,21 +51,12 @@ class OrgChartPlugin {
 
 		// Register the title field placeholder replacement function for custom post types
 		$this->loader->add_action( 'enter_title_here', $plugin_admin, 'replaceEnterTitleHere');
-	}
 
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 */
-	private function define_public_hooks()
-	{
-		$plugin_public = new OrgChartPublic( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 		
 		// Register shortcodes
-		$this->loader->add_action( 'init', $plugin_public, 'registerShortcodes');
+		$this->loader->add_action('init', $plugin_public, 'registerShortcodes');
 	}
 
 	/**
@@ -75,37 +65,6 @@ class OrgChartPlugin {
 	public function run()
 	{
 		$this->loader->run();
-	}
-
-	/**
-	 * The name of the plugin used to uniquely identify it within the context of
-	 * WordPress and to define internationalization functionality.
-	 *
-	 * @return string The name of the plugin.
-	 */
-	public function get_plugin_name()
-	{
-		return $this->plugin_name;
-	}
-
-	/**
-	 * The reference to the class that orchestrates the hooks with the plugin.
-	 *
-	 * @return OrgChartLoader Orchestrates the hooks of the plugin.
-	 */
-	public function get_loader()
-	{
-		return $this->loader;
-	}
-
-	/**
-	 * Retrieve the version number of the plugin.
-	 *
-	 * @return string The version number of the plugin.
-	 */
-	public function get_version()
-	{
-		return $this->version;
 	}
 
 }
