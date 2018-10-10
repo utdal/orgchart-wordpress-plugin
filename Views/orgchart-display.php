@@ -21,7 +21,7 @@
         </span>
         <?php if($show_export): ?>
             <span>
-                <?php include('re_mods-orgchart-export-btn.php' ); ?>
+                <?php include('orgchart-export-btn.php' ); ?>
             </span>
         <?php endif; ?>
     <?php endif; ?>
@@ -93,7 +93,7 @@
             <?php if($show_customize): ?>
             <?php elseif($show_export): ?>
                 <div>
-                    <?php include('re_mods-orgchart-export-btn.php' ); ?>
+                    <?php include('orgchart-export-btn.php' ); ?>
                 </div>
             <?php endif; ?>
         </div>

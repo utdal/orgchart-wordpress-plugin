@@ -107,7 +107,7 @@ class Person
     protected function getTextTemplate($link_to_path = null)
     {
         ob_start();
-        require(plugin_dir_path(dirname(__FILE__)) . 'Views/re_mods-orgchart-person.php');
+        require(plugin_dir_path(dirname(__FILE__)) . 'Views/orgchart-person.php');
 
         return ob_get_clean();
     }

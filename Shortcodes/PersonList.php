@@ -69,7 +69,7 @@ class PersonList extends Shortcode
                         get_template_part('template-parts/content', 'person');
                     } else {
                         $person_options = $this->attributes;
-                        include(plugin_dir_path(dirname(__FILE__)) . 'Views/re_mods-person-display.php');
+                        include(plugin_dir_path(dirname(__FILE__)) . 'Views/person-display.php');
                     }
                     $results[] = ob_get_clean();
                 }

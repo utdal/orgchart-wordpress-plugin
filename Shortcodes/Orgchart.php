@@ -65,7 +65,7 @@ class Orgchart extends Shortcode
 
         ob_start();
 
-        include(plugin_dir_path(dirname(__FILE__)) . 'Views/re_mods-orgchart-display.php');
+        include(plugin_dir_path(dirname(__FILE__)) . 'Views/orgchart-display.php');
 
         return ob_get_clean();
     }
