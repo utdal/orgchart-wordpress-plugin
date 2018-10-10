@@ -51,37 +51,28 @@ var options = {
  * @param  {string} sass_path : where the Sass files are
  * @param  {string} css_path  : where to put the CSS file
  */
-function compile_sass(sass_path, css_path) {
-  return sass(sass_path, options.sass)
-    .pipe(autoprefixer(options.autoprefixer))
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(css_path));
-}
+const compile_sass = (sass_path, css_path) => sass(sass_path, options.sass)
+  .pipe(autoprefixer(options.autoprefixer))
+  .pipe(sourcemaps.write('./'))
+  .pipe(gulp.dest(css_path));
 
 // Orgchart Sass
-gulp.task('orgchart-sass', function() {
-  return compile_sass(paths.public.orgchart.source + '/orgchart.scss', paths.public.css);
-});
+gulp.task('orgchart-sass', () => compile_sass(paths.public.orgchart.source + '/orgchart.scss', paths.public.css));
 
 // Personlist Sass
-gulp.task('personlist-sass', function() {
-  return compile_sass(paths.public.personlist.source + '/personlist.scss', paths.public.css);
-});
+gulp.task('personlist-sass', () => compile_sass(paths.public.personlist.source + '/personlist.scss', paths.public.css));
 
 /**
  * Copy files.
  * 
  * @param  {string} source_path : source files
  * @param  {string} dest_path   : destination
- *
  */
-function copy_files(source_path, dest_path) {
-  return gulp.src(source_path)
-    .pipe(gulp.dest(dest_path));
-}
+const copy_files = (source_path, dest_path) => gulp.src(source_path)
+  .pipe(gulp.dest(dest_path));
 
 // Copy Org Chart files
-gulp.task('copy-org-chart', function() {
+gulp.task('copy-org-chart', () => {
   copy_files(paths.html2canvas.source + '/html2canvas.min.js', paths.public.js);
   return copy_files(paths.jquery_orgchart.source + '/js/jquery.orgchart.js', paths.public.js);
 });
@@ -98,7 +89,7 @@ gulp.task('sass', [
 ]);
 
 // Watch
-gulp.task('watch', function() {
+gulp.task('watch', () => {
   gulp.watch(paths.public.orgchart.source + '/**/*.scss', ['orgchart-sass']);
   gulp.watch(paths.public.personlist.source + '/**/*.scss', ['personlist-sass']);
 });
