@@ -5,7 +5,7 @@
  * @wordpress-plugin
  * Plugin Name:       UT Dallas Research Org Chart
  * Plugin URI:        https://github.com/utdallasresearch/orgchart-wordpress-plugin
- * Description:       Adds research profiles shortcode.
+ * Description:       A WordPress plugin for managing people and generating directories and org charts.
  * Version:           3.0.0
  * Author:            UT Dallas Research Information Systems
  * Author URI:        https://research.utdallas.edu/oris
