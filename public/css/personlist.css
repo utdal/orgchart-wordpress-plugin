@@ -6,7 +6,6 @@ Re Mods Plugin personlist CSS (generated from Sass)
   margin-bottom: 30px; }
 
 .person-list .person {
-  display: -webkit-box;
   display: flex;
   box-sizing: border-box;
   line-height: 1em;
@@ -15,10 +14,7 @@ Re Mods Plugin personlist CSS (generated from Sass)
   border-top: 1px dotted #008542; }
   @media (max-width: 480px) {
     .person-list .person {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
       flex-direction: column;
-      -webkit-box-align: start;
       align-items: flex-start;
       padding-right: 5px;
       padding-left: 5px; } }
@@ -70,30 +66,22 @@ Re Mods Plugin personlist CSS (generated from Sass)
 
 /* Alternate re_person_list style: Grid */
 .person-list.grid {
-  display: -webkit-box;
   display: flex;
   flex-wrap: wrap; }
   .person-list.grid .person-list-header {
-    -webkit-box-flex: 0;
     flex: 0 0 100%; }
   .person-list.grid .person {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
     flex-direction: column;
-    -webkit-box-align: center;
     align-items: center;
-    -webkit-box-flex: 0;
     flex: 0 0 33%;
     border: none;
     text-align: center;
     padding: 20px; }
     @media (max-width: 950px) {
       .person-list.grid .person {
-        -webkit-box-flex: 0;
         flex: 0 0 50%; } }
     @media (max-width: 600px) {
       .person-list.grid .person {
-        -webkit-box-flex: 0;
         flex: 0 0 100%; } }
     .person-list.grid .person .person-pic img {
       border-radius: 0;
@@ -124,16 +112,13 @@ Re Mods Plugin personlist CSS (generated from Sass)
       display: block;
       height: 0; }
   .person-list.grid.grid-2 .person {
-    -webkit-box-flex: 0;
     flex: 0 0 50%; }
     @media (max-width: 600px) {
       .person-list.grid.grid-2 .person {
-        -webkit-box-flex: 0;
         flex: 0 0 100%; } }
   .person-list.grid.grid-1 .person {
-    -webkit-box-flex: 0;
     flex: 0 0 100%; }
 
 
 
-/*# sourceMappingURL=re_mods-personlist.css.map */
+/*# sourceMappingURL=personlist.css.map */

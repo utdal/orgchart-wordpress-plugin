@@ -857,10 +857,7 @@ a.badge:hover, a.badge:focus {
   overflow: auto;
   border: 1px solid lightgrey; }
   #orgchart-graphical-container .fullscreen-container {
-    display: -webkit-box;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
     flex-direction: row-reverse; }
   #orgchart-graphical-container .fullscreen-element {
     padding: 5px;
@@ -958,37 +955,24 @@ a.badge:hover, a.badge:focus {
   display: none;
   padding-top: 5px; }
   #custom-panel.show {
-    display: -webkit-box;
     display: flex;
     flex-wrap: wrap;
-    -webkit-box-pack: justify;
     justify-content: space-between;
-    -webkit-box-align: center;
     align-items: center; }
   #custom-panel label {
     color: #fff; }
   #custom-panel .custom-btn-reset {
     text-align: right; }
   #custom-panel .select-node {
-    display: -webkit-box;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
     flex-direction: column; }
   #custom-panel .adjust-layout {
-    display: -webkit-box;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
     flex-direction: column; }
   #custom-panel .select-color {
-    display: -webkit-box;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
     flex-direction: column; }
   #custom-panel .action-buttons {
-    display: -webkit-box;
     display: flex;
     justify-content: space-around;
     margin-top: 10px; }
@@ -1010,9 +994,7 @@ a.badge:hover, a.badge:focus {
   margin-right: 10px; }
 
 #orgchart-export-only {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-pack: end;
   justify-content: flex-end; }
 
 @media (max-width: 520px) {
@@ -1021,4 +1003,4 @@ a.badge:hover, a.badge:focus {
 
 
 
-/*# sourceMappingURL=re_mods-orgchart.css.map */
+/*# sourceMappingURL=orgchart.css.map */

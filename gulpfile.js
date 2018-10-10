@@ -60,12 +60,12 @@ function compile_sass(sass_path, css_path) {
 
 // Orgchart Sass
 gulp.task('orgchart-sass', function() {
-  return compile_sass(paths.public.orgchart.source + '/re_mods-orgchart.scss', paths.public.css);
+  return compile_sass(paths.public.orgchart.source + '/orgchart.scss', paths.public.css);
 });
 
 // Personlist Sass
 gulp.task('personlist-sass', function() {
-  return compile_sass(paths.public.personlist.source + '/re_mods-personlist.scss', paths.public.css);
+  return compile_sass(paths.public.personlist.source + '/personlist.scss', paths.public.css);
 });
 
 /**

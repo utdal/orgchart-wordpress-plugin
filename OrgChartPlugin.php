@@ -80,8 +80,8 @@ class OrgChartPlugin
 	{
 		// Note: orgchart and personlist styles are only loaded when the shortcode is used
 		wp_register_style('fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], '4.7.0');
-		wp_register_style('orgchart_plugin', $this->asset_url . '/css/re_mods-orgchart.css', ['fontawesome'], $this->version, 'all');
-		wp_register_style('orgchart_plugin_personlist', $this->asset_url . '/css/re_mods-personlist.css', ['fontawesome'], $this->version);
+		wp_register_style('orgchart_plugin', $this->asset_url . '/css/orgchart.css', ['fontawesome'], $this->version, 'all');
+		wp_register_style('orgchart_plugin_personlist', $this->asset_url . '/css/personlist.css', ['fontawesome'], $this->version);
 
 		// Note: orgchart and personlist scripts are only loaded when the shortcode is used
 		wp_register_script('es6-promise', $this->asset_url . '/js/es6-promise.auto.min.js', [], '4.1.0');
