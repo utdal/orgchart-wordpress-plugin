@@ -1,0 +1,16 @@
+{
+    "name" : "utdallasresearch/orgchart-wordpress-plugin",
+    "type" : "wordpress-plugin",
+    "description": "UT Dallas Research Org Chart Wordpress plugin",
+    "keywords": ["orgchart", "wordpress", "UT Dallas", "UTD"],
+    "homepage": "http://github.com/utdallasresearch/orgchart-wordpress-plugin",
+    "license": "MIT",
+    "authors": [{
+        "name": "Wun Chiou",
+        "email": "wun@utdallas.edu",
+        "role": "Developer"
+    }],
+    "require": {
+        "php": ">=5.6"
+    }
+}

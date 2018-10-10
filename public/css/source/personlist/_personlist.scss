@@ -1,0 +1,187 @@
+/** Person List Styles */
+
+.person-list {
+  margin-bottom: 30px;
+}
+
+.person-list .person {
+  display: flex;
+  box-sizing: border-box;
+  line-height: 1em;
+  position: relative;
+  padding: 20px 20px 20px 10px;
+  border-top: 1px dotted $utd-eco-green;
+
+  @media(max-width: $max-width-xs) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  &:first-of-type {
+    border-top: none;
+    padding-top: 0px;
+  }
+
+  .person-pic {
+    flex-shrink: 0;
+
+    img {
+      border-radius: 50%;
+      width: 110px;
+      height: 110px;
+      margin: 0 10px 10px 0;
+      border: 1px solid #333;
+    }
+  }
+
+  .person-info {
+    @media(max-width: $max-width-xs) {
+        margin-left: 4px;
+    }
+  }
+
+  .person-name {
+    font-size: 1.6em;
+    line-height: 1em;
+    color: #333;
+    margin: 0px 10px;
+  }
+
+  .person-title {
+    font-size: 1.3em;
+    line-height: 1em;
+    color: $utd-eco-green;
+    margin: 10px 0px 6px 10px;
+  }
+
+  .person-department {
+    color: $utd-eco-green;
+    margin: 6px 0 10px 10px;
+  }
+
+  .email {
+    line-height: 1em;
+    margin-left: 10px;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+
+  .biography {
+    line-height: 1em;
+    margin: 0px 0px 10px 10px;
+
+    p {
+      font-size: 1em;
+      line-height: 1.6em;
+      margin-bottom: 0px;
+    }
+  }
+
+  .phone-and-location {
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 0px 0px 10px 10px;
+  }
+
+  .phone-location-separator::before {
+    content: '|';
+  }
+
+}
+
+/* Alternate re_person_list style: Grid */
+
+@mixin grid_media_md {
+  @media(max-width: $max-width-md) {
+    flex: 0 0 50%;
+  }
+}
+
+@mixin grid_media_sm {
+  @media(max-width: $max-width-sm) {
+    flex: 0 0 100%;
+  }
+}
+
+.person-list.grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  .person-list-header {
+    flex: 0 0 100%;
+  }
+
+  .person {
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 33%;
+    border: none;
+    text-align: center;
+    padding: 20px;
+
+    @include grid_media_md;
+    @include grid_media_sm;
+
+    .person-pic img {
+      border-radius: 0;
+      width: 175px;
+      height: auto;
+      margin: 20px;
+      border: 3px solid #333;
+    }
+
+    h2, h3, h4 {
+      text-align: center;
+      margin: 5px 0 0 0;
+    }
+
+    h2 {
+      font-weight: normal;
+    }
+
+    hr {
+      margin: 0.75em;
+    }
+
+    .person-department {
+      margin-left: 0;
+    }
+
+    .biography {
+      text-align: justify;
+      margin-top: 10px;
+      margin-left: 0;
+
+      p:last-of-type {
+        margin-bottom: 0.7em;
+      }
+    }
+
+    .email {
+      float: none;
+      margin: 0;
+    }
+
+    // essentially serves as a line break
+    .phone-location-separator::before {
+      content: '';
+      display: block;
+      height: 0;
+    }
+
+  }
+
+  &.grid-2 .person {
+    flex: 0 0 50%;
+
+    @include grid_media_sm;
+  }
+
+  &.grid-1 .person {
+    flex: 0 0 100%;
+  }
+}
+
+// }

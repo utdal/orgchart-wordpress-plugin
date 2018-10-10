@@ -1,0 +1,61 @@
+/* Variables */
+
+//## UT Dallas colors
+$utd-flame-orange:		 #C75B12;
+$utd-eco-green:			 #008542;
+$utd-solar-orange:		 #E98300;
+$utd-spark-orange:		 #FFB612;
+$utd-seedling-green:	 #C9DD03;
+$utd-sapling-green:		 #69BE28;
+$utd-sky-blue:           #5BC6E8;
+$utd-stratos-blue:       #00A1DE;
+$utd-space-blue:         #0039A6;
+
+$utd-warm-gray2:		 #D5D2CA;
+$utd-warm-gray4:		 #B7B1A9;
+$utd-warm-gray6:		 #A59D95;
+$utd-utd-warm-gray8:     #8B8178;
+$utd-warm-gray10:		 #766A62;
+
+
+/* Branding Color Variables */
+$primary-color: $utd-flame-orange;
+$secondary-color: $utd-eco-green;
+$tertiary-color: $utd-sapling-green;
+$accent-color: $utd-sky-blue;
+$background-color: white;
+
+
+/* Font color Variables */
+$header-font-color: white;
+$body-font-color: black;
+$link-font-color: $utd-eco-green;
+$hover-font-color: $utd-flame-orange;
+$accent-font-color: white;
+
+$menu-main-font-color: white;
+$menu-main-hover-font-color: white;
+$menu-secondary-font-color: white;
+$menu-secondary-hover-font-color: white;
+$menu-hover-color: $utd-solar-orange;
+$menu-breadcrumb-color: black;
+
+$footer-background:$primary-color;
+$footer-font-color: $accent-font-color;
+
+//fonts
+$body-font: Open Sans;
+$body-font-family: sans-serif;
+
+$header-font: Titillium Web;
+$header-font-family: sans-serif;
+
+$icon-font: FontAwesome;
+
+
+/* Misc color Variables */
+$shadow-color: #444;
+$lightgrey:  $utd-warm-gray2;
+$gray: $utd-utd-warm-gray8;
+$search-bar-color: $utd-warm-gray2;
+$bluebox-background: $utd-sky-blue;

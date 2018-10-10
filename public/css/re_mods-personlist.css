@@ -1,0 +1,139 @@
+/*!
+Re Mods Plugin personlist CSS (generated from Sass)
+*/
+/** Person List Styles */
+.person-list {
+  margin-bottom: 30px; }
+
+.person-list .person {
+  display: -webkit-box;
+  display: flex;
+  box-sizing: border-box;
+  line-height: 1em;
+  position: relative;
+  padding: 20px 20px 20px 10px;
+  border-top: 1px dotted #008542; }
+  @media (max-width: 480px) {
+    .person-list .person {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column;
+      -webkit-box-align: start;
+      align-items: flex-start;
+      padding-right: 5px;
+      padding-left: 5px; } }
+  .person-list .person:first-of-type {
+    border-top: none;
+    padding-top: 0px; }
+  .person-list .person .person-pic {
+    flex-shrink: 0; }
+    .person-list .person .person-pic img {
+      border-radius: 50%;
+      width: 110px;
+      height: 110px;
+      margin: 0 10px 10px 0;
+      border: 1px solid #333; }
+  @media (max-width: 480px) {
+    .person-list .person .person-info {
+      margin-left: 4px; } }
+  .person-list .person .person-name {
+    font-size: 1.6em;
+    line-height: 1em;
+    color: #333;
+    margin: 0px 10px; }
+  .person-list .person .person-title {
+    font-size: 1.3em;
+    line-height: 1em;
+    color: #008542;
+    margin: 10px 0px 6px 10px; }
+  .person-list .person .person-department {
+    color: #008542;
+    margin: 6px 0 10px 10px; }
+  .person-list .person .email {
+    line-height: 1em;
+    margin-left: 10px;
+    font-weight: 700;
+    word-wrap: break-word; }
+  .person-list .person .biography {
+    line-height: 1em;
+    margin: 0px 0px 10px 10px; }
+    .person-list .person .biography p {
+      font-size: 1em;
+      line-height: 1.6em;
+      margin-bottom: 0px; }
+  .person-list .person .phone-and-location {
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 0px 0px 10px 10px; }
+  .person-list .person .phone-location-separator::before {
+    content: '|'; }
+
+/* Alternate re_person_list style: Grid */
+.person-list.grid {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap; }
+  .person-list.grid .person-list-header {
+    -webkit-box-flex: 0;
+    flex: 0 0 100%; }
+  .person-list.grid .person {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 0;
+    flex: 0 0 33%;
+    border: none;
+    text-align: center;
+    padding: 20px; }
+    @media (max-width: 950px) {
+      .person-list.grid .person {
+        -webkit-box-flex: 0;
+        flex: 0 0 50%; } }
+    @media (max-width: 600px) {
+      .person-list.grid .person {
+        -webkit-box-flex: 0;
+        flex: 0 0 100%; } }
+    .person-list.grid .person .person-pic img {
+      border-radius: 0;
+      width: 175px;
+      height: auto;
+      margin: 20px;
+      border: 3px solid #333; }
+    .person-list.grid .person h2, .person-list.grid .person h3, .person-list.grid .person h4 {
+      text-align: center;
+      margin: 5px 0 0 0; }
+    .person-list.grid .person h2 {
+      font-weight: normal; }
+    .person-list.grid .person hr {
+      margin: 0.75em; }
+    .person-list.grid .person .person-department {
+      margin-left: 0; }
+    .person-list.grid .person .biography {
+      text-align: justify;
+      margin-top: 10px;
+      margin-left: 0; }
+      .person-list.grid .person .biography p:last-of-type {
+        margin-bottom: 0.7em; }
+    .person-list.grid .person .email {
+      float: none;
+      margin: 0; }
+    .person-list.grid .person .phone-location-separator::before {
+      content: '';
+      display: block;
+      height: 0; }
+  .person-list.grid.grid-2 .person {
+    -webkit-box-flex: 0;
+    flex: 0 0 50%; }
+    @media (max-width: 600px) {
+      .person-list.grid.grid-2 .person {
+        -webkit-box-flex: 0;
+        flex: 0 0 100%; } }
+  .person-list.grid.grid-1 .person {
+    -webkit-box-flex: 0;
+    flex: 0 0 100%; }
+
+
+
+/*# sourceMappingURL=re_mods-personlist.css.map */

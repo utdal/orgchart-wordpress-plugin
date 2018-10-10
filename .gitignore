@@ -1,0 +1,12 @@
+# Vendor (e.g. Composer)
+vendor
+!vendor/.gitkeep
+
+# Node Package Manager
+node_modules
+
+# Sass cache
+.sass-cache
+
+# OS Files
+**/.DS_Store
