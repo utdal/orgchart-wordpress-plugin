@@ -1,5 +1,7 @@
 <?php
 
+namespace OrgChart;
+
 use OrgChart\PostTypes\Person as PersonCustomPost;
 use OrgChart\Shortcodes\Orgchart;
 use OrgChart\Shortcodes\PersonList;
@@ -44,7 +46,7 @@ class OrgChartPlugin
 	 */
 	private function load_dependencies()
 	{
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cmb2/init.php';
+		require_once plugin_dir_path(__FILE__) . 'includes/cmb2/init.php';
 	}
 
 	/**

@@ -1,16 +1,6 @@
 <?php
-
 /**
  * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
- * @link              https://research.utdallas.edu/oris
- * @since             1.0.0
- * @package           Org_Chart
  *
  * @wordpress-plugin
  * Plugin Name:       UT Dallas Research Org Chart
@@ -49,6 +39,4 @@ spl_autoload_register(function ($class_name) {
 });
 
 // Load the plugin
-require plugin_dir_path(__FILE__) . 'includes/OrgChartPlugin.php';
-
-(new OrgChartPlugin(OrgChart\VERSION))->run();
+(new OrgChart\OrgChartPlugin(OrgChart\VERSION))->run();
