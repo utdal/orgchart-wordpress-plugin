@@ -4,7 +4,6 @@ var gulp = require('gulp');
 var sass = require('gulp-ruby-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
-var concat = require('gulp-concat');
 
 var paths = {
   public: {
