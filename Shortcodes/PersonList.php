@@ -96,7 +96,7 @@ class PersonList extends Shortcode
 
             $results = $columnized_results;
         }
-        
-        return "<div class=\"{$this->attributes['list_class']}\">" . implode($results, '') . '</div>';
+
+        return "<div class=\"{$this->attributes['list_class']}\">" . implode('', $results) . '</div>';
     }
 }
