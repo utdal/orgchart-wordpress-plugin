@@ -130,7 +130,13 @@
     <ul>
     <?php foreach($org->getUnorganizedPeople() as $person): ?>
         <li>
-            <?php echo $person->name; ?>, 
+            <?php echo $person->name; ?>,
+            <?php
+            if($person->headshot):
+                echo $person->headshot;
+            else:
+                echo $person->placeholderimg;
+            endif; ?>,
             <?php echo $person->title; ?>, 
             <?php echo $person->phone; ?>, 
             <?php echo $person->location; ?>, 

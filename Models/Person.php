@@ -19,7 +19,8 @@ class Person
     public $level;
     public $tags = [];
     public $nodes;
-
+    public $headshot;
+    public $placeholderimg;
     public $text;
 
     /**
@@ -43,6 +44,8 @@ class Person
         $this->phone = get_post_meta($this->id, '_person_phone', true);
         $this->location = get_post_meta($this->id, '_person_location', true);
         $this->tags = get_the_tags($this->id) ? $this->tagObjectsToNames(get_the_tags($this->id)) : [];
+        $this->headshot = get_the_post_thumbnail($person_post->ID, 'post-thumbnail', array('class' => 'person-headshot', 'alt' => $person_post->post_name));
+        $this->placeholderimg = '<img class="person-headshot" alt="' . $person_post->post_name . '" src="' . plugin_dir_url( __DIR__ ) . '/public/images/avatar-placeholder.png">';
         $this->text = $this->getTextTemplate($link_to_path);
     }
 

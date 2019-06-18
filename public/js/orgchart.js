@@ -159,6 +159,13 @@ function customCreateNode($node, data) {
 
   contact_info += "<div class='orgchartg-contact-info'>";
 
+  if(data.headshot) {
+    contact_info += "<div class='orgchartg-headshot'>" + data.headshot + "</div>";
+  }
+  else {
+    contact_info += "<div class='orgchartg-headshot'>" + data.placeholderimg + "</div>";
+  }
+
   if (data.phone) {
     contact_info += data.phone + "\n" + data.location;
   }
@@ -561,6 +568,8 @@ function getPreparedOrgData(data) {
     'nodes',
     'level',
     'slug',
+    'headshot',
+    'placeholderimg',
   ];
 
   // filter data from org_data to extract id, name, title, nodes, and text fields.

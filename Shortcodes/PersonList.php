@@ -40,6 +40,7 @@ class PersonList extends Shortcode
     {
         $results = [];
         $this->person = new Person();
+        $person->headshot = get_the_post_thumbnail($person->id, 'post-thumbnail');
         set_query_var('person_options', $this->attributes); // pass $this->attributes as $person_options to the template
 
         $tags = explode(',', $this->attributes['tag']);
