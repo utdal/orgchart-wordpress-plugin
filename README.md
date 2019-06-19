@@ -134,13 +134,11 @@ This plugin's CSS is compiled from Sass. The Sass files are in the `public/css/s
 Prerequisites:
 
 - [npm/nodejs](https://docs.npmjs.com/getting-started/installing-node)
-- [gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
 - [yarn](https://yarnpkg.com/en/docs/install)
-- [ruby sass](http://sass-lang.com/install)
 
 Then, from the root of the plugin folder, install all the project dependencies with `yarn install`.
 
-This should install the Gulp task-runner. To compile the Sass, from the root of the plugin folder, run `gulp sass`. If you'd like to have it auto-compile while you're working instead, run `gulp watch`.
+This should install the Laravel Mix Webpack task-runner. To compile the Sass, from the root of the plugin folder, run `yarn dev`. If you'd like to have it auto-compile while you're working instead, run `yarn watch`.
 
 ## Updating JS libraries
 
