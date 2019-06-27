@@ -2,8 +2,6 @@
 
 namespace OrgChart\Models;
 
-use OrgChart\Models\Person;
-
 class Org
 {
     /** @var array arguments used to query for people */
@@ -15,6 +13,8 @@ class Org
 
     /** @var string common path to prefix before the Person slug when generating a link from each Person */
     protected $link_to_path = null;
+    
+    protected $avatar = true;
 
     /** @var array people in the org */
     public $people = [];
@@ -22,10 +22,11 @@ class Org
     /**
      * Org class constructor.
      */
-    public function __construct(array $query_config = [], $link_to_path = null)
+    public function __construct(array $query_config = [], $link_to_path = null, $avatar = true)
     {
         $this->query_config = array_merge($this->query_config, $query_config);
         $this->link_to_path = $link_to_path;
+        $this->avatar = $avatar;
         $this->addPeople();
         $this->organizePeople();
     }
@@ -40,7 +41,7 @@ class Org
         $people_posts = get_posts($this->query_config);
 
         foreach ($people_posts as $person_post) {
-            $this->people[] = new Person($person_post, $this->link_to_path);
+            $this->people[] = new Person($person_post, $this->link_to_path, $this->avatar);
         }
     }
 

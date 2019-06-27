@@ -159,11 +159,15 @@ function customCreateNode($node, data) {
 
   contact_info += "<div class='orgchartg-contact-info'>";
 
-  if(data.headshot) {
-    contact_info += "<div class='orgchartg-headshot'>" + data.headshot + "</div>";
-  }
-  else {
-    contact_info += "<div class='orgchartg-headshot'>" + data.placeholderimg + "</div>";
+  if (avatardata.show_avatar) {
+    if(data.headshot)
+    {
+      contact_info += data.headshotimg;
+    }
+    else
+    {
+      contact_info += data.placeholderimg;
+    }
   }
 
   if (data.phone) {
@@ -569,6 +573,7 @@ function getPreparedOrgData(data) {
     'level',
     'slug',
     'headshot',
+    'headshotimg',
     'placeholderimg',
   ];
 
@@ -836,7 +841,6 @@ function smoothlyScrollTo(target_selector, duration) {
 }
 
 jQuery(document).ready(function($) {
-
   // Register and render the org chart
   if (typeof $.fn.treeview === 'function' && document.body.contains(document.getElementById('orgchart')) && typeof org_data === 'object') {
     $('#orgchart').treeview({

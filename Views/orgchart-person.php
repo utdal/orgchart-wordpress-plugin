@@ -1,14 +1,16 @@
 <span class='orgchart-anchor' id='<?php echo $this->slug;?>'></span>
 <span class='orgchart-name' data-tags='<?php echo implode(',',$this->tags);?>'><?php echo $this->name;?></span>
-<?php if($this->headshot || $this->placeholderimg): ?>
-    <div class="orgchart-headshot">
-        <?php if ($this->headshot): ?>
-            <?php echo $this->headshot; ?>
+
+<div class="orgchart-headshot">
+    <?php if($show_avatar): ?>
+        <?php if($this->headshot): ?>
+            <?php echo $this->headshotimg; ?>
         <?php else: ?>
             <?php echo $this->placeholderimg; ?>
         <?php endif; ?>
-    </div>
-<?php endif; ?>
+    <?php endif; ?>
+</div>
+
 <?php if ($this->title): ?>
     <div class='orgchart-title'><?php echo $this->title;?>&nbsp;</div>
 <?php else: ?>

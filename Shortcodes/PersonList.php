@@ -17,6 +17,7 @@ class PersonList extends Shortcode
         'header'        => true,            // Whether or not to show the header
         'columns'       => 1,               // Number of columns
         'mail_link'     => true,            // Whether the email should be a mailto link
+        'avatar'        => 'show',            // Whether or not to show avatar (headshot)
         'list_class'    => 'person-list',   // CSS class to apply to the overall list
         'column_class'  => 'column',        // CSS class to apply to each column
         'image_size'    => 'thumbnail',     // The size of the featured image to load
@@ -27,6 +28,7 @@ class PersonList extends Shortcode
         'bio'       => FILTER_VALIDATE_BOOLEAN,
         'mail_link' => FILTER_VALIDATE_BOOLEAN,
         'header'    => FILTER_VALIDATE_BOOLEAN,
+        'avatar'    => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'columns'   => FILTER_VALIDATE_INT,
         'list_class'=> FILTER_SANITIZE_FULL_SPECIAL_CHARS,
     ];
@@ -40,9 +42,11 @@ class PersonList extends Shortcode
     {
         $results = [];
         $this->person = new Person();
-        $person->headshot = get_the_post_thumbnail($person->id, 'post-thumbnail');
+        $this->show_avatar = true;
+        if($this->avatar !== 'show') {
+            $this->show_avatar = false;
+        }
         set_query_var('person_options', $this->attributes); // pass $this->attributes as $person_options to the template
-
         $tags = explode(',', $this->attributes['tag']);
         foreach ($tags as $tag) {
             $loop = new \WP_Query([

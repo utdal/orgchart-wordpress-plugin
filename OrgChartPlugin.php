@@ -36,11 +36,10 @@ class OrgChartPlugin
 	{
 		$this->version = $version;
 		$this->asset_url = plugin_dir_url(__FILE__) . 'public';
-
+		
 		$this->custom_posts[] = new PersonCustomPost();
 		$this->shortcodes[] = new PersonList();
-		$this->shortcodes[] = new Orgchart();
-
+        $this->shortcodes[] = new Orgchart();
 		$this->load_dependencies();
 	}
 

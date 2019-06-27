@@ -9,16 +9,20 @@ $person_phone_and_location = $person->phone_and_location;
 $person_email = $person->_person_email;
 ?>
 <div class="<?= $class ?>">
-
-  <div class="person-pic">
-    <?php the_post_thumbnail($image_size); ?>
-  </div>
-
+  
   <div class="person-info">
-
+    
     <h2 class="person-name">
-      <?php the_title(); ?>     
+      <?php the_title(); ?>
     </h2>
+    
+    <?php if($this->show_avatar): ?>
+      <?php if(has_post_thumbnail()): ?>
+          <?php the_post_thumbnail('thumbnail', ['class', 'person-avatar']); ?>
+      <?php else: ?>
+          <?php echo '<img class="person-avatar" alt="' . get_the_title() . '" src="' . plugin_dir_url( __DIR__)  . 'public/images/avatar-placeholder.png">'; ?>
+      <?php endif; ?>
+    <?php endif; ?>
 
     <?php if($person_titles): ?>
       <h3 class="person-title">

@@ -2,6 +2,8 @@
 
 namespace OrgChart\Models;
 
+use OrgChart\Shortcodes\Orgchart;
+
 class Person
 {
     public $id;
@@ -20,6 +22,7 @@ class Person
     public $tags = [];
     public $nodes;
     public $headshot;
+    public $headshotimg;
     public $placeholderimg;
     public $text;
 
@@ -28,7 +31,7 @@ class Person
      * 
      * @param WP_Post $person_post post of custom type 'person'
      */
-    public function __construct($person_post, $link_to_path = null)
+    public function __construct($person_post, $link_to_path = null, $show_avatar = true)
     {
         $this->id = $person_post->ID;
         $this->name = $person_post->post_title;
@@ -44,9 +47,12 @@ class Person
         $this->phone = get_post_meta($this->id, '_person_phone', true);
         $this->location = get_post_meta($this->id, '_person_location', true);
         $this->tags = get_the_tags($this->id) ? $this->tagObjectsToNames(get_the_tags($this->id)) : [];
-        $this->headshot = get_the_post_thumbnail($person_post->ID, 'post-thumbnail', array('class' => 'person-headshot', 'alt' => $person_post->post_name));
-        $this->placeholderimg = '<img class="person-headshot" alt="' . $person_post->post_name . '" src="' . plugin_dir_url( __DIR__ ) . '/public/images/avatar-placeholder.png">';
-        $this->text = $this->getTextTemplate($link_to_path);
+        
+        $this->headshot = get_post_meta($this->id, '_thumbnail_id', true);
+        $this->headshotimg = get_the_post_thumbnail($person_post->ID, 'post_thumbnail', array('class' => 'person-avatar', 'alt' => $this->name));
+        $this->placeholderimg = '<img class="person-avatar" alt="' . $person_post->post_name . '" src="' . plugin_dir_url( __DIR__ ) . '/public/images/avatar-placeholder.png">';
+        
+        $this->text = $this->getTextTemplate($link_to_path, $show_avatar);
     }
 
     /**
@@ -107,7 +113,7 @@ class Person
      * 
      * @return string
      */
-    protected function getTextTemplate($link_to_path = null)
+    protected function getTextTemplate($link_to_path = null, $show_avatar = true)
     {
         ob_start();
         require(plugin_dir_path(dirname(__FILE__)) . 'Views/orgchart-person.php');

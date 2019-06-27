@@ -98,7 +98,7 @@
             <?php endif; ?>
         </div>
     </div> <!-- configurable parameters -->
- </div> <!-- action-panel -->
+</div> <!-- action-panel -->
  <?php else: ?>
     <?php if($show_export): ?>
         <div id="orgchart-export-only" class="export-flex">
@@ -119,7 +119,7 @@
     <!-- div container for graphical orgchart -->
     <div id="orgchart_graphical"></div>
 </div>
-<?php endif; ?> <!-- $show_graphical -->
+<?php endif; ?> <!-- END show_graphical -->
 
 <?php if($show_tree): ?>
 <div 
@@ -131,18 +131,21 @@
     <?php foreach($org->getUnorganizedPeople() as $person): ?>
         <li>
             <?php echo $person->name; ?>,
-            <?php
-            if($person->headshot):
-                echo $person->headshot;
-            else:
-                echo $person->placeholderimg;
-            endif; ?>,
-            <?php echo $person->title; ?>, 
-            <?php echo $person->phone; ?>, 
-            <?php echo $person->location; ?>, 
-            <?php echo $person->email; ?>, 
+
+            <?php if($person->show_avatar === true): ?>
+                <?php if(has_post_thumbnail()): ?>
+                    <?php the_post_thumbnail('thumbnail', ['class', 'person-avatar']); ?>
+                <?php else: ?>
+                    <?php echo '<img class="person-avatar" alt="' . get_the_title() . '" src="' . plugin_dir_url( __DIR__)  . 'public/images/avatar-placeholder.png">'; ?>
+                <?php endif; ?>
+            <?php endif; ?>
+            
+            <?php echo $person->title; ?>,
+            <?php echo $person->phone; ?>,
+            <?php echo $person->location; ?>,
+            <?php echo $person->email; ?>,
             <?php if(!empty($person->tags)) { echo implode(';', $person->tags); } ?>
-            </li>
+        </li>
     <?php endforeach; ?>
     </ul>
 </div>

@@ -8,7 +8,7 @@ class Orgchart extends Shortcode
 {
     /** @var string Shortcode name. */
     public $name = 'orgchart';
-
+    
     /** @var array Default shortcode attributes. */
     public $default_attributes = [
         'search'=> 'show',
@@ -20,6 +20,7 @@ class Orgchart extends Shortcode
         'color'     => 'hide',
         'contact'   => 'hide',
         'export'    => 'hide',
+        'avatar'    => 'show',
         'fullscreen'    => 'hide',
         'initialcontact'    => 'show',
         'initialdepth'  => 5,
@@ -38,10 +39,9 @@ class Orgchart extends Shortcode
     public function render()
     {
         $this->attributes['tag'] = $this->attributes['tag'] ? explode(',', $this->attributes['tag']) : [];
-
         $org = new Org([
             'tag_slug__in'  => $this->attributes['tag'],
-            ], $this->attributes['linkto']);
+            ], $this->attributes['linkto'], ($this->attributes['avatar'] === 'show'));
         $people = $org->getPeople();
         $show_search = $this->attributes['search'] === 'show';
         $show_scrolltop = $this->attributes['scrolltop'] === 'show';
@@ -53,18 +53,22 @@ class Orgchart extends Shortcode
         $show_color = $this->attributes['color'] === 'show';
         $show_contact = $this->attributes['contact'] === 'show';
         $show_export = $this->attributes['export'] === 'show';
+        
+        // array needed for wp_localize_script
+        $avatardata = array('show_avatar' => $this->attributes['avatar'] === 'show');
+        
         $show_fullscreen = $this->attributes['fullscreen'] === 'show';
         $show_initialcontact = $this->attributes['initialcontact'] === 'show';
         $initial_depth = (int) $this->attributes['initialdepth'];
         $show_tree = $this->attributes['tree'] === 'show';
         $js_dependencies = ['jquery'];
-
+        
         wp_localize_script('orgchart_plugin', 'org_data', $people);
+        wp_localize_script('orgchart_plugin', 'avatardata', $avatardata);
         wp_enqueue_script('orgchart_plugin');
         wp_enqueue_style('orgchart_plugin');
-
+        
         ob_start();
-
         include(plugin_dir_path(dirname(__FILE__)) . 'Views/orgchart-display.php');
 
         return ob_get_clean();
