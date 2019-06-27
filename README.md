@@ -91,6 +91,7 @@ Shortcode Attributes:
 | expanded=       | "10"     | In directory tree, how many levels to expand by default. |
 | tag=            | ""       | Only include People with the specified tag. (Useful for showing departments.) |
 | linkto=         | ""       | In directory tree, this specifies the path to the page with the graphical orgchart (if they're on different pages). |
+| avatar=         | "show"   | If enabled, displays a featured image of the person OR a generic placeholder image |
 
 ## Person Lists
 
