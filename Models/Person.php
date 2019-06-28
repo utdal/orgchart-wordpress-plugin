@@ -25,6 +25,7 @@ class Person
     public $headshotimg;
     public $hide_headshot;
     public $placeholderimg;
+    public $is_organization;
     public $text;
 
     /**
@@ -42,6 +43,7 @@ class Person
         $this->level = $this->getLevel();
         $this->title = get_post_meta($this->id, '_person_title', true);
         $this->adjacent = get_post_meta($this->id, '_person_adjacent', true);
+        $this->is_organization = get_post_meta($this->id, '_person_ou', true);
         $this->department = get_post_meta($this->id, '_person_department', true);
         $this->show_department = get_post_meta($this->id, '_person_show_department', true);
         $this->email = get_post_meta($this->id, '_person_email', true);

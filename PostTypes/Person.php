@@ -104,6 +104,12 @@ class Person extends CustomPost
             'id'    => '_person_hide_headshot',
             'type'  => 'checkbox',
         ],
+        [
+            'name'  => 'Organizational Unit',
+            'desc'  => 'This is an organizational unit, and not a person. In the org chart, OUs are shown with a different icon.',
+            'id'    => '_person_ou',
+            'type'  => 'checkbox',
+        ],
     ];
 
     /**

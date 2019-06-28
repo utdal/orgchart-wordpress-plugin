@@ -148,7 +148,7 @@ function customCreateNode($node, data) {
   $node.data('level', data.level);          // store level in current node data
   $node.data('slug', data.slug);            // store slug in current node data
 
-  if (data.title === '' && data.hasOwnProperty('name')) {
+  if (data.is_organization && data.hasOwnProperty('name')) {
     $node.addClass('group');
     $node.find('.title').html('<i class="fa fa-building symbol"></i>' + data.name);
     $node.find('.content').html('');
@@ -159,7 +159,7 @@ function customCreateNode($node, data) {
 
   contact_info += "<div class='orgchartg-contact-info'>";
 
-  if (avatardata.show_avatar && (data.hide_headshot !== 'on')) {
+  if (avatardata.show_avatar && !data.hide_headshot) {
     if(data.headshot)
     {
       contact_info += data.headshotimg;
@@ -569,6 +569,7 @@ function getPreparedOrgData(data) {
     'location',
     'email',
     'adjacent',
+    'is_organization',
     'nodes',
     'level',
     'slug',
