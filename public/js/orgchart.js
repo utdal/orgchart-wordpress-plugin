@@ -159,7 +159,7 @@ function customCreateNode($node, data) {
 
   contact_info += "<div class='orgchartg-contact-info'>";
 
-  if (avatardata.show_avatar) {
+  if (avatardata.show_avatar && (data.hide_headshot !== 'on')) {
     if(data.headshot)
     {
       contact_info += data.headshotimg;
@@ -572,6 +572,7 @@ function getPreparedOrgData(data) {
     'nodes',
     'level',
     'slug',
+    'hide_headshot',
     'headshot',
     'headshotimg',
     'placeholderimg',

@@ -23,6 +23,7 @@ class Person
     public $nodes;
     public $headshot;
     public $headshotimg;
+    public $hide_headshot;
     public $placeholderimg;
     public $text;
 
@@ -47,11 +48,11 @@ class Person
         $this->phone = get_post_meta($this->id, '_person_phone', true);
         $this->location = get_post_meta($this->id, '_person_location', true);
         $this->tags = get_the_tags($this->id) ? $this->tagObjectsToNames(get_the_tags($this->id)) : [];
-        
+        $this->hide_headshot = get_post_meta($this->id, '_person_hide_headshot', true);
         $this->headshot = get_post_meta($this->id, '_thumbnail_id', true);
-        $this->headshotimg = get_the_post_thumbnail($person_post->ID, 'post_thumbnail', array('class' => 'person-avatar', 'alt' => $this->name));
-        $this->placeholderimg = '<img class="person-avatar" alt="' . $person_post->post_name . '" src="' . plugin_dir_url( __DIR__ ) . '/public/images/avatar-placeholder.png">';
-        
+        $this->headshotimg = get_the_post_thumbnail( $this->id, 'post_thumbnail', array('class' => 'person-avatar', 'alt' => $this->name));
+        $this->placeholderimg = '<img class="person-avatar" alt="' . $this->slug . '" src="' . plugin_dir_url( __DIR__ ) . '/public/images/avatar-placeholder.png">';
+
         $this->text = $this->getTextTemplate($link_to_path, $show_avatar);
     }
 

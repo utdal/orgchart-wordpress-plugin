@@ -98,6 +98,12 @@ class Person extends CustomPost
             'id'    => '_person_adjacent',
             'type'  => 'checkbox',
         ],
+        [
+            'name'  => 'Hide Featured Image',
+            'desc'  => 'In the org chart, don\'t show either the featured image or a placeholder image for this person.',
+            'id'    => '_person_hide_headshot',
+            'type'  => 'checkbox',
+        ],
     ];
 
     /**
