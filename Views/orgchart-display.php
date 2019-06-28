@@ -1,11 +1,13 @@
 <?php if($show_search): ?>
 <div id="orgchart_search">
 
-    <input id="orgchart_search_box" type="search" placeholder="Search…">
-    <!-- <input id="orgchart_search_btn" type="button" value="Search"> -->
-    <button type="submit" id="orgchart_search_btn"><i class="fa fa-search"></i></button>
-    <!-- <input id="orgchart_search_clr" type="button" value="Clear"> -->
-    <button type="submit" id="orgchart_search_clr"><i class="fa fa-times"></i></button>
+    <div class="input-group">
+        <input id="orgchart_search_box" type="search" placeholder="Search…">
+        <!-- <input id="orgchart_search_btn" type="button" value="Search"> -->
+        <button type="submit" id="orgchart_search_btn"><i class="fa fa-search"></i></button>
+        <!-- <input id="orgchart_search_clr" type="button" value="Clear"> -->
+        <button type="submit" id="orgchart_search_clr"><i class="fa fa-times"></i></button>
+    </div>
     <div id="orgchart_search_results"></div>
 </div>
 <?php endif; ?>
@@ -132,13 +134,11 @@
         <li>
             <?php echo $person->name; ?>,
 
-            <?php if($show_avatar): ?>
-                <?php if(has_post_thumbnail()): ?>
-                    <?php the_post_thumbnail('thumbnail', ['class', 'person-avatar']); ?>
-                <?php else: ?>
-                    <?php echo '<img class="person-avatar" alt="' . get_the_title() . '" src="' . plugin_dir_url( __DIR__)  . 'public/images/avatar-placeholder.png">'; ?>
+            <div class="orgchart-headshot">
+                <?php if($show_avatar && !$person->hide_headshot): ?>
+                    <?= ($person->headshot) ? $person->headshotimg : $person->placeholderimg ?>
                 <?php endif; ?>
-            <?php endif; ?>
+            </div>
             
             <?php echo $person->title; ?>,
             <?php echo $person->phone; ?>,

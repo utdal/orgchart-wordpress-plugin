@@ -189,6 +189,15 @@ button.list-group-item {
 @include list-group-item-variant(warning, $state-warning-bg, $state-warning-text);
 @include list-group-item-variant(danger, $state-danger-bg, $state-danger-text);
 
+@mixin list-group-item-indent($level) {
+  $indent: 20px + 20px * $level;
+
+  .indent:nth-child(#{$level}) ~ a >  div {
+    position: relative;
+    left: $indent;
+    max-width: calc(100% - #{$indent} - 1.5em);
+  }
+}
 
 // Custom content options
 //
@@ -278,16 +287,26 @@ a.badge {
   }
 }
 
-#orgchart {
-    max-width: 800px;
-    margin: 0 auto;
+#orgchart.treeview {
   
+  .orgchart-person {
+    display: flex;
+    margin-top: -1.5em;
+    // margin-left: 1.5em;
+  }
+
+  // indent the top-level person slightly to avoid arrow overlap
+  > .list-group > .list-group-item:first-of-type .orgchart-person {
+    margin-left: 1.5em;
+  }
+
   span.icon{
     margin-right: 2px;
   }
 
   .list-group-item {
     padding: 12px 10px;
+
     @media (max-width: 420px) {
       padding: 20px 10px;
     }
@@ -295,9 +314,34 @@ a.badge {
       padding: 20px 10px;
     }
 
-    .orgchart-anchor{
-      position: absolute;
-      top: -10px;
+    @for $i from 1 through 7 {
+      @include list-group-item-indent($i);
+    }
+
+  }
+
+  .orgchart-anchor {
+    position: absolute;
+    top: -10px;
+  }
+
+  .orgchart-headshot {
+    flex-shrink: 0;
+    margin-right: 15px;
+
+    .person-avatar {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+
+      @media (max-width: 768px) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      display: none;
     }
   }
 
@@ -305,8 +349,7 @@ a.badge {
     font-size: .9375rem;
     font-weight: 400;
     font-style: italic;
-    position: relative;
-    left: 20px;
+
     @media (max-width: 420px) {
       font-size: .75rem;
     }
@@ -320,14 +363,10 @@ a.badge {
 
   .orgchart-phone-number {
     font-size: 0.75rem;
-    position: relative;
-    left: 20px;
   }
 
   .orgchart-email {
     font-size: 0.75rem;
-    position: relative;
-    left: 20px;
     word-break: break-all;
     a {
       color: #008542;
@@ -335,62 +374,16 @@ a.badge {
     }
   }
  
-  .list-group-item {
+  .tags {
+    width: 100%;
 
-    div.tags {
-      position: relative;
-      left: 20px;
-      width: 100%;
+    .badge {
+      white-space: inherit;
 
-      .badge {
-        &:hover {
-          text-decoration: underline;
-        }
+      &:hover {
+        text-decoration: underline;
       }
     }
-
-    .indent:nth-child(1) ~ a >  div {
-      position: relative;
-      left: 40px;
-      width: 90%;
-    }
-
-    .indent:nth-child(2) ~ a >  div {
-      position: relative;
-      left: 60px;
-      width: 80%;
-    }
-
-    .indent:nth-child(3) ~ a >  div {
-      position: relative;
-      left: 80px;
-      width: 70%
-    }
-
-    .indent:nth-child(4) ~ a >  div {
-      position: relative;
-      left: 100px;
-      width: 60%
-    }
-
-    .indent:nth-child(5) ~ a >  div {
-      position: relative;
-      left: 120px;
-      width: 50%
-    }
-
-    .indent:nth-child(6) ~ a >  div {
-      position: relative;
-      left: 140px;
-      width: 40%
-    }
-
-    .indent:nth-child(7) ~ a >  div {
-      position: relative;
-      left: 160px;
-      width: 30%;
-    }
-
   }
 
   &.non-searchable {
@@ -401,58 +394,60 @@ a.badge {
 
 }
 
-  #orgchart_search {
-    margin-bottom: 20px;
+#orgchart.treeview, #orgchart_search {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#orgchart_search {
+  margin-bottom: 20px;
+
+  .input-group {
+    display: flex;
   }
+}
 
-  #orgchart_search_box {
-    margin-left: 25%;
-    width: 40%;
-    padding: 8px 15px;
-    border: 0px solid #ddd;
-    background-color: rgba(213, 210, 202, 0.3);
-    @media (max-width: 768px) {
-      margin-left: 0;
-    }
-    @media (max-width: 480px) {
-      margin-left: 0;
-    }
+#orgchart_search_box {
+  padding: 8px 15px;
+  border: 0px solid #ddd;
+  border-radius: 0;
+  background-color: rgba(213, 210, 202, 0.3);
+  min-width: 100px;
+}
 
+#orgchart_search_btn {
+  padding:6px 15px;
+  border:2px solid rgb(105, 190, 40);
+  border-radius: 0;
+  background-color: rgb(105, 190, 40);
+  color:#ffffff;
+
+  @media (max-width:420px) {
+    padding: 6px 10px;
   }
+}
 
- #orgchart_search_btn {
-    position:relative;
-    padding:6px 15px;
-    left:-8px;
-    border:2px solid rgb(105, 190, 40);
-    background-color: rgb(105, 190, 40);
-    color:#ffffff;
-      @media (max-width:420px) {
-      padding: 6px 10px;
-    }
+#orgchart_search_clr {
+  padding:6px 15px;
+  border:2px solid $utd-flame-orange;
+  border-radius: 0;
+  background-color: $utd-flame-orange;
+  color:#fafafa;
+
+  @media (max-width:420px) {
+    padding: 6px 10px;
   }
+}
 
-  #orgchart_search_clr {
-    position:relative;
-    padding:6px 15px;
-    left:-14px;
-    border:2px solid $utd-flame-orange;
-    background-color: $utd-flame-orange;
-    color:#fafafa;
-      @media (max-width:420px) {
-      padding: 6px 10px;
-    }
+#orgchart_search_results {
+  margin-top: 12px;
+  margin-left: 25%;
+  margin-left: calc(25% - 20px);
+  line-height: 1em;
+
+  @media (max-width: 768px) {
+    margin-left: -20px;
   }
-
-  #orgchart_search_results {
-    margin-top: 12px;
-    margin-left: 25%;
-    margin-left: calc(25% - 20px);
-    line-height: 1em;
-
-    @media (max-width: 768px) {
-      margin-left: -20px;
-    }
 }
 
 #orgchart_search_results > ol > li > a {
@@ -462,8 +457,6 @@ a.badge {
   }
 
 }
-
-
 
 .scroll-top-wrapper {
     position: fixed;
@@ -505,7 +498,3 @@ a.badge {
 .scroll-top-wrapper i.fa {
     line-height: inherit;
 }
-
-
-
-
