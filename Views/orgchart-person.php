@@ -16,19 +16,35 @@
         <?php endif; ?>
         <?php if ($this->phone || $this->location || $this->slug) : ?>
             <div class='orgchart-phone-number'>
-                <?= $this->phone; ?>
+                <?php if ($this->phone && $this->location) : ?>
+                    <a href="tel:<?= $this->phone; ?>"><?= $this->phone; ?></a>
+                <?php endif; ?>
                 <?php if ($this->phone && $this->location) : ?>
                     &#124;
                 <?php endif; ?>
                 <?= $this->location; ?>
                 <?php if ($link_to_path && ($this->phone || $this->location)) : ?>
-                    &#124; <a href='<?= $link_to_path . '#' . $this->slug ?>' title='show on org chart'><i class="fa fa-users"></i></i></a>
+                    &#124; <a href='<?= $link_to_path . '#' . $this->slug ?>' class="hide-default-icon" title='show on org chart'><i class="fa fa-users"></i></i></a>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
-        <?php if ($this->email) : ?>
-            <div class='orgchart-email'><a href='mailto:<?= $this->email; ?>'><?= $this->email; ?></a></div>
-        <?php endif; ?>
+        <ul class="orgchart-person-links">
+            <?php if ($this->email) : ?>
+                <li class='orgchart-person-link orgchart-email'>
+                    <a href='mailto:<?= $this->email; ?>'><?= $this->email; ?></a>
+                </li>
+            <?php endif; ?>
+            <?php if ($this->url) : ?>
+                <li class='orgchart-person-link orgchart-url'>
+                    <a href="<?= $this->url ?>"><?= ($this->url_title) ? $this->url_title : $this->url ?></a>
+                </li>
+            <?php endif; ?>
+            <?php if ($this->url2) : ?>
+                <li class='orgchart-person-link orgchart-url'>
+                    <a href="<?= $this->url2 ?>"><?= ($this->url_title2) ? $this->url_title2 : $this->url2 ?></a>
+                </li>
+            <?php endif; ?>
+        </ul>
         <?php if (!empty($this->tags)) : ?>
             <div class='tags'>
                 <div class='badge'>

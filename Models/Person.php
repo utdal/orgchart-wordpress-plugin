@@ -26,6 +26,10 @@ class Person
     public $hide_headshot;
     public $placeholderimg;
     public $is_organization;
+    public $url;
+    public $url_title;
+    public $url2;
+    public $url_title2;
     public $text;
 
     /**
@@ -54,6 +58,10 @@ class Person
         $this->headshot = get_post_meta($this->id, '_thumbnail_id', true);
         $this->headshotimg = get_the_post_thumbnail( $this->id, 'thumbnail', array('class' => 'person-avatar', 'alt' => $this->name));
         $this->placeholderimg = '<img class="person-avatar" alt="' . $this->slug . '" src="' . plugin_dir_url( __DIR__ ) . '/public/images/avatar-placeholder.png">';
+        $this->url = get_post_meta($this->id, '_person_url', true);
+        $this->url_title = get_post_meta($this->id, '_person_url_title', true);
+        $this->url2 = get_post_meta($this->id, '_person_url2', true);
+        $this->url_title2 = get_post_meta($this->id, '_person_url_title2', true);
 
         $this->text = $this->getTextTemplate($link_to_path, $show_avatar);
     }

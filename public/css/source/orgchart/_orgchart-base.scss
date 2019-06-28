@@ -363,14 +363,32 @@ a.badge {
 
   .orgchart-phone-number {
     font-size: 0.75rem;
-  }
+    @extend %link_icons;
 
-  .orgchart-email {
-    font-size: 0.75rem;
-    word-break: break-all;
     a {
       color: #008542;
       font-weight: bold;
+    }
+  }
+
+  .orgchart-person-links {
+    list-style: none;
+    font-size: 0.75rem;
+    word-break: break-all;
+    margin: 0;
+    @extend %link_icons;
+
+    a {
+      color: #008542;
+      font-weight: bold;
+    }
+
+    li {
+      display: inline;
+
+      &:not(:last-of-type):after {
+        content: " | ";
+      }
     }
   }
  

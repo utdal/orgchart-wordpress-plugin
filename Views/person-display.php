@@ -7,6 +7,10 @@ $person_titles = $person->titles;
 $person_departments = $person->departments;
 $person_phone_and_location = $person->phone_and_location;
 $person_email = $person->_person_email;
+$person_url = $person->_person_url;
+$person_url_title = $person->_person_url_title;
+$person_url2 = $person->_person_url2;
+$person_url_title2 = $person->_person_url_title2;
 ?>
 <div class="<?= $class ?>">
   
@@ -46,11 +50,24 @@ $person_email = $person->_person_email;
       </h4>
     <?php endif; ?>
 
-   <?php if($person_email): ?>
-      <div class="email">
-        <?= ($mail_link) ? "<a href='mailto:{$person_email}'>" : "" ?><span class="hide_large fa fa-envelope-o"></span> <span class="hide_small"><?= $person_email ?></span><?= ($mail_link) ? "</a>" : "" ?>
-      </div>
+    <ul class="person-links">
+      <?php if($person_email): ?>
+        <li class="email">
+          <?= ($mail_link) ? "<a href='mailto:{$person_email}'>" : "" ?><?= $person_email ?><?= ($mail_link) ? "</a>" : "" ?>
+        </li>
+      <?php endif; ?>
+      <?php if($person_url): ?>
+      <li class="url">
+        <a href="<?= $person_url ?>"><?= ($person_url_title) ? $person_url_title : $person_url?></a>
+      </li>
     <?php endif; ?>
+
+    <?php if($person_url2): ?>
+      <li class="url">
+        <a href="<?= $person_url2 ?>"><?= ($person_url_title2) ? $person_url_title2 : $person_url2?></a>
+      </li>
+    <?php endif; ?> 
+    </ul>
 
   </div> <!-- /.person-info -->
 

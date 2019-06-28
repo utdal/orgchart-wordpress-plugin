@@ -65,11 +65,26 @@
     width:150px;
   }
 
-  .email {
-    line-height: 1em;
-    margin-left: 10px;
-    font-weight: 700;
-    word-wrap: break-word;
+  .person-links {
+    list-style-type: none;
+    margin: 10px 0px 6px 10px;
+
+    li {
+      display: inline;
+      @extend %link_icons;
+
+      a {
+        padding: 0px 5px;
+      }
+    }
+
+    li:after {
+      content: " | ";
+    }
+
+    li:last-of-type:after {
+      content: none;
+    }
   }
 
   .biography {

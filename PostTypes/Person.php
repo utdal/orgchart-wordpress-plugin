@@ -91,6 +91,29 @@ class Person extends CustomPost
             'desc'  => 'Enter the person\'s location.',
             'id'    => '_person_location',
             'type'  => 'text',
+        ],[
+            'name' => 'URL',
+            'desc' => 'Web URL for person.',
+            'id' => '_person_url',
+            'type' => 'text_url',
+        ],
+        [
+            'name' => 'URL Title',
+            'desc' => 'Title for URL for person.',
+            'id' => '_person_url_title',
+            'type' => 'text',
+        ],
+        [
+            'name' => 'Second URL',
+            'desc' => 'Web URL for person.',
+            'id' => '_person_url2',
+            'type' => 'text_url',
+        ],
+        [
+            'name' => 'Second URL Title',
+            'desc' => 'Title for URL for person.',
+            'id' => '_person_url_title2',
+            'type' => 'text',
         ],
         [
             'name'  => 'Adjacent Employee',

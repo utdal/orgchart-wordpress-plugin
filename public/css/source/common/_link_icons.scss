@@ -1,0 +1,47 @@
+%link_icons {
+
+  a:not(.hide-default-icon):before{
+    font-family: FontAwesome;
+    content: "\f0ac\00a0";
+  }
+
+  a[href*="mailto:"]:before {
+    content: "\f0e0\00a0";
+  }
+
+  a[href*="tel:"]:before {
+    content: "\f095\00a0";
+  }
+
+  a[href*="twitter"]:before {
+    content: "\f099\00a0";
+  }
+
+  a[href*="github"]:before {
+    content: "\f09b\00a0";
+  }
+
+  a[href*="facebook"]:before {
+    content: "\f09a\00a0";
+  }
+
+  a[href*="linkedin"]:before {
+    content: "\f08c\00a0";
+  }
+
+  a[href*="instagram"]:before {
+    content: "\f16d\00a0";
+  }
+
+  a[href*="youtube"]:before {
+    content: "\f167\00a0";
+  }
+
+  a[href*="google"]:before {
+    content: "\f1a0\00a0";
+  }
+
+  a[href*="weibo"]:before {
+    content: "\f18a\00a0";
+  }
+}

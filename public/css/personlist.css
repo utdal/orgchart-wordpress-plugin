@@ -1,6 +1,42 @@
+@charset "UTF-8";
 /*!
 Re Mods Plugin personlist CSS (generated from Sass)
 */
+.person-list .person .person-links li a:not(.hide-default-icon):before {
+  font-family: FontAwesome;
+  content: "\F0AC\A0";
+}
+.person-list .person .person-links li a[href*="mailto:"]:before {
+  content: "\F0E0\A0";
+}
+.person-list .person .person-links li a[href*="tel:"]:before {
+  content: "\F095\A0";
+}
+.person-list .person .person-links li a[href*=twitter]:before {
+  content: "\F099\A0";
+}
+.person-list .person .person-links li a[href*=github]:before {
+  content: "\F09B\A0";
+}
+.person-list .person .person-links li a[href*=facebook]:before {
+  content: "\F09A\A0";
+}
+.person-list .person .person-links li a[href*=linkedin]:before {
+  content: "\F08C\A0";
+}
+.person-list .person .person-links li a[href*=instagram]:before {
+  content: "\F16D\A0";
+}
+.person-list .person .person-links li a[href*=youtube]:before {
+  content: "\F167\A0";
+}
+.person-list .person .person-links li a[href*=google]:before {
+  content: "\F1A0\A0";
+}
+.person-list .person .person-links li a[href*=weibo]:before {
+  content: "\F18A\A0";
+}
+
 /** Person List Styles */
 .person-list {
   margin-bottom: 30px;
@@ -60,11 +96,21 @@ Re Mods Plugin personlist CSS (generated from Sass)
 .person-list .person .person-avatar {
   width: 150px;
 }
-.person-list .person .email {
-  line-height: 1em;
-  margin-left: 10px;
-  font-weight: 700;
-  word-wrap: break-word;
+.person-list .person .person-links {
+  list-style-type: none;
+  margin: 10px 0px 6px 10px;
+}
+.person-list .person .person-links li {
+  display: inline;
+}
+.person-list .person .person-links li a {
+  padding: 0px 5px;
+}
+.person-list .person .person-links li:after {
+  content: " | ";
+}
+.person-list .person .person-links li:last-of-type:after {
+  content: none;
 }
 .person-list .person .biography {
   line-height: 1em;
