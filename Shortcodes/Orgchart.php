@@ -53,10 +53,7 @@ class Orgchart extends Shortcode
         $show_color = $this->attributes['color'] === 'show';
         $show_contact = $this->attributes['contact'] === 'show';
         $show_export = $this->attributes['export'] === 'show';
-        
-        // array needed for wp_localize_script
-        $avatardata = array('show_avatar' => $this->attributes['avatar'] === 'show');
-        
+        $show_avatar = $this->attributes['avatar'] === 'show';
         $show_fullscreen = $this->attributes['fullscreen'] === 'show';
         $show_initialcontact = $this->attributes['initialcontact'] === 'show';
         $initial_depth = (int) $this->attributes['initialdepth'];
@@ -64,7 +61,7 @@ class Orgchart extends Shortcode
         $js_dependencies = ['jquery'];
         
         wp_localize_script('orgchart_plugin', 'org_data', $people);
-        wp_localize_script('orgchart_plugin', 'avatardata', $avatardata);
+        wp_localize_script('orgchart_plugin', 'avatardata', compact('show_avatar'));
         wp_enqueue_script('orgchart_plugin');
         wp_enqueue_style('orgchart_plugin');
         

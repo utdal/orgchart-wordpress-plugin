@@ -132,7 +132,7 @@
         <li>
             <?php echo $person->name; ?>,
 
-            <?php if($person->show_avatar === true): ?>
+            <?php if($show_avatar): ?>
                 <?php if(has_post_thumbnail()): ?>
                     <?php the_post_thumbnail('thumbnail', ['class', 'person-avatar']); ?>
                 <?php else: ?>
