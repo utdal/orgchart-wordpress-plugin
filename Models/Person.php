@@ -52,7 +52,7 @@ class Person
         $this->tags = get_the_tags($this->id) ? $this->tagObjectsToNames(get_the_tags($this->id)) : [];
         $this->hide_headshot = get_post_meta($this->id, '_person_hide_headshot', true);
         $this->headshot = get_post_meta($this->id, '_thumbnail_id', true);
-        $this->headshotimg = get_the_post_thumbnail( $this->id, 'post_thumbnail', array('class' => 'person-avatar', 'alt' => $this->name));
+        $this->headshotimg = get_the_post_thumbnail( $this->id, 'thumbnail', array('class' => 'person-avatar', 'alt' => $this->name));
         $this->placeholderimg = '<img class="person-avatar" alt="' . $this->slug . '" src="' . plugin_dir_url( __DIR__ ) . '/public/images/avatar-placeholder.png">';
 
         $this->text = $this->getTextTemplate($link_to_path, $show_avatar);
