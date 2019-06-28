@@ -441,19 +441,22 @@ a.badge {
 
 #orgchart_search_results {
   margin-top: 12px;
-  margin-left: 25%;
-  margin-left: calc(25% - 20px);
-  line-height: 1em;
+  padding-left: 1em;
+
+  ul {
+    list-style: none;
+  }
 
   @media (max-width: 768px) {
     margin-left: -20px;
   }
 }
 
-#orgchart_search_results > ol > li > a {
+#orgchart_search_results li a {
   color: #008542;
+
   &:hover {
-    color: #c75b12 !important;
+    color: #c75b12;
   }
 
 }

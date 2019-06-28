@@ -422,9 +422,10 @@ a.badge:hover, a.badge:focus {
 
 #orgchart_search_results {
   margin-top: 12px;
-  margin-left: 25%;
-  margin-left: calc(25% - 20px);
-  line-height: 1em;
+  padding-left: 1em;
+}
+#orgchart_search_results ul {
+  list-style: none;
 }
 @media (max-width: 768px) {
   #orgchart_search_results {
@@ -432,11 +433,11 @@ a.badge:hover, a.badge:focus {
   }
 }
 
-#orgchart_search_results > ol > li > a {
+#orgchart_search_results li a {
   color: #008542;
 }
-#orgchart_search_results > ol > li > a:hover {
-  color: #c75b12 !important;
+#orgchart_search_results li a:hover {
+  color: #c75b12;
 }
 
 .scroll-top-wrapper {

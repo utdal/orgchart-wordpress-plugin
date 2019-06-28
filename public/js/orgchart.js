@@ -41,11 +41,25 @@ function searchOrgChart() {
 
   var results = $('#orgchart').treeview('search', [searchfor, options]);
 
-  var output = '<ol><p>' + results.length + ' matches found</p>';
+  var output = '<ul><p>' + results.length + ' matches found</p>';
   $.each(results, function (index, result) {
-    output += '<li><a href="#'+ result.slug + '">' + result.name + (result.title ? ' - ' + result.title : '') + '</a></li>';
+    output += '<li>';
+    output += '<p><a href="#' + result.slug + '">' + result.name + '</a>' + (result.title ? (' - <em>' + result.title + '</em>') : '') + '<br>';
+    let person_info = [];
+    if (result.phone) {
+      person_info.push(result.phone);
+    }
+    if (result.location) {
+      person_info.push(result.location);
+    }
+    if (result.email) {
+      person_info.push(result.email);
+    }
+    output += person_info.join(' &#124; ') + '</p>';
+    output += '</li>';
+    console.log(result);
   });
-  output += '</ol>';
+  output += '</ul>';
   $('#orgchart_search_results').html(output);
 }
 
