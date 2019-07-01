@@ -6,7 +6,7 @@
  * Plugin Name:       UT Dallas Research Org Chart
  * Plugin URI:        https://github.com/utdallasresearch/orgchart-wordpress-plugin
  * Description:       A WordPress plugin for managing people and generating directories and org charts.
- * Version:           3.2.1
+ * Version:           3.2.2
  * Author:            UT Dallas Research Information Systems
  * Author URI:        https://research.utdallas.edu/oris
  * License:           MIT
@@ -14,7 +14,7 @@
  * Text Domain:       orgchart
  * Domain Path:       /languages
  */
-define('OrgChart\VERSION', '3.2.1');
+define('OrgChart\VERSION', '3.2.2');
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {

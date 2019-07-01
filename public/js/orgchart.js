@@ -51,7 +51,7 @@ function searchOrgChart() {
     }
     if (result.location) {
       if (result.location_url) {
-        person_info.push('<a href=":' + result.location_url + '" class="hide-default-icon" target="_blank"><i class="fa fa-map-marker"></i> ' + result.location + '</a>');
+        person_info.push('<a href="' + result.location_url + '" class="hide-default-icon" target="_blank"><i class="fa fa-map-marker"></i> ' + result.location + '</a>');
       } else {
         person_info.push('<i class="fa fa-map-marker"></i> ' + result.location);
       }
