@@ -44,16 +44,20 @@ function searchOrgChart() {
   var output = '<ul><p>' + results.length + ' matches found</p>';
   $.each(results, function (index, result) {
     output += '<li>';
-    output += '<p><a href="#' + result.slug + '">' + result.name + '</a>' + (result.title ? (' - <em>' + result.title + '</em>') : '') + '<br>';
+    output += '<p><a href="#' + result.slug + '" class="hide-default-icon">' + result.name + '</a>' + (result.title ? (' - <em>' + result.title + '</em>') : '') + '<br>';
     let person_info = [];
     if (result.phone) {
-      person_info.push(result.phone);
+      person_info.push('<a href="tel:' + result.phone + '" class="no-desktop-link">' + result.phone + '</a>');
     }
     if (result.location) {
-      person_info.push(result.location);
+      if (result.location_url) {
+        person_info.push('<a href=":' + result.location_url + '" class="hide-default-icon" target="_blank"><i class="fa fa-map-marker"></i> ' + result.location + '</a>');
+      } else {
+        person_info.push('<i class="fa fa-map-marker"></i> ' + result.location);
+      }
     }
     if (result.email) {
-      person_info.push(result.email);
+      person_info.push('<a href="mailto:' + result.email + '">' + result.email + '</a>');
     }
     output += person_info.join(' &#124; ') + '</p>';
     output += '</li>';
@@ -185,10 +189,18 @@ function customCreateNode($node, data) {
   }
 
   if (data.phone) {
-    contact_info += data.phone + "\n" + data.location;
+    contact_info += data.phone + "<br>";
   }
 
-  if(data.phone && data.email){
+  if (data.location) {
+    if (data.location_url) {
+      contact_info += "<a href='" + data.location_url + "' target='_blank'>" + data.location + "</a>";
+    } else {
+      contact_info += data.location;
+    }
+  }
+
+  if(data.location && data.email){
     contact_info += " | ";
   }
 
@@ -581,6 +593,7 @@ function getPreparedOrgData(data) {
     'title',
     'phone',
     'location',
+    'location_url',
     'email',
     'adjacent',
     'is_organization',

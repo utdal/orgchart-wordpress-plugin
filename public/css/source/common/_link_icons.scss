@@ -13,6 +13,18 @@
     content: "\f095\00a0";
   }
 
+  // disable select href=tel links on desktop
+  a[href*="tel:"].no-desktop-link {
+
+    @media screen and (min-width: 639px) {
+      color: inherit;
+      border: inherit;
+      text-decoration: none;
+      pointer-events: none;
+      cursor: pointer;
+    }
+  }
+
   a[href*="twitter"]:before {
     content: "\f099\00a0";
   }

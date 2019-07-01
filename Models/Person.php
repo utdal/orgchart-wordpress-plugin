@@ -17,6 +17,7 @@ class Person
     public $email;
     public $phone;
     public $location;
+    public $location_url;
     public $parent;
     public $level;
     public $tags = [];
@@ -53,6 +54,7 @@ class Person
         $this->email = get_post_meta($this->id, '_person_email', true);
         $this->phone = get_post_meta($this->id, '_person_phone', true);
         $this->location = get_post_meta($this->id, '_person_location', true);
+        $this->location_url = get_post_meta($this->id, '_person_location_url', true);
         $this->tags = get_the_tags($this->id) ? $this->tagObjectsToNames(get_the_tags($this->id)) : [];
         $this->hide_headshot = get_post_meta($this->id, '_person_hide_headshot', true);
         $this->headshot = get_post_meta($this->id, '_thumbnail_id', true);

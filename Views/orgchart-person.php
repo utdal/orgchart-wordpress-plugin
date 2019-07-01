@@ -16,13 +16,17 @@
         <?php endif; ?>
         <?php if ($this->phone || $this->location || $this->slug) : ?>
             <div class='orgchart-phone-number'>
-                <?php if ($this->phone && $this->location) : ?>
-                    <a href="tel:<?= $this->phone; ?>"><?= $this->phone; ?></a>
+                <?php if ($this->phone) : ?>
+                    <a href="tel:<?= $this->phone; ?>" class="no-desktop-link"><?= $this->phone; ?></a>
                 <?php endif; ?>
                 <?php if ($this->phone && $this->location) : ?>
                     &#124;
                 <?php endif; ?>
-                <?= $this->location; ?>
+                <?php if ($this->location) : ?>
+                    <?= ($this->location_url) ? "<a href='{$this->location_url}' target='_blank' class='hide-default-icon'>" : "" ?>
+                    <i class='fa fa-map-marker'></i> <?= $this->location ?>
+                    <?= ($this->location_url) ? "</a>" : "" ?>
+                <?php endif; ?>
                 <?php if ($link_to_path && ($this->phone || $this->location)) : ?>
                     &#124; <a href='<?= $link_to_path . '#' . $this->slug ?>' class="hide-default-icon" title='show on org chart'><i class="fa fa-users"></i></i></a>
                 <?php endif; ?>

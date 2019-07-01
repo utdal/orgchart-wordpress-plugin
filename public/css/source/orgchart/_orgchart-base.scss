@@ -460,6 +460,7 @@ a.badge {
 #orgchart_search_results {
   margin-top: 12px;
   padding-left: 1em;
+  @extend %link_icons;
 
   ul {
     list-style: none;

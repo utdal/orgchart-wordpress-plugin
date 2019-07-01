@@ -12,6 +12,15 @@ Re Mods Plugin personlist CSS (generated from Sass)
 .person-list .person .person-links li a[href*="tel:"]:before {
   content: "\F095\A0";
 }
+@media screen and (min-width: 639px) {
+  .person-list .person .person-links li a[href*="tel:"].no-desktop-link {
+    color: inherit;
+    border: inherit;
+    text-decoration: none;
+    pointer-events: none;
+    cursor: pointer;
+  }
+}
 .person-list .person .person-links li a[href*=twitter]:before {
   content: "\F099\A0";
 }

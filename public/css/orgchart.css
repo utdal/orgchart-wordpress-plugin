@@ -6,38 +6,47 @@ Re Mods Plugin orgchart CSS (generated from Sass)
 /* Branding Color Variables */
 /* Font color Variables */
 /* Misc color Variables */
-#orgchart.treeview .orgchart-person-links a:not(.hide-default-icon):before, #orgchart.treeview .orgchart-phone-number a:not(.hide-default-icon):before {
+#orgchart_search_results a:not(.hide-default-icon):before, #orgchart.treeview .orgchart-person-links a:not(.hide-default-icon):before, #orgchart.treeview .orgchart-phone-number a:not(.hide-default-icon):before {
   font-family: FontAwesome;
   content: "\F0AC\A0";
 }
-#orgchart.treeview .orgchart-person-links a[href*="mailto:"]:before, #orgchart.treeview .orgchart-phone-number a[href*="mailto:"]:before {
+#orgchart_search_results a[href*="mailto:"]:before, #orgchart.treeview .orgchart-person-links a[href*="mailto:"]:before, #orgchart.treeview .orgchart-phone-number a[href*="mailto:"]:before {
   content: "\F0E0\A0";
 }
-#orgchart.treeview .orgchart-person-links a[href*="tel:"]:before, #orgchart.treeview .orgchart-phone-number a[href*="tel:"]:before {
+#orgchart_search_results a[href*="tel:"]:before, #orgchart.treeview .orgchart-person-links a[href*="tel:"]:before, #orgchart.treeview .orgchart-phone-number a[href*="tel:"]:before {
   content: "\F095\A0";
 }
-#orgchart.treeview .orgchart-person-links a[href*=twitter]:before, #orgchart.treeview .orgchart-phone-number a[href*=twitter]:before {
+@media screen and (min-width: 639px) {
+  #orgchart_search_results a[href*="tel:"].no-desktop-link, #orgchart.treeview .orgchart-person-links a[href*="tel:"].no-desktop-link, #orgchart.treeview .orgchart-phone-number a[href*="tel:"].no-desktop-link {
+    color: inherit;
+    border: inherit;
+    text-decoration: none;
+    pointer-events: none;
+    cursor: pointer;
+  }
+}
+#orgchart_search_results a[href*=twitter]:before, #orgchart.treeview .orgchart-person-links a[href*=twitter]:before, #orgchart.treeview .orgchart-phone-number a[href*=twitter]:before {
   content: "\F099\A0";
 }
-#orgchart.treeview .orgchart-person-links a[href*=github]:before, #orgchart.treeview .orgchart-phone-number a[href*=github]:before {
+#orgchart_search_results a[href*=github]:before, #orgchart.treeview .orgchart-person-links a[href*=github]:before, #orgchart.treeview .orgchart-phone-number a[href*=github]:before {
   content: "\F09B\A0";
 }
-#orgchart.treeview .orgchart-person-links a[href*=facebook]:before, #orgchart.treeview .orgchart-phone-number a[href*=facebook]:before {
+#orgchart_search_results a[href*=facebook]:before, #orgchart.treeview .orgchart-person-links a[href*=facebook]:before, #orgchart.treeview .orgchart-phone-number a[href*=facebook]:before {
   content: "\F09A\A0";
 }
-#orgchart.treeview .orgchart-person-links a[href*=linkedin]:before, #orgchart.treeview .orgchart-phone-number a[href*=linkedin]:before {
+#orgchart_search_results a[href*=linkedin]:before, #orgchart.treeview .orgchart-person-links a[href*=linkedin]:before, #orgchart.treeview .orgchart-phone-number a[href*=linkedin]:before {
   content: "\F08C\A0";
 }
-#orgchart.treeview .orgchart-person-links a[href*=instagram]:before, #orgchart.treeview .orgchart-phone-number a[href*=instagram]:before {
+#orgchart_search_results a[href*=instagram]:before, #orgchart.treeview .orgchart-person-links a[href*=instagram]:before, #orgchart.treeview .orgchart-phone-number a[href*=instagram]:before {
   content: "\F16D\A0";
 }
-#orgchart.treeview .orgchart-person-links a[href*=youtube]:before, #orgchart.treeview .orgchart-phone-number a[href*=youtube]:before {
+#orgchart_search_results a[href*=youtube]:before, #orgchart.treeview .orgchart-person-links a[href*=youtube]:before, #orgchart.treeview .orgchart-phone-number a[href*=youtube]:before {
   content: "\F167\A0";
 }
-#orgchart.treeview .orgchart-person-links a[href*=google]:before, #orgchart.treeview .orgchart-phone-number a[href*=google]:before {
+#orgchart_search_results a[href*=google]:before, #orgchart.treeview .orgchart-person-links a[href*=google]:before, #orgchart.treeview .orgchart-phone-number a[href*=google]:before {
   content: "\F1A0\A0";
 }
-#orgchart.treeview .orgchart-person-links a[href*=weibo]:before, #orgchart.treeview .orgchart-phone-number a[href*=weibo]:before {
+#orgchart_search_results a[href*=weibo]:before, #orgchart.treeview .orgchart-person-links a[href*=weibo]:before, #orgchart.treeview .orgchart-phone-number a[href*=weibo]:before {
   content: "\F18A\A0";
 }
 
@@ -856,6 +865,9 @@ a.badge:hover, a.badge:focus {
   padding: 2px;
   line-height: 16px;
   margin-top: 4px;
+  font-weight: normal;
+}
+.orgchart .node .content .orgchartg-contact-info a {
   font-weight: normal;
 }
 

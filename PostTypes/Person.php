@@ -91,7 +91,14 @@ class Person extends CustomPost
             'desc'  => 'Enter the person\'s location.',
             'id'    => '_person_location',
             'type'  => 'text',
-        ],[
+        ],
+        [
+            'name'  => 'Location URL',
+            'desc'  => 'Web URL of the person\'s location.',
+            'id'    => '_person_location_url',
+            'type'  => 'text_url',
+        ],
+        [
             'name' => 'URL',
             'desc' => 'Web URL for person.',
             'id' => '_person_url',
