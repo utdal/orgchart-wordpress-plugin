@@ -311,6 +311,7 @@ a.badge:hover, a.badge:focus {
 }
 #orgchart.treeview .list-group-item {
   padding: 12px 10px;
+  margin: 0 0 -1px 0;
 }
 @media (max-width: 420px) {
   #orgchart.treeview .list-group-item {
@@ -407,6 +408,7 @@ a.badge:hover, a.badge:focus {
   font-size: 0.75rem;
   word-break: break-all;
   margin: 0;
+  padding: 0;
 }
 #orgchart.treeview .orgchart-person-links a {
   color: #008542;
@@ -449,6 +451,7 @@ a.badge:hover, a.badge:focus {
   border-radius: 0;
   background-color: rgba(213, 210, 202, 0.3);
   min-width: 100px;
+  width: 100%;
 }
 
 #orgchart_search_btn {
@@ -742,6 +745,12 @@ a.badge:hover, a.badge:focus {
   text-align: center;
   width: 140px;
 }
+.orgchart .node.group .title {
+  border-radius: 4px;
+}
+.orgchart .node.group .content {
+  display: none;
+}
 
 .orgchart.l2r .node, .orgchart.r2l .node {
   width: 50px;
@@ -869,6 +878,10 @@ a.badge:hover, a.badge:focus {
 }
 .orgchart .node .content .orgchartg-contact-info a {
   font-weight: normal;
+}
+
+.orgchart .node .content .person-avatar {
+  border-radius: 50%;
 }
 
 .orgchart.b2t .node .content {

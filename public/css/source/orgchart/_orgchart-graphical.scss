@@ -194,6 +194,18 @@
   border: 2px dashed transparent;
   text-align: center;
   width: 140px;
+
+  // node styling for organizational units
+  &.group {
+
+    .title {
+      border-radius: 4px;
+    }
+
+    .content {
+      display: none;
+    }
+  }
 }
 
 .orgchart.l2r .node, .orgchart.r2l .node {
@@ -327,6 +339,9 @@
   }
 }
 
+.orgchart .node .content .person-avatar {
+  border-radius: 50%;
+}
 
 .orgchart.b2t .node .content {
   transform: rotate(180deg);

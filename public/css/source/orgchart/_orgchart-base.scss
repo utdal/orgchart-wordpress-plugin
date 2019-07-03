@@ -306,6 +306,7 @@ a.badge {
 
   .list-group-item {
     padding: 12px 10px;
+    margin: 0 0 -1px 0;
 
     @media (max-width: 420px) {
       padding: 20px 10px;
@@ -376,6 +377,7 @@ a.badge {
     font-size: 0.75rem;
     word-break: break-all;
     margin: 0;
+    padding: 0;
     @extend %link_icons;
 
     a {
@@ -431,6 +433,7 @@ a.badge {
   border-radius: 0;
   background-color: rgba(213, 210, 202, 0.3);
   min-width: 100px;
+  width: 100%;
 }
 
 #orgchart_search_btn {
