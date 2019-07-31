@@ -14,7 +14,7 @@
  * Text Domain:       orgchart
  * Domain Path:       /languages
  */
-define('OrgChart\VERSION', '3.2.3');
+define('OrgChart\VERSION', '3.2.4');
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
