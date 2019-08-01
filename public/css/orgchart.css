@@ -1156,7 +1156,6 @@ a.badge:hover, a.badge:focus {
   overflow: auto;
   /* prevent child div - .orgchart - from spilling - SM */
   text-align: center;
-  margin-bottom: 60px;
 }
 #orgchart_graphical .orgchart {
   border: none;
