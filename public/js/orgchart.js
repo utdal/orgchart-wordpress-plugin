@@ -695,6 +695,7 @@ function showGraphicalOrgChart(datasource, defaultVerticalDepth) {
 
   // Configurable options panel for graphical orgchart
   $('#customize-btn').on('click', function() {
+    $('#panel-toggle').toggleClass('fa-caret-right');
     $(this).toggleClass('active');
     $('#custom-panel').toggleClass('show');
   });

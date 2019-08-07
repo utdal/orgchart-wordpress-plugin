@@ -19,7 +19,7 @@
         <div id="action-panel">
             <?php if($show_customize): ?>
                 <span>
-                    <button type="button" id="customize-btn" class="customize-btn-default action-panel-btn"><i class="fa fa-cog action-icon-left" aria-hidden="true"></i>View Options<i class="fa fa-caret-down action-icon-right" aria-hidden="true"></i></button>
+                    <button type="button" id="customize-btn" class="customize-btn-default action-panel-btn active"><i class="fa fa-cog action-icon-left" aria-hidden="true"></i>View Options<i id="panel-toggle" class="fa fa-caret-down action-icon-down" aria-hidden="true"></i></button>
                 </span>
                 <?php if($show_export): ?>
                     <span>
@@ -28,11 +28,11 @@
                 <?php endif; ?>
             <?php endif; ?>
             
-            <?php if($show_customize): ?> <!-- configurable parameters -->
-                <div id="custom-panel">
-            <?php else: ?>
+            <?php //if($show_customize): ?> <!-- configurable parameters -->
+<!--                <div id="custom-panel">-->
+            <?php //else: ?>
                 <div id="custom-panel" class="show">
-            <?php endif; ?>
+            <?php //endif; ?>
                 <?php if($show_startwith): ?>
                     <!-- drop down for select root node -->
                     <div class="select-node">

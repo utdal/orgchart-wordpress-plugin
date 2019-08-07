@@ -1231,6 +1231,9 @@ a.badge:hover, a.badge:focus {
 #action-panel select {
   font-size: 12px;
 }
+#action-panel #panel-toggle {
+  margin-left: 0.3rem;
+}
 
 #custom-panel {
   display: none;
