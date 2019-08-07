@@ -1193,7 +1193,7 @@ a.badge:hover, a.badge:focus {
   margin: 10px 0px;
   padding: 10px;
   color: #fff;
-  background-color: #008542;
+  background-color: transparent;
   overflow: auto;
 }
 #action-panel .action-panel-btn {
