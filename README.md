@@ -77,21 +77,21 @@ Shortcode Attributes:
 | search=         | "show"   | Show a search box at the top. |
 | tree=           | "show"   | Show the directory tree |
 | graphical=      | "hide"   | Show the graphical org chart |
-| settings=       | "hide"   | Show action panel for graphical org chart|
-| customize=      | "hide"   | Show customize button for graphical org chart|
-| startwith=      | "hide"   | Show root node selector for graphical org chart|
-| depth=          | "hide"   | Show depth selector for graphical org chart|
-| color=          | "hide"   | Show color selector control for graphical org chart|
+| settings=       | "hide"   | Show setting options for graphical org chart|
+| customize=      | "hide"   | Show the customize button for graphical org chart, implements show/hide feature|
+| startwith=      | "hide"   | Show root node selector option for graphical org chart|
+| depth=          | "hide"   | Show depth selector option for graphical org chart|
+| color=          | "hide"   | Show background color selector option for graphical org chart|
 | contact=        | "hide"   | Show a button to toggle contact information on individual nodes for graphical org chart|
-| export=         | "hide"   | Show a button to export graphical org chart|
+| export=         | "hide"   | Show a button to export graphical org chart as an image|
 | fullscreen=     | "hide"   | Show icon to view full screen for graphical org chart|
 | initialcontact= | "show"   | Show contact information for each node for graphical org chart|
 | iniitaldepth=   | 5        | The depth at which nodes will switch to vertical layout for graphical org chart. Range is 2-15.|
 | scrolltop=      | "show"   | Show a button to scroll to the top of the page. |
 | expanded=       | "10"     | In directory tree, how many levels to expand by default. |
 | tag=            | ""       | Only include People with the specified tag. (Useful for showing departments.) |
-| linkto=         | ""       | In directory tree, this specifies the path to the page with the graphical orgchart (if they're on different pages). |
-| avatar=         | "show"   | If enabled, displays a featured image of the person OR a generic placeholder image |
+| linkto=         | ""       | In directory tree, this specifies the url path to the page with the graphical orgchart (if they're on different pages). |
+| avatar=         | "show"   | If enabled, displays the featured image of the person OR a generic placeholder image |
 
 ## Person Lists
 
