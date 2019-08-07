@@ -19,7 +19,7 @@
         <div id="action-panel">
             <?php if($show_customize): ?>
                 <span>
-                    <button type="button" id="customize-btn" class="customize-btn-default action-panel-btn"><i class="fa fa-cog action-icon-left" aria-hidden="true"></i>Customize<i class="fa fa-caret-down action-icon-right" aria-hidden="true"></i></button>
+                    <button type="button" id="customize-btn" class="customize-btn-default action-panel-btn"><i class="fa fa-cog action-icon-left" aria-hidden="true"></i>View Options<i class="fa fa-caret-down action-icon-right" aria-hidden="true"></i></button>
                 </span>
                 <?php if($show_export): ?>
                     <span>
