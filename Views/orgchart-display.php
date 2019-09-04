@@ -121,9 +121,12 @@
 <div 
   id="orgchart" 
   data-expanded="<?= $this->expanded ?>"
-  class="<?php echo ($show_search) ? 'searchable' : 'non-searchable' ?>"
+  class="treeview <?php echo ($show_search) ? 'searchable' : 'non-searchable' ?>"
 >
-    <ul>
+    <div class="loader">
+        <i class="fa fa-spinner fa-pulse fa-spin fa-2x"></i>
+    </div>
+    <ul class="fallback">
     <?php foreach($org->getUnorganizedPeople() as $person): ?>
         <li>
             <?php echo $person->name; ?>,
@@ -142,6 +145,10 @@
         </li>
     <?php endforeach; ?>
     </ul>
+    <script>
+        // remove the fallback if JS is enabled
+        document.querySelector('#orgchart > .fallback').remove();
+    </script>
 </div>
 <?php endif; ?>
 

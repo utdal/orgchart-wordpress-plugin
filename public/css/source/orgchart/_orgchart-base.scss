@@ -288,6 +288,11 @@ a.badge {
 }
 
 #orgchart.treeview {
+
+  .loader {
+    display: flex;
+    justify-content: center;
+  }
   
   .orgchart-person {
     display: flex;

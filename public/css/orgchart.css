@@ -377,6 +377,10 @@ a.badge:hover, a.badge:focus {
   cursor: pointer;
 }
 
+#orgchart.treeview .loader {
+  display: flex;
+  justify-content: center;
+}
 #orgchart.treeview .orgchart-person {
   display: flex;
   margin-top: -1.5em;
@@ -655,7 +659,7 @@ a.badge:hover, a.badge:focus {
   max-height: 59vh;
 }
 
-.orgchart .hidden, .orgchart ~ .hidden {
+.orgchart .hidden, .orgchart ~ .hidden, #orgchart .hidden {
   display: none !important;
 }
 

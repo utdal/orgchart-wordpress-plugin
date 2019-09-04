@@ -34,7 +34,7 @@
   max-height: 59vh;    // forces bottom of container to always be visible
 }
 
-.orgchart .hidden, .orgchart~.hidden {
+.orgchart .hidden, .orgchart~.hidden, #orgchart .hidden {
   display: none!important;
 }
 
