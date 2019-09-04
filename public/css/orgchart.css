@@ -50,6 +50,84 @@ Re Mods Plugin orgchart CSS (generated from Sass)
   content: "\F18A\A0";
 }
 
+#action-panel input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+#action-panel input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #999999, 0px 0px 1px #a6a6a6;
+  border: 1px solid #999999;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.5px;
+}
+#action-panel input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #999999, 0px 0px 1px #a6a6a6;
+  border: 1px solid #999999;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+  background: #ffffff;
+  cursor: pointer;
+}
+#action-panel input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #999999, 0px 0px 1px #a6a6a6;
+  border: 1px solid #999999;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+  background: #ffffff;
+  cursor: pointer;
+}
+#action-panel input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #dddddd;
+  border-radius: 2px;
+}
+#action-panel input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #dddddd;
+  border-radius: 2px;
+}
+#action-panel input[type=range]::-ms-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+#action-panel input[type=range]::-ms-fill-lower {
+  background: #cecece;
+  border-radius: 4px;
+}
+#action-panel input[type=range]::-ms-fill-upper {
+  background: #dddddd;
+  border-radius: 4px;
+}
+#action-panel input[type=range]:focus {
+  outline: none;
+}
+#action-panel input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ececec;
+}
+#action-panel input[type=range]:focus:focus::-ms-fill-lower {
+  background: #dddddd;
+}
+#action-panel input[type=range]:focus:focus::-ms-fill-upper {
+  background: #ececec;
+}
+
 .list-group {
   margin-bottom: 20px;
   padding-left: 0;
@@ -1187,16 +1265,12 @@ a.badge:hover, a.badge:focus {
 /* Customize panel - for graphical orgchart configurable parameters */
 #action-panel {
   position: relative;
-  min-height: 50px;
   border-radius: 10px;
-  margin: 10px 0px;
-  padding: 10px;
-  color: #fff;
+  margin-top: 10px;
   background-color: transparent;
   overflow: auto;
 }
 #action-panel .action-panel-btn {
-  margin-bottom: 0;
   padding: 5px 10px;
   background: #69BE28;
   color: #fff;
@@ -1224,9 +1298,18 @@ a.badge:hover, a.badge:focus {
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.25);
   border-color: rgba(0, 0, 0, 0.25);
 }
+#action-panel .button-panel .action-panel-btn {
+  margin: 0 10px 10px 0;
+}
+#action-panel .button-panel .action-panel-btn:last-of-type {
+  margin-right: 0;
+}
 #action-panel label {
   font-size: 14px;
   font-weight: normal;
+}
+#action-panel input, #action-panel select {
+  padding: 0.25em;
 }
 #action-panel select {
   font-size: 12px;
@@ -1237,7 +1320,6 @@ a.badge:hover, a.badge:focus {
 
 #custom-panel {
   display: none;
-  padding-top: 5px;
 }
 #custom-panel.show {
   display: flex;
@@ -1245,8 +1327,12 @@ a.badge:hover, a.badge:focus {
   justify-content: space-between;
   align-items: center;
 }
-#custom-panel label {
-  color: #fff;
+#custom-panel .custom-panel-item {
+  flex-grow: 1;
+  margin: 0 10px 10px 0;
+}
+#custom-panel .custom-panel-item:last-of-type {
+  margin-right: 0;
 }
 #custom-panel .custom-btn-reset {
   text-align: right;
@@ -1265,17 +1351,12 @@ a.badge:hover, a.badge:focus {
 }
 #custom-panel .action-buttons {
   display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 #export-btn {
   margin-left: 10px;
-}
-#export-btn.export-only {
-  margin-left: 0px;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .action-icon-left {
@@ -1286,18 +1367,8 @@ a.badge:hover, a.badge:focus {
   padding-left: 5px;
 }
 
-#contact-btn {
-  margin-right: 10px;
-}
-
-#orgchart-export-only {
+.export-flex {
   display: flex;
   justify-content: flex-end;
-}
-
-@media (max-width: 520px) {
-  #select-root-node {
-    max-width: 75%;
-  }
 }
 /*# sourceMappingURL=orgchart.css.map*/

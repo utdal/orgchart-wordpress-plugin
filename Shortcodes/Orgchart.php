@@ -20,6 +20,7 @@ class Orgchart extends Shortcode
         'color'     => 'hide',
         'contact'   => 'hide',
         'export'    => 'hide',
+        'settings_labels' => 'show',
         'avatar'    => 'show',
         'fullscreen'    => 'hide',
         'initialcontact'    => 'show',
@@ -51,6 +52,7 @@ class Orgchart extends Shortcode
         $show_startwith = $this->attributes['startwith'] === 'show';
         $show_depth = $this->attributes['depth'] === 'show';
         $show_color = $this->attributes['color'] === 'show';
+        $show_settings_labels = $this->attributes['settings_labels'] === 'show';
         $show_contact = $this->attributes['contact'] === 'show';
         $show_export = $this->attributes['export'] === 'show';
         $show_avatar = $this->attributes['avatar'] === 'show';

@@ -1,0 +1,94 @@
+// Normalize input[type=range] across browsers
+$thumb-size: 15px;
+$thumb-color: #ffffff;
+$track-size: 8px;
+$track-color: #dddddd;
+$track-border-radius: 2px;
+
+@mixin thumb() {
+  box-shadow: 1px 1px 1px #999999, 0px 0px 1px #a6a6a6;
+  border: 1px solid #999999;
+  height: $thumb-size;
+  width: $thumb-size;
+  border-radius: $thumb-size;
+  background: $thumb-color;
+  cursor: pointer;
+}
+
+@mixin track-basics() {
+  width: 100%;
+  height: $track-size;
+  cursor: pointer;
+}
+
+@mixin track() {
+  @include track-basics;
+  background: $track-color;
+  border-radius: $track-border-radius;
+}
+
+// placeholder selector for use elsewhere
+%range-slider {
+
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+
+    &::-webkit-slider-thumb {
+      @include thumb;
+      -webkit-appearance: none;
+      margin-top: ($track-size / 2) - ($thumb-size / 2);
+    }
+
+    &::-moz-range-thumb {
+      @include thumb;
+    }
+
+    &::-ms-thumb {
+      @include thumb;
+    }
+
+    &::-webkit-slider-runnable-track {
+      @include track;
+    }
+
+    &::-moz-range-track {
+      @include track;
+    }
+
+    &::-ms-track {
+      @include track-basics;
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+    }
+
+    &::-ms-fill-lower {
+      background: #cecece;
+      border-radius: $track-border-radius * 2;
+    }
+
+    &::-ms-fill-upper {
+      background: $track-color;
+      border-radius: $track-border-radius * 2;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::-webkit-slider-runnable-track {
+        background: #ececec;
+      }
+
+      &:focus::-ms-fill-lower {
+        background: $track-color;
+      }
+      &:focus::-ms-fill-upper {
+        background: #ececec;
+      }
+    }
+
+  }
+}

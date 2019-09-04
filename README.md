@@ -78,12 +78,13 @@ Shortcode Attributes:
 | tree=           | "show"   | Show the directory tree |
 | graphical=      | "hide"   | Show the graphical org chart |
 | settings=       | "hide"   | Show setting options for graphical org chart|
-| customize=      | "hide"   | Show the customize button for graphical org chart, implements show/hide feature|
+| customize=      | "hide"   | Group setting options behind a menu|
 | startwith=      | "hide"   | Show root node selector option for graphical org chart|
 | depth=          | "hide"   | Show depth selector option for graphical org chart|
 | color=          | "hide"   | Show background color selector option for graphical org chart|
 | contact=        | "hide"   | Show a button to toggle contact information on individual nodes for graphical org chart|
 | export=         | "hide"   | Show a button to export graphical org chart as an image|
+| settings_labels=| "show"   | Show text labels for the settings controls|
 | fullscreen=     | "hide"   | Show icon to view full screen for graphical org chart|
 | initialcontact= | "show"   | Show contact information for each node for graphical org chart|
 | iniitaldepth=   | 5        | The depth at which nodes will switch to vertical layout for graphical org chart. Range is 2-15.|
