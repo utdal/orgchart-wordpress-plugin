@@ -486,30 +486,35 @@ function updateCustomOrgChart($selectedNode) {
  * @return {void}
  */
 function handleDeepLink() {
-  var show_top_as = getParameterByName('node');
-  if (show_top_as) {  // url has query string
-    var $selectedNode = $('#select-root-node option').filter('[data-slug="' + show_top_as + '"]');
-    if ($selectedNode.length) { // is parent node
-      updateCustomOrgChart($selectedNode);
-      $('.orgchart').find('.node:first').addClass('focused');
-    }
-  }
-  else { // check if url has hash
-    var hashValue = location.hash.substring(1);
-    if (!hashValue == '') {
-      var $hashNode = $('.orgchart').find('.node').filter( function() {
-        return $(this).data('slug') === hashValue; 
-      });
-      if ($hashNode.length) {
-        var hashNodeId = $hashNode[0].id;
-        $('#'+hashNodeId).find('.title').addClass('highlighted');
-        $('#'+hashNodeId).find('.content').addClass('highlighted');
-        $('#'+hashNodeId).find('.symbol').addClass('highlighted');
+  var top_node_slug = getParameterByName('node');
+  var highlighted_node_slug = top_node_slug || location.hash.substring(1);
 
-        // scroll to node and center it within .orgchart
-        smoothlyScrollIntoView('#'+hashNodeId);
-      }
-    }
+  if (top_node_slug) {
+    updateCustomOrgChart($('#select-root-node option').filter('[data-slug="' + top_node_slug + '"]'));
+  }
+
+  if (highlighted_node_slug) {
+    highlightOrgChartNode(highlighted_node_slug);
+  }
+}
+
+/**
+ * Highlights and centers a node.
+ * 
+ * @param {string} slug The slug id of the node to highlight
+ * @return {void}
+ */
+function highlightOrgChartNode(slug) {
+  var $node = $('.orgchart').find('.node').filter(function () {
+    return $(this).data('slug') === slug;
+  });
+
+  if ($node.length) {
+    var nodeId = '#' + $node[0].id;
+    $(nodeId).find('.title,.content,.symbol').addClass('highlighted');
+
+    // scroll to node and center it within .orgchart
+    smoothlyScrollIntoView(nodeId);
   }
 }
 
