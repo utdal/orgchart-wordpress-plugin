@@ -61,7 +61,6 @@ function searchOrgChart() {
     }
     output += person_info.join(' &#124; ') + '</p>';
     output += '</li>';
-    console.log(result);
   });
   output += '</ul>';
   $('#orgchart_search_results').html(output);
@@ -218,7 +217,7 @@ function customCreateNode($node, data) {
     var secondMenuIcon = $('<i>', {
       'class': 'fa fa-info-circle second-menu-icon',
       click: function() {    
-        $(this).siblings('.content').children('.orgchartg-contact-info').slideToggle(200);
+        setGraphicalOrgChartNodeContact($(this).closest('.node'));
       }
     }); // end secondMenuIcon    
 
@@ -307,10 +306,8 @@ function renderGraphicalOrgChart(datasource, verticalDepth) {
 
   });  // end function call for .orgchart
 
-  if ($('#org-initialcontact').data('initialcontact') === 'show') {
-    $('#orgchart_graphical .orgchart .node .second-menu-icon').each(function() {
-        $(this).triggerHandler('click');
-      });
+  if ($('#org-initialcontact').data('initialcontact') === 'show' && ($('#contact-btn').length === 0 || $('#contact-btn').hasClass('active'))) {
+    setGraphicalOrgChartContact(true);
   }
 
   // Remove  event handler for topEdge click 
@@ -435,13 +432,12 @@ function takeHighResScreenshot(srcEl, scaleFactor) {
 /**
  * Scrolls to the given target vertically and horizontally.
  * 
- * @param  {string} el.     DOM element for the target that needs to be centered
+ * @param  {jQuery} $el     jQuery element for the target that needs to be centered
  * @param  {Object} parent  DOM element which needs to scroll (default .orgchart)
  * @return {void}
  */
-function smoothlyScrollIntoView(el, parent) {
+function scrollIntoView($el, parent) {
   parent = parent || '.orgchart';
-  var $el = $(el);
   var $parent = $(parent);
 
   var elOffsetTop = $el.offset().top;
@@ -466,13 +462,13 @@ function smoothlyScrollIntoView(el, parent) {
  * Changes Custom Panel settings and triggers change to select drop down 
  * to show sub-chart.   
  * 
+ * @param {string} slug The slug id of the top node to select
  * @return {void}
  */
-function updateCustomOrgChart($selectedNode) {
+function selectOrgChartRootNode(slug) {
+  var $selectedNode = $('#select-root-node option').filter('[data-slug="' + slug + '"]');
+
   if ($selectedNode.length) {
-    if (!$('#customize-btn').hasClass('active')) {
-      $('#customize-btn').click();
-    }
     $selectedNode.prop('selected', true);
     $('#select-root-node').trigger('change');
     $('#select-vert-depth').val(5).trigger('change');
@@ -490,7 +486,7 @@ function handleDeepLink() {
   var highlighted_node_slug = top_node_slug || location.hash.substring(1);
 
   if (top_node_slug) {
-    updateCustomOrgChart($('#select-root-node option').filter('[data-slug="' + top_node_slug + '"]'));
+    selectOrgChartRootNode(top_node_slug);
   }
 
   if (highlighted_node_slug) {
@@ -510,11 +506,10 @@ function highlightOrgChartNode(slug) {
   });
 
   if ($node.length) {
-    var nodeId = '#' + $node[0].id;
-    $(nodeId).find('.title,.content,.symbol').addClass('highlighted');
-
-    // scroll to node and center it within .orgchart
-    smoothlyScrollIntoView(nodeId);
+    $node.find('.title,.content,.symbol').addClass('highlighted');
+    setTimeout(function() {
+      scrollIntoView($node);
+    }, 210); // wait for scrolldown/up in order to calc correct height
   }
 }
 
@@ -535,10 +530,7 @@ function redrawOrgChart(datasource, verticalDepth, visibleRootNodeId) {
 
     renderGraphicalOrgChart(visibleDatasource, verticalDepth);
     setGraphicalOrgChartBackground();
-    visibleRootNodeId = $('#select-root-node').val();
-    if ($('#contact-btn').hasClass('active')) {
-      $('#orgchart_graphical .orgchart .node .second-menu-icon').trigger('click');
-    }
+    setGraphicalOrgChartContact();
   }
 }
 
@@ -674,6 +666,25 @@ var setGraphicalOrgChartBackground = function() {
   });
 };
 
+var setGraphicalOrgChartContact = function(show) {
+  var show = (typeof show !== 'undefined') ? show : $('#contact-btn').hasClass('active');
+
+  setGraphicalOrgChartNodeContact($('#orgchart_graphical .orgchart .node'), show);
+}
+
+var setGraphicalOrgChartNodeContact = function($node, show) {
+  $contact_info = $node.find('.orgchartg-contact-info');
+  var show = (typeof show !== 'undefined') ? show : !$contact_info.hasClass('expanded');
+  if (show) {
+    if (!$contact_info.hasClass('expanded')) {
+      $contact_info.addClass('expanded').slideDown(200);
+    }
+  } else {
+    if ($contact_info.hasClass('expanded')) {
+      $contact_info.removeClass('expanded').slideUp(200);
+    }
+  }
+}
 
 /**
  * Resets configurable parameters for graphical org chart.
@@ -820,9 +831,7 @@ function showGraphicalOrgChart(datasource, defaultVerticalDepth) {
   // contact handler
   $('#contact-btn').on('click', function(e) {
     $(this).toggleClass('active');
-    $('#orgchart_graphical .orgchart .node .second-menu-icon').each(function() {
-      $(this).triggerHandler('click');
-    });
+    setGraphicalOrgChartContact();
   });
 
   // fullscreen handler
@@ -898,17 +907,22 @@ jQuery(document).ready(function($) {
     });
   }
 
+  let debounce = {};
+
+  // modified from cowboy/jquery-throttle-debounce
+  (function (b, c) { var a; $.throttle = a = function (e, f, j, i) { var h, d = 0; if (typeof f !== "boolean") { i = j; j = f; f = c } function g() { var o = this, m = +new Date() - d, n = arguments; function l() { d = +new Date(); j.apply(o, n) } function k() { h = c } if (i && !h) { l() } h && clearTimeout(h); if (i === c && m > e) { l() } else { if (f !== true) { h = setTimeout(i ? k : l, i === c ? e - m : e) } } } if ($.guid) { g.guid = j.guid = j.guid || $.guid++ } return g }; b.do = function (d, e, f) { return f === c ? a(d, e, false) : a(d, f, e !== false) } })(debounce);
+
   // Register the org chart search triggers
   $('#orgchart_search_btn').click(searchOrgChart);
   $('#orgchart_search_clr').click(clearSearchOrgChart);
-  $('#orgchart_search_box').keyup(function(event) {
+  $('#orgchart_search_box').keyup(debounce.do(150, function(event) {
     if (this.value.length > 2) {
       searchOrgChart();
     } else {
       $('#orgchart_search_results').html('');
       $('#orgchart').treeview('clearSearch');
     }
-  });
+  }));
 
   
   // Check if graphical orgchart library exists before invoking showGraphicalOrgChart function,   
