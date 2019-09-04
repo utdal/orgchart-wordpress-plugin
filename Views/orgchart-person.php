@@ -1,6 +1,10 @@
+<?php
+/**
+ * Directory Tree View - Template For Individual Person Cards
+ */
+?>
 <span class='orgchart-anchor' id='<?= $this->slug; ?>'></span>
 <div class="orgchart-person <?= ($show_avatar && !$this->hide_headshot) ? 'has-headshot' : '' ?>">
-
     <?php if ($show_avatar && !$this->hide_headshot) : ?>
         <div class="orgchart-headshot">
             <?= ($this->headshot) ? $this->headshotimg : $this->placeholderimg ?>
