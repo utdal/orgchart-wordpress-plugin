@@ -10,7 +10,7 @@ var orgChartPlugin = (function(window, $, undefined) {
   /**
    * Variable for media breakpoints - phone, tablet, desktop, big screen
   */
-  var mediaBreakpoints = {
+  const mediaBreakpoints = {
     'small': "screen and (max-width: 767px)",
     'medium': "screen and (min-width: 768px) and (max-width: 991px)",
     'large': "screen and (min-width: 992px) and (max-width: 1199px)",
@@ -24,7 +24,7 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @return {String | Boolean}   the value of the query parameter or false if not found
    */
   function getParameterByName(n) {
-    var match = RegExp('[?&]' + n + '=([^&]*)').exec(window.location.search);
+    let match = RegExp('[?&]' + n + '=([^&]*)').exec(window.location.search);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
   }
 
@@ -34,16 +34,16 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @return {void}
    */
   function searchOrgChart() {
-    var searchfor = $('#orgchart_search_box').val();
-    var options = {
+    let searchfor = $('#orgchart_search_box').val();
+    const options = {
       ignoreCase: true,
       exactMatch: false,
       revealResults: true,
     };
 
-    var results = $('#orgchart').treeview('search', [searchfor, options]);
+    let results = $('#orgchart').treeview('search', [searchfor, options]);
 
-    var output = '<ul><p>' + results.length + ' matches found</p>';
+    let output = '<ul><p>' + results.length + ' matches found</p>';
     $.each(results, function (index, result) {
       output += '<li>';
       output += '<p><a href="#' + result.slug + '" class="hide-default-icon">' + result.name + '</a>' + (result.title ? (' - <em>' + result.title + '</em>') : '') + '<br>';
@@ -109,13 +109,13 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @return {int}          : normalized new vertical depth
    */
   function normalizeVerticalDepth(newLevel) {
-    var $verticalDepthSlider = $('#select-vert-depth');
-    var should_be_value = $verticalDepthSlider.data('should-be-value');
-    var oldLevel = $('#orgchart_graphical').find('.node:first').data('level');
-    var relativeLevel = newLevel - oldLevel;
-    var current_depth_slider_value = (should_be_value === undefined) ? $verticalDepthSlider.val() : should_be_value;
+    let $verticalDepthSlider = $('#select-vert-depth');
+    let should_be_value = $verticalDepthSlider.data('should-be-value');
+    let oldLevel = $('#orgchart_graphical').find('.node:first').data('level');
+    let relativeLevel = newLevel - oldLevel;
+    let current_depth_slider_value = (should_be_value === undefined) ? $verticalDepthSlider.val() : should_be_value;
 
-    var selectedVerticalDepth = current_depth_slider_value - relativeLevel;
+    let selectedVerticalDepth = current_depth_slider_value - relativeLevel;
 
     // we shouldn't go below a vertical depth of 2
     // if we need to, let's save the real value to reapply in case we go back above 2 again
@@ -144,8 +144,8 @@ var orgChartPlugin = (function(window, $, undefined) {
     if (odata.id === id) {
       return odata;
     } else if (odata.children) {
-      for (var i = 0; i < odata.children.length; i++) {
-        var child_val = findOrgDataObjectById(id, odata.children[i]);
+      for (let i = 0; i < odata.children.length; i++) {
+        let child_val = findOrgDataObjectById(id, odata.children[i]);
         if (child_val) {
           return child_val;
         }
@@ -174,17 +174,12 @@ var orgChartPlugin = (function(window, $, undefined) {
     }
 
     // Add contact info 
-    var contact_info = "";
-
-    contact_info += "<div class='orgchartg-contact-info'>";
+    let contact_info = "<div class='orgchartg-contact-info'>";
 
     if (avatardata.show_avatar && !data.hide_headshot) {
-      if(data.headshot)
-      {
+      if (data.headshot) {
         contact_info += data.headshotimg;
-      }
-      else
-      {
+      } else {
         contact_info += data.placeholderimg;
       }
     }
@@ -201,7 +196,7 @@ var orgChartPlugin = (function(window, $, undefined) {
       }
     }
 
-    if(data.location && data.email){
+    if (data.location && data.email) {
       contact_info += " | ";
     }
 
@@ -213,19 +208,17 @@ var orgChartPlugin = (function(window, $, undefined) {
 
     // if the node has either email or phone, then add secondMenu to show contact info on click
     if ( (data.phone) || (data.email) ) {
-
       $node.find('.content').append(contact_info);
-          
-      var secondMenuIcon = $('<i>', {
+
+      let secondMenuIcon = $('<i>', {
         'class': 'fa fa-info-circle second-menu-icon',
         click: function() {    
           setGraphicalOrgChartNodeContact($(this).closest('.node'));
         }
-      }); // end secondMenuIcon    
+      });
 
-      $node.append(secondMenuIcon);   // append secondMenuIcon to $node
-
-    }    // show secondMenu end check for phone number and email
+      $node.append(secondMenuIcon);
+    }
 
     // check for admin node
     if (data.hasOwnProperty('adjacent')) {
@@ -235,55 +228,50 @@ var orgChartPlugin = (function(window, $, undefined) {
       }
     }
 
-    // add event handler for bottom edge double click
-    //  bind click event handler for the bottom edge
+    // bind event handler for bottom edge click
     $node.on('click', '.bottomEdge', function(event) {
       event.stopPropagation();
-      var $orgchartContainer = $('#orgchart_graphical');
-      var $that = $(this);
-      var $node = $that.parent();
+      let $orgchartContainer = $('#orgchart_graphical');
+      let $that = $(this);
+      let $node = $that.parent();
 
       // check if children exist and/or are visible
-      var childrenState = $('#orgchart_graphical').orgchart('getNodeState', $node, 'children');
+      let childrenState = $orgchartContainer.orgchart('getNodeState', $node, 'children');
 
       if (!childrenState.exist) {
         return;
       }
-        
-      var $allDescendants = $node.closest('tr').siblings().last().find('.node');
-          
-      var $hiddenDescendants = $node.closest('tr').siblings().last().find('.slide-up');
+
+      let $allDescendants = $node.closest('tr').siblings().last().find('.node');
+      let $hiddenDescendants = $node.closest('tr').siblings().last().find('.slide-up');
 
       if (!$hiddenDescendants.length) {  // all descendants visible
         return;
       }
 
-      var allDescendantsCount = $allDescendants.length;
-
       //keep track of number made visible so no unnecessarily looping over remainder nodes
-      var numHiddenDescendants = $hiddenDescendants.length;   
+      let numHiddenDescendants = $hiddenDescendants.length;   
 
       //loop through allDescendants list 
       // - call getNodeState($node,'children') on each object from allDescendants list
       // - use .eq - returns jQuery object, (don't use .get - returns DOM element)
       // -- if (children.exist is true) and (children.visible is false), then
       // ---- call showChildren($node)
-      for (var i=0; (i < $allDescendants.length && numHiddenDescendants > 0); i++) {
-        childrenState = $('#orgchart_graphical').orgchart('getNodeState', $allDescendants.eq(i), 'children');
+      for (let i=0; (i < $allDescendants.length && numHiddenDescendants > 0); i++) {
+        childrenState = $orgchartContainer.orgchart('getNodeState', $allDescendants.eq(i), 'children');
         if (childrenState.exist) {
           if (!childrenState.visible) {
-            $('#orgchart_graphical').orgchart('showChildren', $allDescendants.eq(i));
+            $orgchartContainer.orgchart('showChildren', $allDescendants.eq(i));
             // recalculate number of hiddenDescendants
             numHiddenDescendants = $node.closest('tr').siblings().last().find('.slide-up').length;
           }
-        } // end if childrenState exist
-      } // end for
+        }
+      }
 
-    }); // ==== end event handler for bottom edge
+    });
 
     return true;
-
-  } // end customCreateNode
+  }
 
 
   /**
@@ -304,9 +292,8 @@ var orgChartPlugin = (function(window, $, undefined) {
       'verticalDepth': verticalDepth,           // align child nodes vertically from given depth 
       'createNode': function($node, data) {     // customize structure of node for secondMenu option - contact info
         customCreateNode($node, data);
-      }   // end createNode
-
-    });  // end function call for .orgchart
+      }
+    });
 
     if ($('#org-initialcontact').data('initialcontact') === 'show' && ($('#contact-btn').length === 0 || $('#contact-btn').hasClass('active'))) {
       setGraphicalOrgChartContact(true);
@@ -319,39 +306,35 @@ var orgChartPlugin = (function(window, $, undefined) {
   }
 
   /**
-   * Use html2canvas js library to export high resolution screenshot of orgchart. 
+   * Export a screenshot of the orgchart. 
    * 
    * @param  {Object} srcEl      : DOM element that is used for canvas
    * @param  {int} scaleFactor   : scale provided to canvas for high resolution screenshot
-   * @return {boolean|true}      
+   * @return {void}      
    */
-  function takeHighResScreenshot(srcEl, scaleFactor) {
+  function takeScreenshot(srcEl, scaleFactor) {
 
     // Browser detection
-    var isWebkit = 'WebkitAppearance' in document.documentElement.style;
-    var isFf = !!window.sidebar;
+    const isWebkit = 'WebkitAppearance' in document.documentElement.style;
+    const isFf = !!window.sidebar;
 
     // Internet Explorer 6-11
-    var isIE = (/*@cc_on!@*/false) || (!!document.documentMode);
+    const isIE = (/*@cc_on!@*/false) || (!!document.documentMode);
 
     // Edge 20+
-    var isEdge = (!(document.documentMode) && window.StyleMedia);
+    const isEdge = (!(document.documentMode) && window.StyleMedia);
 
-    var isIEOrEdge = isIE || isEdge;
+    const isIEOrEdge = isIE || isEdge;
 
-    var $srcEl = $(srcEl);
+    let $srcEl = $(srcEl);
 
     if (isIEOrEdge) {
       $srcEl.find('.second-menu-icon').hide();
     }
-    
-    // Save original size of element excluding margin
-    var originalWidthWithoutMargin = srcEl.offsetWidth;   
-    var originalHeightWithoutMargin = srcEl.offsetHeight;
 
     // Calculate original size of element including margin
     // Margin is set in CSS, and computed in Chrome and Safari, but not computed in Firefox. 
-    var wasVisible = $srcEl.css('display') !== 'none';
+    let wasVisible = $srcEl.css('display') !== 'none';
     try {
       var $srcElHide = $srcEl.hide();
       var srcElMarginLeft = parseInt($srcElHide.css('margin-left'));
@@ -361,9 +344,9 @@ var orgChartPlugin = (function(window, $, undefined) {
     } finally {
       if (wasVisible) $srcEl.show();
     }
-    
-    var originalWidthWithMargin = srcEl.offsetWidth + srcElMarginLeft + srcElMarginRight; 
-    var originalHeightWithMargin = srcEl.offsetHeight + srcElMarginTop + srcElMarginBottom;
+
+    let originalWidthWithMargin = srcEl.offsetWidth + srcElMarginLeft + srcElMarginRight; 
+    let originalHeightWithMargin = srcEl.offsetHeight + srcElMarginTop + srcElMarginBottom;
 
     // Force px size (no %, EMs, etc)
     srcEl.style.width = originalWidthWithMargin + "px";
@@ -376,31 +359,29 @@ var orgChartPlugin = (function(window, $, undefined) {
     srcEl.style.left = "0px";
 
     // Create scaled canvas
-    var scaledCanvas = document.createElement("canvas");
+    let scaledCanvas = document.createElement("canvas");
 
     scaledCanvas.width = originalWidthWithMargin * scaleFactor;
     scaledCanvas.height = originalHeightWithMargin * scaleFactor;
     scaledCanvas.style.width = originalWidthWithMargin + "px";
     scaledCanvas.style.height = originalHeightWithMargin + "px";
 
-    var scaledContext = scaledCanvas.getContext("2d");
+    let scaledContext = scaledCanvas.getContext("2d");
     scaledContext.scale(scaleFactor, scaleFactor);
-    
+
     html2canvas(srcEl, { 
         canvas: scaledCanvas  
       })
         .then(function(canvas) {
           $('#orgchart_graphical').find('.mask').addClass('hidden');
-          
+
           if ((!isWebkit && !isFf) || isIEOrEdge) {
             window.navigator.msSaveBlob(canvas.msToBlob(), 'OrgChart.png');
-          }
-          else {
+          } else {
             // canvas.toBlob() polyfill
             if (!HTMLCanvasElement.prototype.toBlob) {
               Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
                 value: function (callback, type, quality) {
-
                   var binStr = atob( this.toDataURL(type, quality).split(',')[1] ),
                       len = binStr.length,
                       arr = new Uint8Array(len);
@@ -417,19 +398,38 @@ var orgChartPlugin = (function(window, $, undefined) {
             canvas.toBlob(function(blob) {
               $('#org_img').attr('href', URL.createObjectURL(blob))[0].click();
             });
-            // $('#org_img').attr('href', canvas.toDataURL())[0].click();
           }
           $('canvas').remove();   // Might need to set canvas id
         });
-      
-    //reset 
+
+    // reset 
     srcEl.style.position = "inherit";
     srcEl.style.width = "auto"; 
     srcEl.style.height = "auto"; 
     if (isIEOrEdge) {
       $srcEl.find('.second-menu-icon').show();
-    }   
-  } 
+    }
+  }
+
+  /**
+   * Export a high resolution screenshot of the orgchart.
+   *
+   * @param  {Object} srcEl      : DOM element that is used for canvas
+   * @return {void}
+   */
+  function takeHighResScreenshot(srcEl) {
+    takeScreenshot(srcEl, 2);
+  }
+
+  /**
+   * Export a high resolution screenshot of the orgchart.
+   *
+   * @param  {Object} srcEl      : DOM element that is used for canvas
+   * @return {void}
+   */
+  function takeLowResScreenshot(srcEl) {
+    takeScreenshot(srcEl, 1);
+  }
 
   /**
    * Scrolls to the given target vertically and horizontally.
@@ -439,25 +439,11 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @return {void}
    */
   function scrollIntoView($el, parent) {
-    parent = parent || '.orgchart';
-    var $parent = $(parent);
+    let $parent = $(parent || '.orgchart');
+    let $table = $('.orgchart > table');
 
-    var elOffsetTop = $el.offset().top;
-    var elHeight = $el.height();
-    var tableOffsetTop = $('.orgchart > table').offset().top;
-    var parentHeight = $parent.height();
-
-    var scrollTopValue = elOffsetTop + elHeight/2 - tableOffsetTop - parentHeight/2;
-    
-    var elOffsetLeft = $el.offset().left;
-    var elWidth = $el.width();
-    var tableOffsetLeft = $('.orgchart > table').offset().left;
-    var parentWidth = $parent.width();
-
-    var scrollLeftValue = elOffsetLeft + elWidth/2 - tableOffsetLeft - parentWidth/2;
-
-    $parent.scrollTop(scrollTopValue);
-    $parent.scrollLeft(scrollLeftValue);
+    $parent.scrollTop($el.offset().top + $el.height() / 2 - $table.offset().top - $parent.height() / 2);
+    $parent.scrollLeft($el.offset().left + $el.width() / 2 - $table.offset().left - $parent.width() / 2);
   }
 
   /**
@@ -468,14 +454,14 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @return {void}
    */
   function selectOrgChartRootNode(slug) {
-    var $selectedNode = $('#select-root-node option').filter('[data-slug="' + slug + '"]');
+    let $selectedNode = $('#select-root-node option').filter('[data-slug="' + slug + '"]');
 
     if ($selectedNode.length) {
       $selectedNode.prop('selected', true);
       $('#select-root-node').trigger('change');
       $('#select-vert-depth').val(5).trigger('change');
     }
-  } 
+  }
 
   /**
    * Checks for query string match with data-slug in select node drop-down list.   
@@ -484,8 +470,8 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @return {void}
    */
   function handleDeepLink() {
-    var top_node_slug = getParameterByName('node');
-    var highlighted_node_slug = top_node_slug || location.hash.substring(1);
+    let top_node_slug = getParameterByName('node');
+    let highlighted_node_slug = top_node_slug || location.hash.substring(1);
 
     if (top_node_slug) {
       selectOrgChartRootNode(top_node_slug);
@@ -503,7 +489,7 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @return {void}
    */
   function highlightOrgChartNode(slug) {
-    var $node = $('.orgchart').find('.node').filter(function () {
+    let $node = $('.orgchart').find('.node').filter(function () {
       return $(this).data('slug') === slug;
     });
 
@@ -521,14 +507,14 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @return {void}
    */
   function redrawOrgChart(datasource, verticalDepth, visibleRootNodeId) {
-    var $visibleNodes = $('.orgchart').find('.node:visible');
-    var visibleRootNodeId = visibleRootNodeId || $visibleNodes[0].id;
-    var $chartContainerEdit = $('#orgchart_graphical');
-    
+    let $chartContainerEdit = $('#orgchart_graphical');
+    let $visibleNodes = $('.orgchart').find('.node:visible');
+    visibleRootNodeId = visibleRootNodeId || $visibleNodes[0].id;
+
     $chartContainerEdit.empty();
 
     if (!$chartContainerEdit.children().length) {
-      var visibleDatasource = findOrgDataObjectById(visibleRootNodeId, datasource);
+      let visibleDatasource = findOrgDataObjectById(visibleRootNodeId, datasource);
 
       renderGraphicalOrgChart(visibleDatasource, verticalDepth);
       setGraphicalOrgChartBackground();
@@ -540,11 +526,12 @@ var orgChartPlugin = (function(window, $, undefined) {
    * Determines vertical depth based on media query, redraws org chart based on
    * calculated vertical depth, and adjusts slider value.   
    * 
+   * @param {string} window_size (small, medium, large, or xl)
    * @return {int} calculatedVerticalDepth
    */
   function determineVerticalDepth(window_size) {
-    var calculatedVerticalDepth = -1;
-    var verticalDepthAdjustments = {
+    let calculatedVerticalDepth = -1;
+    const verticalDepthAdjustments = {
       'small': -2,
       'medium': -1,
       'large': 0,
@@ -586,7 +573,7 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @return {JSON object}
    */
   function getPreparedOrgData(data) {
-    var whitelisted_fields = [
+    const whitelisted_fields = [
       'id',
       'name',
       'title',
@@ -620,13 +607,14 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @param {HTMLElement} element - The HTML element for which to toggle full screen mode.
    * @return void
    */
-  var toggleFullScreen = function(element) {
-    var isInFullScreenMode = (document.fullscreenElement && document.fullscreenElement !== null) ||
+  function toggleFullScreen(element) {
+    let isInFullScreenMode = (document.fullscreenElement && document.fullscreenElement !== null) ||
           (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
           (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
           (document.msFullscreenElement && document.msFullscreenElement !== null);
-    var $mask = $(element).find('.mask');
-    
+    let $element = $(element);
+    let $mask = $element.find('.mask');
+
     if (!$mask.length) {
       $mask = $('<div class="mask"><i class="fa fa-circle-o-notch fa-spin spinner"></i></div>').appendTo(element);
     }
@@ -634,10 +622,10 @@ var orgChartPlugin = (function(window, $, undefined) {
     $mask.css('display', 'inherit');
 
     if (isInFullScreenMode) {
-      $(element).find('.fullscreen-element').removeClass('fa-compress').addClass('fa-expand');
+      $element.find('.fullscreen-element').removeClass('fa-compress').addClass('fa-expand');
       doFullScreenAction(document, document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen);
     } else {
-      $(element).find('.fullscreen-element').removeClass('fa-expand').addClass('fa-compress');
+      $element.find('.fullscreen-element').removeClass('fa-expand').addClass('fa-compress');
       doFullScreenAction(element, element.requestFullscreen || element.mozRequestFullScreen || element.webkitRequestFullscreen || element.msRequestFullscreen);
     }
 
@@ -651,7 +639,7 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @param {function} fullScreenAction - The full screen action to execute
    * @return void
    */
-  var doFullScreenAction = function(element, fullScreenAction) {
+  function doFullScreenAction(element, fullScreenAction) {
     if (typeof fullScreenAction === 'function') {
       fullScreenAction.call(element);
     }
@@ -662,21 +650,22 @@ var orgChartPlugin = (function(window, $, undefined) {
    *
    * @return {jQuery}
    */
-  var setGraphicalOrgChartBackground = function() {
+  function setGraphicalOrgChartBackground() {
     return $('#orgchart_graphical .orgchart, #orgchart_graphical .orgchart > table > tbody').css({
       'background-color': $('#select-bg-color').val(),
     });
   };
 
-  var setGraphicalOrgChartContact = function(show) {
-    var show = (typeof show !== 'undefined') ? show : $('#contact-btn').hasClass('active');
+  function setGraphicalOrgChartContact(show) {
+    show = (typeof show !== 'undefined') ? show : $('#contact-btn').hasClass('active');
 
     setGraphicalOrgChartNodeContact($('#orgchart_graphical .orgchart .node'), show);
   }
 
-  var setGraphicalOrgChartNodeContact = function($node, show) {
-    $contact_info = $node.find('.orgchartg-contact-info');
-    var show = (typeof show !== 'undefined') ? show : !$contact_info.hasClass('expanded');
+  function setGraphicalOrgChartNodeContact($node, show) {
+    let $contact_info = $node.find('.orgchartg-contact-info');
+    show = (typeof show !== 'undefined') ? show : !$contact_info.hasClass('expanded');
+
     if (show) {
       if (!$contact_info.hasClass('expanded')) {
         $contact_info.addClass('expanded').slideDown(200);
@@ -706,7 +695,7 @@ var orgChartPlugin = (function(window, $, undefined) {
    * @return {void}
    */
   function showGraphicalOrgChart(datasource, defaultVerticalDepth) {
-    var defaultVerticalDepth = defaultVerticalDepth || parseInt($('#select-vert-depth').val());
+    defaultVerticalDepth = defaultVerticalDepth || parseInt($('#select-vert-depth').val());
 
     // call graphical org chart library function to render graphical org chart
     renderGraphicalOrgChart(datasource, defaultVerticalDepth);
@@ -723,112 +712,99 @@ var orgChartPlugin = (function(window, $, undefined) {
     $('#select-bg-color').change(setGraphicalOrgChartBackground);
 
     // Configurable option for graphical orchart vertical depth
-    $('#select-vert-depth').change(function () {
-        redrawOrgChart(datasource, parseInt($(this).val()));
-      }); // end configurable option for orgchart vertical depth
+    $('#select-vert-depth').change(function() {
+      redrawOrgChart(datasource, parseInt($(this).val()));
+    });
 
-      // Configurable option for graphical orchart select top node 
-      var options = '';
+    // Configurable option for graphical orchart select top node 
+    let options = '';
+    $.each($('.node'), function(i, val) {
+      let $val = $(val);
+      let hasChildren = true;
+      let $target = $val.closest('tr');
+      let level = $val.data('level');
 
-      // Build drop-down list for selecting top node
-      $.each($('.node'), function(i, val){
+      if (!$target.siblings().length) {  // no children - skip to next iteration 
+        return true;
+      }
 
-        var $val = $(val);
-
-        var hasChildren = true;
-
-        var $target = $val.closest('tr');
-
-        if (!$target.siblings().length) {  // no children - skip to next iteration 
+      if ($target.is('.verticalNodes')) {
+        if ($val.siblings().last().is('ul')) {
+          hasChildren = true;
+        } else { // no children - skip to next iteration
           return true;
         }
+      }
 
-        var level = $val.data('level');
+      if (hasChildren) {
+        options += '<option value="' + val.id + '" data-level="' + level + '" data-slug="'+ $val.data('slug') +'"">';
 
-        if ($target.is('.verticalNodes')) {
-            if ($val.siblings().last().is('ul')) {
-              hasChildren = true;
-            }
-            else { // no children - skip to next iteration
-              return true;
-            }
-        } // end verticalNodes
-
-        if (hasChildren) {
-          options += '<option value="' + val.id + '" data-level="' + level + '" data-slug="'+ $val.data('slug') +'"">';
-          
-          for (var i=1; i < level; i++) {
-            options += '--';
-          }
-          
-          options += $(val).children('.title').text();
-        
-          displayText = $val.children('.content').clone().children().remove().end().text();
-
-          if (displayText.length) {
-            options += ' - ' + displayText;
-          }
-          options += '</option>';
-        } // end hasChildren
-        
-      }); // end build drop-down list to select top node
-
-      $('#select-root-node').append(options);
-
-      // redraw orgchart with selected node as root node
-      $('#select-root-node').on('change', function (e) {
-        var rootNodeId = $(this).val();
-        var rootNodeDatasource = findOrgDataObjectById(rootNodeId, datasource);
-        var normalizedVerticalDepth = normalizeVerticalDepth(rootNodeDatasource.level);
-
-        redrawOrgChart(datasource, normalizedVerticalDepth, rootNodeId);
-      });
-
-      // event handler for orgchart Export
-      $('#export-btn').on('click', function(e){
-        e.preventDefault();
-
-        if ($(this).children('.spinner').length) {
-          return false;
-        }
-        var $exportChartContainer = $('#orgchart_graphical');
-
-        var $mask = $exportChartContainer.find('.mask');
-        if (!$mask.length) {
-          $exportChartContainer.append('<div class="mask"><i class="fa fa-circle-o-notch fa-spin spinner"></i></div>');
-        } else {
-          $mask.removeClass('hidden');
+        for (let i=1; i < level; i++) {
+          options += '--';
         }
 
-        var source = document.querySelector('#orgchart_graphical div.orgchart tbody');
+        options += $(val).children('.title').text();
 
-        var mediaQuery = window.matchMedia("(max-device-width: 1024px)");
-        if (mediaQuery.matches) {
-          takeHighResScreenshot(source, 1);     // low resolution for smartphones, tablets
-        } else {
-          takeHighResScreenshot(source, 2);     // high resolution for desktops, laptops
+        displayText = $val.children('.content').clone().children().remove().end().text();
+
+        if (displayText.length) {
+          options += ' - ' + displayText;
         }
 
-      }); // end event handler for orgchart Export
-    
+        options += '</option>';
+      }
+
+    });
+    $('#select-root-node').append(options);
+
+    // redraw orgchart with selected node as root node
+    $('#select-root-node').on('change', function (e) {
+      var rootNodeId = $(this).val();
+      var rootNodeDatasource = findOrgDataObjectById(rootNodeId, datasource);
+      var normalizedVerticalDepth = normalizeVerticalDepth(rootNodeDatasource.level);
+
+      redrawOrgChart(datasource, normalizedVerticalDepth, rootNodeId);
+    });
+
+    // event handler for orgchart Export
+    $('#export-btn').on('click', function(e){
+      e.preventDefault();
+
+      if ($(this).children('.spinner').length) {
+        return false;
+      }
+
+      let $exportChartContainer = $('#orgchart_graphical');
+      let $mask = $exportChartContainer.find('.mask');
+
+      if (!$mask.length) {
+        $exportChartContainer.append('<div class="mask"><i class="fa fa-circle-o-notch fa-spin spinner"></i></div>');
+      } else {
+        $mask.removeClass('hidden');
+      }
+
+      let source = document.querySelector('#orgchart_graphical div.orgchart tbody');
+      let mediaQuery = window.matchMedia("(max-device-width: 1024px)");
+      if (mediaQuery.matches) {
+        takeLowResScreenshot(source); // low resolution for smartphones, tablets
+      } else {
+        takeHighResScreenshot(source); // high resolution for desktops, laptops
+      }
+    });
+
     // event handler for reset btn - show default org chart
     $('#custom-panel-btn-reset').on('click', function(e) {
+      let $chartContainerReset = $('#orgchart_graphical');
 
-      var $chartContainerReset = $('#orgchart_graphical');
-            
-      $chartContainerReset.empty();                   // remove content of #orgchart_graphical
+      $chartContainerReset.empty(); // remove content of #orgchart_graphical
 
       if (!$chartContainerReset.children().length) {  // if original chart has been deleted
+        let calculatedVerticalDepth = determineVerticalDepth(currentWindowSize());
 
-        var calculatedVerticalDepth = determineVerticalDepth(currentWindowSize());
-        
-        //re-draw default orgchart
         renderGraphicalOrgChart(datasource, calculatedVerticalDepth);
-
-        // reset configurable parameters to default values
         resetGraphicalOrgChartConfigParameters(calculatedVerticalDepth);      
-      } // end check for original chart deleted
-    });   // end #custom-panel-btn-reset event handler
+      }
+    });
 
     // contact handler
     $('#contact-btn').on('click', function(e) {
@@ -843,22 +819,22 @@ var orgChartPlugin = (function(window, $, undefined) {
 
     // hide Export button on IE and Edge
     // Internet Explorer 6-11
-    var isIE = (/*@cc_on!@*/false) || (!!document.documentMode);
+    const isIE = (/*@cc_on!@*/false) || (!!document.documentMode);
 
     // Edge 20+
-    var isEdge = (!(document.documentMode) && window.StyleMedia);
+    const isEdge = (!(document.documentMode) && window.StyleMedia);
 
     if (isIE || isEdge) {
       $('#export-btn').hide();
     }
 
-  } // end function showGraphicalOrgChart
+  }
 
   function redrawGraphicalOrgChartOnResize(datasource, breakpoints) {
     Object.keys(breakpoints).forEach(function(window_size, index) {
       window.matchMedia(breakpoints[window_size]).addListener(function(query) {
         if (query.matches) {
-          var newVerticalDepth = determineVerticalDepth(window_size);
+          let newVerticalDepth = determineVerticalDepth(window_size);
           redrawOrgChart(datasource, newVerticalDepth);
           $('#select-vert-depth').val(newVerticalDepth);      }
       });
@@ -906,6 +882,7 @@ var orgChartPlugin = (function(window, $, undefined) {
 })(window, $);
 
 jQuery(document).ready(function($) {
+
   // Register and render the org chart
   if (typeof $.fn.treeview === 'function' && document.body.contains(document.getElementById('orgchart')) && typeof org_data === 'object') {
     $('#orgchart').treeview({
@@ -927,9 +904,8 @@ jQuery(document).ready(function($) {
     });
   }
 
-  let debounce = {};
-
   // modified from cowboy/jquery-throttle-debounce
+  let debounce = {};
   (function (b, c) { var a; $.throttle = a = function (e, f, j, i) { var h, d = 0; if (typeof f !== "boolean") { i = j; j = f; f = c } function g() { var o = this, m = +new Date() - d, n = arguments; function l() { d = +new Date(); j.apply(o, n) } function k() { h = c } if (i && !h) { l() } h && clearTimeout(h); if (i === c && m > e) { l() } else { if (f !== true) { h = setTimeout(i ? k : l, i === c ? e - m : e) } } } if ($.guid) { g.guid = j.guid = j.guid || $.guid++ } return g }; b.do = function (d, e, f) { return f === c ? a(d, e, false) : a(d, f, e !== false) } })(debounce);
 
   // Register the org chart search triggers
@@ -944,23 +920,21 @@ jQuery(document).ready(function($) {
     }
   }));
 
-  
   // Check if graphical orgchart library exists before invoking showGraphicalOrgChart function,   
   // which registers and renders the graphical orgchart.
   if (typeof $.fn.orgchart === 'function' && document.body.contains(document.getElementById('orgchart_graphical')) && typeof org_data === 'object') {
-
-    var datasource = orgChartPlugin.getPreparedOrgData(org_data[0]);
+    let datasource = orgChartPlugin.getPreparedOrgData(org_data[0]);
+  
     // Mobile adjustment for vertical depth for initial page load
-    var $verticalDepthSlider = $('#select-vert-depth');
-    var initialDepth = parseInt($verticalDepthSlider.val());
+    let $verticalDepthSlider = $('#select-vert-depth');
+    $verticalDepthSlider.data('initial-depth', parseInt($verticalDepthSlider.val()));
 
-    $verticalDepthSlider.data('initial-depth', initialDepth);
-
-    var calculatedVerticalDepth = orgChartPlugin.determineVerticalDepth(orgChartPlugin.currentWindowSize());
+    let calculatedVerticalDepth = orgChartPlugin.determineVerticalDepth(orgChartPlugin.currentWindowSize());
     $verticalDepthSlider.val(calculatedVerticalDepth);
 
     orgChartPlugin.showGraphicalOrgChart(datasource, calculatedVerticalDepth);
     orgChartPlugin.redrawGraphicalOrgChartOnResize(datasource, orgChartPlugin.mediaBreakpoints);
+    orgChartPlugin.handleDeepLink();
   }
 
   // Register the org chart tag searches
@@ -980,22 +954,13 @@ jQuery(document).ready(function($) {
   $('.scroll-top-wrapper').on('click', orgChartPlugin.scrollToTop);
 
   // Load any orgchart query-string searches on page load
-  (function() {
-    var search_orgchart_for = orgChartPlugin.getParameterByName('orgchart_search');
-    if (search_orgchart_for) {
-      $('#orgchart_search_box').val(search_orgchart_for);
-      orgChartPlugin.searchOrgChart();
-      if (history.replaceState) { // clear out the query from the URL
-        history.replaceState(null, null, location.href.replace(/[?&]orgchart_search=[^&]+/, ''));
-      }
+  let search_orgchart_for = orgChartPlugin.getParameterByName('orgchart_search');
+  if (search_orgchart_for) {
+    $('#orgchart_search_box').val(search_orgchart_for);
+    orgChartPlugin.searchOrgChart();
+    if (history.replaceState) { // clear out the query from the URL
+      history.replaceState(null, null, location.href.replace(/[?&]orgchart_search=[^&]+/, ''));
     }
-  })();
-
-  $(window).on('load', function() {
-    // scroll to element after page has fully loaded
-    if (typeof $.fn.orgchart === 'function') {
-      orgChartPlugin.handleDeepLink();
-    } 
-  });
+  }
 
 });
