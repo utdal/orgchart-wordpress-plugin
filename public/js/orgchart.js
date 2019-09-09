@@ -656,22 +656,42 @@ var orgChartPlugin = (function(window, $, undefined) {
     });
   };
 
+  /**
+   * Sets the graphical org chart contact visibility
+   *
+   * @param {boolean} show force show or hide all contact visibility (optional)
+   */
   function setGraphicalOrgChartContact(show) {
-    show = (typeof show !== 'undefined') ? show : $('#contact-btn').hasClass('active');
+    if (typeof show === 'undefined') {
+      if ($('#contact-btn').length > 0) {
+        show = $('#contact-btn').hasClass('active');
+      } else {
+        show = $('#org-initialcontact').data('initialcontact') === 'show';
+      }
+    }
 
     setGraphicalOrgChartNodeContact($('#orgchart_graphical .orgchart .node'), show);
   }
 
+  /**
+   * Sets the graphical org chart node contact visibility
+   *
+   * @param {jQuery} $node the node for which to set contact visibility
+   * @param {boolean} show force show or hide contact visibility (optional. default: toggle visibility)
+   */
   function setGraphicalOrgChartNodeContact($node, show) {
     let $contact_info = $node.find('.orgchartg-contact-info');
-    show = (typeof show !== 'undefined') ? show : !$contact_info.hasClass('expanded');
+    let expanded = $contact_info.hasClass('expanded');
+    if (typeof show === 'undefined') {
+      show = !expanded;
+    }
 
     if (show) {
-      if (!$contact_info.hasClass('expanded')) {
+      if (!expanded) {
         $contact_info.addClass('expanded').slideDown(200);
       }
     } else {
-      if ($contact_info.hasClass('expanded')) {
+      if (expanded) {
         $contact_info.removeClass('expanded').slideUp(200);
       }
     }
