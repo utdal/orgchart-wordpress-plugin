@@ -70,7 +70,7 @@
         
                 <?php endif; ?>
         
-                <div class="action-buttons">
+                <div class="action-buttons <?= $show_settings_labels ? 'settings-labels' : '' ?>">
                     <?php if($show_contact): ?>
                         <div class="custom-panel-item">
                             <button type="button" id="contact-btn" class="action-panel-btn <?= $show_initialcontact ? 'active' : '' ?>">

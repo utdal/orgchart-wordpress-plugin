@@ -1269,7 +1269,6 @@ a.badge:hover, a.badge:focus {
 /* Customize panel - for graphical orgchart configurable parameters */
 #action-panel {
   position: relative;
-  border-radius: 10px;
   margin-top: 10px;
   background-color: transparent;
   overflow: auto;
@@ -1311,12 +1310,14 @@ a.badge:hover, a.badge:focus {
 #action-panel label {
   font-size: 14px;
   font-weight: normal;
+  line-height: 2em;
 }
-#action-panel input, #action-panel select {
-  padding: 0.25em;
+#action-panel input[type=range] {
+  padding: 0;
 }
 #action-panel select {
   font-size: 12px;
+  padding: 5px 3px;
 }
 #action-panel #panel-toggle {
   margin-left: 0.3rem;
@@ -1329,11 +1330,12 @@ a.badge:hover, a.badge:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 #custom-panel .custom-panel-item {
   flex-grow: 1;
   margin: 0 10px 10px 0;
+  max-width: 100%;
 }
 #custom-panel .custom-panel-item:last-of-type {
   margin-right: 0;
@@ -1357,10 +1359,6 @@ a.badge:hover, a.badge:focus {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-}
-
-#export-btn {
-  margin-left: 10px;
 }
 
 .action-icon-left {

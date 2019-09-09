@@ -642,7 +642,6 @@
 
 #action-panel {
   position: relative;
-  border-radius: 10px;
   margin-top: 10px;
   background-color: transparent;
   overflow: auto;
@@ -687,16 +686,18 @@
   label {
     font-size: 14px;
     font-weight: normal;
-  }
-
-  input, select {
-    padding: 0.25em;
+    line-height: 2em;
   }
 
   @extend %range-slider;
 
+  input[type="range"] {
+    padding: 0;
+  }
+
   select {
     font-size: 12px;
+    padding: 5px 3px;
   }
 
   #panel-toggle {
@@ -711,12 +712,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
   }
 
   .custom-panel-item {
     flex-grow: 1;
     margin: 0 10px 10px 0;
+    max-width: 100%;
 
     &:last-of-type {
       margin-right: 0;
@@ -747,10 +749,6 @@
     justify-content: flex-start;
     flex-wrap: wrap;
   }
-}
-
-#export-btn {
-  margin-left: 10px;
 }
 
 .action-icon-left {
