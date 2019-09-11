@@ -617,6 +617,7 @@
       color: $utd-solar-orange;      
       font-size: 18px;
       position: absolute;
+      cursor: pointer;
     }
     
     .second-menu-icon:hover {
@@ -650,8 +651,8 @@
     padding: 5px 10px;
     background: $utd-sapling-green;
     color: #fff;
-    font-size: 14px;
-    line-height: 1.42857143;
+    font-size: $settings-font-size;
+    line-height: $settings-lineheight;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
@@ -660,10 +661,10 @@
     cursor: pointer;
     user-select: none;
     background-image: none;
-    border: 1px solid $utd-sapling-green;
-    border-radius: 10px;
+    border: none;
+    border-radius: $settings-roundness;
 
-    &:hover {
+    &:hover, &:focus {
       background: $utd-solar-orange;
       border-color: $utd-solar-orange;
     }
@@ -684,7 +685,7 @@
   }
 
   label {
-    font-size: 14px;
+    font-size: $settings-font-size;
     font-weight: normal;
     line-height: 2em;
   }
@@ -692,12 +693,23 @@
   @extend %range-slider;
 
   input[type="range"] {
+    // calculate sizings so that the overall height is the same as .action-panel-btn
+    height: ($settings-font-size * $settings-lineheight) + (2 * $settings-padding);
     padding: 0;
   }
 
+  @extend %select-normalized;
+
   select {
-    font-size: 12px;
-    padding: 5px 3px;
+    $select-border-size: 1px;
+    $select-font-size: $settings-font-size - 2px;
+
+    // calculate sizings so that the overall height is the same as .action-panel-btn
+    font-size: $select-font-size;
+    border-radius: $settings-roundness;
+    border-width: $select-border-size;
+    line-height: $settings-lineheight * ($settings-font-size / $select-font-size);
+    padding: ($settings-padding - (2 * $select-border-size)) $settings-padding;
   }
 
   #panel-toggle {

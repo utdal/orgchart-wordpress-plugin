@@ -1,13 +1,15 @@
 // Normalize input[type=range] across browsers
-$thumb-size: 15px;
+$thumb-size: 18px;
 $thumb-color: #ffffff;
+$thumb-hover-color: #E98300;
 $track-size: 8px;
 $track-color: #dddddd;
 $track-border-radius: 2px;
+$track-hover-color: $thumb-hover-color;
 
 @mixin thumb() {
-  box-shadow: 1px 1px 1px #999999, 0px 0px 1px #a6a6a6;
-  border: 1px solid #999999;
+  box-shadow: 1px 1px 1px #B7B1A9, 0px 0px 1px #a6a6a6;
+  border: 1px solid #B7B1A9;
   height: $thumb-size;
   width: $thumb-size;
   border-radius: $thumb-size;
@@ -35,6 +37,7 @@ $track-border-radius: 2px;
     width: 100%;
     border: none;
     background-color: transparent;
+    cursor: pointer;
 
     &::-webkit-slider-thumb {
       @include thumb;
@@ -75,18 +78,34 @@ $track-border-radius: 2px;
       border-radius: $track-border-radius * 2;
     }
 
-    &:focus {
+    &:focus, &:hover {
       outline: none;
 
-      &::-webkit-slider-runnable-track {
-        background: #ececec;
+      &::-webkit-slider-thumb {
+        border-color: $thumb-hover-color;
       }
 
-      &:focus::-ms-fill-lower {
+      &::-moz-range-thumb {
+        border-color: $thumb-hover-color;
+      }
+
+      &::-ms-thumb {
+        border-color: $thumb-hover-color;
+      }
+
+      &::-webkit-slider-runnable-track {
+        background: $track-hover-color;
+      }
+
+      &::-moz-range-track {
+        background: $track-hover-color;
+      }
+
+      &::-ms-fill-lower {
         background: $track-color;
       }
-      &:focus::-ms-fill-upper {
-        background: #ececec;
+      &::-ms-fill-upper {
+        background: $track-hover-color;
       }
     }
 
