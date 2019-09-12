@@ -11,6 +11,9 @@ mix.setPublicPath('public/css');
 
 mix.options({
   processCssUrls: false,
+  postCss: [
+    require('autoprefixer'),
+  ],
   autoprefixer: {
     options: {
       // browsers are listed in package.json

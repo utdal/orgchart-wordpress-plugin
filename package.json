@@ -3,8 +3,9 @@
   "license": "MIT",
   "devDependencies": {
     "laravel-mix": "^4.0.16",
+    "lodash": "^4.17.13",
     "sass": "^1.21.0",
-    "sass-loader": "7.*"
+    "sass-loader": "^7.1.0"
   },
   "dependencies": {
     "html2canvas": "0.5.0-beta4",

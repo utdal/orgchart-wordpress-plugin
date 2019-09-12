@@ -1341,9 +1341,9 @@ a.badge:hover, a.badge:focus {
   touch-action: manipulation;
   cursor: pointer;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   background-image: none;
   border: none;
   border-radius: 10px;
