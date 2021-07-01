@@ -977,6 +977,9 @@
     var isVerticalNode = (opts.verticalDepth && (level + 1) >= opts.verticalDepth) ? true : false;
     if (Object.keys(nodeData).length > 1) { // if nodeData has nested structure
       $nodeWrapper = isVerticalNode ? $appendTo : $('<table>');
+      if ($nodeWrapper.is('table') && $nodeWrapper.children('tbody').length === 0) {
+        $nodeWrapper[0].createTBody(); // fix for jQuery 3.0+
+      }
       if (!isVerticalNode) {
         $appendTo.append($nodeWrapper);
       }
