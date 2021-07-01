@@ -4,13 +4,13 @@ Re Mods Plugin personlist CSS (generated from Sass)
 */
 .person-list .person .person-links li a:not(.hide-default-icon):before {
   font-family: FontAwesome;
-  content: "\F0AC\A0";
+  content: " ";
 }
 .person-list .person .person-links li a[href*="mailto:"]:before {
-  content: "\F0E0\A0";
+  content: " ";
 }
 .person-list .person .person-links li a[href*="tel:"]:before {
-  content: "\F095\A0";
+  content: " ";
 }
 @media screen and (min-width: 639px) {
   .person-list .person .person-links li a[href*="tel:"].no-desktop-link {
@@ -22,28 +22,28 @@ Re Mods Plugin personlist CSS (generated from Sass)
   }
 }
 .person-list .person .person-links li a[href*=twitter]:before {
-  content: "\F099\A0";
+  content: " ";
 }
 .person-list .person .person-links li a[href*=github]:before {
-  content: "\F09B\A0";
+  content: " ";
 }
 .person-list .person .person-links li a[href*=facebook]:before {
-  content: "\F09A\A0";
+  content: " ";
 }
 .person-list .person .person-links li a[href*=linkedin]:before {
-  content: "\F08C\A0";
+  content: " ";
 }
 .person-list .person .person-links li a[href*=instagram]:before {
-  content: "\F16D\A0";
+  content: " ";
 }
 .person-list .person .person-links li a[href*=youtube]:before {
-  content: "\F167\A0";
+  content: " ";
 }
 .person-list .person .person-links li a[href*=google]:before {
-  content: "\F1A0\A0";
+  content: " ";
 }
 .person-list .person .person-links li a[href*=weibo]:before {
-  content: "\F18A\A0";
+  content: " ";
 }
 
 /** Person List Styles */
@@ -213,4 +213,5 @@ Re Mods Plugin personlist CSS (generated from Sass)
 .person-list.grid.grid-1 .person {
   flex: 0 0 100%;
 }
+
 /*# sourceMappingURL=personlist.css.map*/

@@ -1,3 +1,4 @@
+@use "sass:math";
 /*
  * jQuery OrgChart Plugin
  * https://github.com/dabeng/OrgChart
@@ -708,7 +709,7 @@
     font-size: $select-font-size;
     border-radius: $settings-roundness;
     border-width: $select-border-size;
-    line-height: $settings-lineheight * ($settings-font-size / $select-font-size);
+    line-height: $settings-lineheight * math.div($settings-font-size, $select-font-size);
     padding: ($settings-padding - (2 * $select-border-size)) $settings-padding;
   }
 

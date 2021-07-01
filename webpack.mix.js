@@ -4,36 +4,35 @@ let mix = require('laravel-mix');
  * Settings and Options
  */
 const sass_options = {
-  outputStyle: 'expanded',
+  sassOptions: {
+    outputStyle: 'expanded'
+  },
 }
+
+let webpackConfigOptions = {};
 
 mix.setPublicPath('public/css');
 
 mix.options({
   processCssUrls: false,
-  postCss: [
-    require('autoprefixer'),
-  ],
   autoprefixer: {
-    options: {
-      // browsers are listed in package.json
-      cascade: false,
-    },
+    // browsers are listed in package.json
+    cascade: false,
   },
 });
 
 if (!mix.inProduction()) {
   // Do non-inline source-maps
-  mix.webpackConfig({
-    devtool: "source-map",
-  });
+  webpackConfigOptions.devtool = "source-map";
 }
+
+mix.webpackConfig(webpackConfigOptions);
 
 /**
  * Vendor-related tasks (copy vendor scripts into public folder, and etc.)
  * that we don't usually need to do by default.
  * 
- * `yarn copy`
+ * `npm run copy`
  */
 if (process.env.COPY_VENDOR === 'yes') {
 
@@ -44,7 +43,7 @@ if (process.env.COPY_VENDOR === 'yes') {
 /**
  * App-related tasks (compile css, scripts, and etc.)
  *
- * `yarn dev` or `yarn watch` or `yarn prod`
+ * `npm run dev` or `npm run watch` or `npm run prod`
  */
 else {
 
@@ -54,5 +53,7 @@ else {
   if (!mix.inProduction()) {
     mix.sourceMaps();
   }
+
+  mix.version();
 
 }

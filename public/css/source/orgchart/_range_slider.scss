@@ -42,7 +42,7 @@ $track-hover-color: $thumb-hover-color;
     &::-webkit-slider-thumb {
       @include thumb;
       -webkit-appearance: none;
-      margin-top: ($track-size / 2) - ($thumb-size / 2);
+      margin-top: ($track-size * 0.5) - ($thumb-size * 0.5);
     }
 
     &::-moz-range-thumb {

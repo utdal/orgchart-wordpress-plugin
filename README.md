@@ -135,16 +135,15 @@ This plugin's CSS is compiled from Sass. The Sass files are in the `public/css/s
 
 Prerequisites:
 
-- [npm/nodejs](https://docs.npmjs.com/getting-started/installing-node)
-- [yarn](https://yarnpkg.com/en/docs/install)
+- [npm/nodejs](https://docs.npmjs.com/getting-started/installing-node) (see package.json for version)
 
-Then, from the root of the plugin folder, install all the project dependencies with `yarn install`.
+Then, from the root of the plugin folder, install all the project dependencies with `npm install`.
 
-This should install the Laravel Mix Webpack task-runner. To compile the Sass, from the root of the plugin folder, run `yarn dev`. If you'd like to have it auto-compile while you're working instead, run `yarn watch`.
+This should install the Laravel Mix Webpack task-runner. To compile the Sass, from the root of the plugin folder, run `npm run dev`. If you'd like to have it auto-compile while you're working instead, run `npm run watch`.
 
 ## Updating JS libraries
 
 - Install the prerequisites listed under the Sass section.
 - Edit the `packages.json` file and change any versions you would like to change.
-- Run `yarn upgrade` to download the updated versions.
-- Run `gulp copy` to copy the JS library files to their proper locations within the plugin.
+- Run `npm update` to download the updated versions.
+- Run `npm run copy` to copy the JS library files to their proper locations within the plugin.
