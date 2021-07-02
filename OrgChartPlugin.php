@@ -85,7 +85,7 @@ class OrgChartPlugin
 		// Note: orgchart and personlist scripts are only loaded when the shortcode is used
 		wp_register_script('es6-promise', $this->asset_url . '/js/es6-promise.auto.min.js', [], '4.1.0');
 		wp_register_script('html2canvas', $this->asset_url . '/js/html2canvas.min.js', ['es6-promise'], '0.5.0-beta4');
-		wp_register_script('jquery-orgchart', $this->asset_url . '/js/jquery.orgchart.js', ['jquery', 'html2canvas'], '1.3.6');
+		wp_register_script('jquery-orgchart', $this->asset_url . '/js/jquery.orgchart.js', ['jquery', 'html2canvas'], '1.3.6a');
 		wp_register_script('bootstrap-treeview', $this->asset_url . '/js/bootstrap-treeview.min.js', ['jquery']);
 		wp_register_script('orgchart_plugin', $this->asset_url . '/js/orgchart.js', ['bootstrap-treeview', 'jquery-orgchart'], $this->version);
 	}
