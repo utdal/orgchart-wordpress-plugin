@@ -78,13 +78,15 @@
     var $chart = $('<div>', {
       'data': { 'options': opts },
       'class': 'orgchart' + (opts.chartClass !== '' ? ' ' + opts.chartClass : '') + (opts.direction !== 't2b' ? ' ' + opts.direction : ''),
-      'click': function(event) {
-        if (!$(event.target).closest('.node').length) {
-          $chart.find('.node.focused').removeClass('focused');
-        }
-      }
+      'on': {
+        'click': function(event) {
+          if (!$(event.target).closest('.node').length) {
+            $chart.find('.node.focused').removeClass('focused');
+          }
+        },
+      },
     });
-    if ($.type(data) === 'object') {
+    if (typeof data === 'object') {
       if (data instanceof $) { // ul datasource
         buildHierarchy($chart, buildJsonDS(data.children()), 0, opts);
       } else { // local json datasource

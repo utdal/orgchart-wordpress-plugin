@@ -212,9 +212,11 @@ var orgChartPlugin = (function(window, $, undefined) {
 
       let secondMenuIcon = $('<i>', {
         'class': 'fa fa-info-circle second-menu-icon',
-        click: function() {    
-          setGraphicalOrgChartNodeContact($(this).closest('.node'));
-        }
+        on: {
+          click: function() {    
+            setGraphicalOrgChartNodeContact($(this).closest('.node'));
+          },
+        },
       });
 
       $node.append(secondMenuIcon);
@@ -729,10 +731,10 @@ var orgChartPlugin = (function(window, $, undefined) {
     });
 
     // Configurable option for graphical orchart background 
-    $('#select-bg-color').change(setGraphicalOrgChartBackground);
+    $('#select-bg-color').on('change', setGraphicalOrgChartBackground);
 
     // Configurable option for graphical orchart vertical depth
-    $('#select-vert-depth').change(function() {
+    $('#select-vert-depth').on('change', function() {
       redrawOrgChart(datasource, parseInt($(this).val()));
     });
 
@@ -929,9 +931,9 @@ jQuery(document).ready(function($) {
   (function (b, c) { var a; $.throttle = a = function (e, f, j, i) { var h, d = 0; if (typeof f !== "boolean") { i = j; j = f; f = c } function g() { var o = this, m = +new Date() - d, n = arguments; function l() { d = +new Date(); j.apply(o, n) } function k() { h = c } if (i && !h) { l() } h && clearTimeout(h); if (i === c && m > e) { l() } else { if (f !== true) { h = setTimeout(i ? k : l, i === c ? e - m : e) } } } if ($.guid) { g.guid = j.guid = j.guid || $.guid++ } return g }; b.do = function (d, e, f) { return f === c ? a(d, e, false) : a(d, f, e !== false) } })(debounce);
 
   // Register the org chart search triggers
-  $('#orgchart_search_btn').click(orgChartPlugin.searchOrgChart);
-  $('#orgchart_search_clr').click(orgChartPlugin.clearSearchOrgChart);
-  $('#orgchart_search_box').keyup(debounce.do(150, function(event) {
+  $('#orgchart_search_btn').on('click', orgChartPlugin.searchOrgChart);
+  $('#orgchart_search_clr').on('click', orgChartPlugin.clearSearchOrgChart);
+  $('#orgchart_search_box').on('keyup', debounce.do(150, function(event) {
     if (this.value.length > 2) {
       orgChartPlugin.searchOrgChart();
     } else {
