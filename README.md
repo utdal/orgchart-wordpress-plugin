@@ -48,7 +48,7 @@ If you're managing your plugins with [Composer](https://getcomposer.org), this p
 ## Managing People
 
 - A Person can be added just like any other content item in WordPress. There is a Person custom post type that should show up in the sidebar of the admin area.
-- You should add at least one tag to each person. Tags are used in the `[person_list]` shortcode to display a list of people by tag.
+- You should add at least one tag to each person. Tags are used in the `[re_person_list]` shortcode to display a list of people by tag.
 - Organization hierarchy can be created by setting each Person's parent item.
 - If you want an organizational group to be displayed on the org chart (see below), create the group as a Person, entering the name of the group as the name of the Person and leaving all other fields blank. Then, set this as the parent item for all other People in that group.
 
@@ -74,7 +74,7 @@ Shortcode Attributes:
 
 | Option        | Default  | Description |
 | ------------- | -------- | ----------- |
-| search=         | "show"   | Show a search box at the top. |
+| search=         | "show"   | Show a search box at the top. (Only works for tree view) |
 | tree=           | "show"   | Show the directory tree |
 | graphical=      | "hide"   | Show the graphical org chart |
 | settings=       | "hide"   | Show setting options for graphical org chart|
@@ -99,7 +99,7 @@ Shortcode Attributes:
 To display a panel-formatted list of people with certain tags, enter the following shortcode on a Page:
 
 ```
-[person_list tag="tag1,tag2"]
+[re_person_list tag="tag1,tag2"]
 ```
 
 Shortcode Attributes:
@@ -119,11 +119,11 @@ Shortcode Attributes:
 
 ## DOM
 
-You can customize the template used to display each person with the `[person_list]` shortcode. To do so, copy the file from this plugin `Views/person-display.php` to a file in your theme named `template-parts/content-person.php` and then modify that file.
+You can customize the template used to display each person with the `[re_person_list]` shortcode. To do so, copy the file from this plugin `Views/person-display.php` to a file in your theme named `template-parts/content-person.php` and then modify that file.
 
 ## CSS
 
-Recommended: You can override any of this plugin's CSS classes on your theme. Note that shortcode CSS is only loaded on pages that use that shortcode.
+_Recommended_: You can override any of this plugin's CSS classes on your theme. Note that shortcode CSS is only loaded on pages that use that shortcode.
 
 Or you can modify this plugin's CSS directly. They are located in the `public/css` folder. This is not recommended, however, because your changes will get overwritten if you download a newer version of this plugin.
 
