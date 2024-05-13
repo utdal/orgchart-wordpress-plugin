@@ -4,13 +4,13 @@ Re Mods Plugin orgchart CSS (generated from Sass)
 */
 #orgchart_search_results a:not(.hide-default-icon):before, #orgchart.treeview .orgchart-person-links a:not(.hide-default-icon):before, #orgchart.treeview .orgchart-phone-number a:not(.hide-default-icon):before {
   font-family: FontAwesome;
-  content: " ";
+  content: "\f0ac ";
 }
 #orgchart_search_results a[href*="mailto:"]:before, #orgchart.treeview .orgchart-person-links a[href*="mailto:"]:before, #orgchart.treeview .orgchart-phone-number a[href*="mailto:"]:before {
-  content: " ";
+  content: "\f0e0 ";
 }
 #orgchart_search_results a[href*="tel:"]:before, #orgchart.treeview .orgchart-person-links a[href*="tel:"]:before, #orgchart.treeview .orgchart-phone-number a[href*="tel:"]:before {
-  content: " ";
+  content: "\f095 ";
 }
 @media screen and (min-width: 639px) {
   #orgchart_search_results a[href*="tel:"].no-desktop-link, #orgchart.treeview .orgchart-person-links a[href*="tel:"].no-desktop-link, #orgchart.treeview .orgchart-phone-number a[href*="tel:"].no-desktop-link {
@@ -22,28 +22,28 @@ Re Mods Plugin orgchart CSS (generated from Sass)
   }
 }
 #orgchart_search_results a[href*=twitter]:before, #orgchart.treeview .orgchart-person-links a[href*=twitter]:before, #orgchart.treeview .orgchart-phone-number a[href*=twitter]:before {
-  content: " ";
+  content: "\f099 ";
 }
 #orgchart_search_results a[href*=github]:before, #orgchart.treeview .orgchart-person-links a[href*=github]:before, #orgchart.treeview .orgchart-phone-number a[href*=github]:before {
-  content: " ";
+  content: "\f09b ";
 }
 #orgchart_search_results a[href*=facebook]:before, #orgchart.treeview .orgchart-person-links a[href*=facebook]:before, #orgchart.treeview .orgchart-phone-number a[href*=facebook]:before {
-  content: " ";
+  content: "\f09a ";
 }
 #orgchart_search_results a[href*=linkedin]:before, #orgchart.treeview .orgchart-person-links a[href*=linkedin]:before, #orgchart.treeview .orgchart-phone-number a[href*=linkedin]:before {
-  content: " ";
+  content: "\f08c ";
 }
 #orgchart_search_results a[href*=instagram]:before, #orgchart.treeview .orgchart-person-links a[href*=instagram]:before, #orgchart.treeview .orgchart-phone-number a[href*=instagram]:before {
-  content: " ";
+  content: "\f16d ";
 }
 #orgchart_search_results a[href*=youtube]:before, #orgchart.treeview .orgchart-person-links a[href*=youtube]:before, #orgchart.treeview .orgchart-phone-number a[href*=youtube]:before {
-  content: " ";
+  content: "\f167 ";
 }
 #orgchart_search_results a[href*=google]:before, #orgchart.treeview .orgchart-person-links a[href*=google]:before, #orgchart.treeview .orgchart-phone-number a[href*=google]:before {
-  content: " ";
+  content: "\f1a0 ";
 }
 #orgchart_search_results a[href*=weibo]:before, #orgchart.treeview .orgchart-person-links a[href*=weibo]:before, #orgchart.treeview .orgchart-phone-number a[href*=weibo]:before {
-  content: " ";
+  content: "\f18a ";
 }
 
 #action-panel input[type=range] {
@@ -593,9 +593,9 @@ a.badge:hover, a.badge:focus {
 
 #orgchart_search_btn {
   padding: 6px 15px;
-  border: 2px solid #69be28;
+  border: 2px solid rgb(105, 190, 40);
   border-radius: 0;
-  background-color: #69be28;
+  background-color: rgb(105, 190, 40);
   color: #ffffff;
 }
 @media (max-width: 420px) {
@@ -700,14 +700,11 @@ a.badge:hover, a.badge:focus {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  background-color: rgba(0, 0, 0, 0);
-  /* default - transparent */
+  background-color: rgba(0, 0, 0, 0); /* default - transparent */
   background-size: 10px 10px;
   padding: 20px;
-  overflow: auto;
-  /* prevent child element from spilling outside */
+  overflow: auto; /* prevent child element from spilling outside */
   margin: 0 auto;
   border: 1px solid lightgrey;
   width: 100%;
@@ -867,8 +864,7 @@ a.badge:hover, a.badge:focus {
   background-color: #C75B12;
   margin: 0px auto;
   height: 20px;
-  width: 4px;
-  /* double - rightLine+leftLine */
+  width: 4px; /* double - rightLine+leftLine */
   float: none;
 }
 
@@ -1162,7 +1158,6 @@ a.badge:hover, a.badge:focus {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   color: #fff;
   background-color: #69BE28;
@@ -1260,31 +1255,16 @@ a.badge:hover, a.badge:focus {
   padding: 5px;
   cursor: pointer;
 }
-#orgchart-graphical-container:-webkit-full-screen {
-  background-color: #fff;
-  width: 100% !important;
-}
-#orgchart-graphical-container:-ms-fullscreen {
-  background-color: #fff;
-  width: 100% !important;
-}
 #orgchart-graphical-container:fullscreen {
   background-color: #fff;
   width: 100% !important;
-}
-#orgchart-graphical-container:-webkit-full-screen .orgchart {
-  max-height: none;
-}
-#orgchart-graphical-container:-ms-fullscreen .orgchart {
-  max-height: none;
 }
 #orgchart-graphical-container:fullscreen .orgchart {
   max-height: none;
 }
 
 #orgchart_graphical {
-  overflow: auto;
-  /* prevent child div - .orgchart - from spilling - SM */
+  overflow: auto; /* prevent child div - .orgchart - from spilling - SM */
   text-align: center;
 }
 #orgchart_graphical .orgchart {
@@ -1335,7 +1315,6 @@ a.badge:hover, a.badge:focus {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   background-image: none;
   border: none;
