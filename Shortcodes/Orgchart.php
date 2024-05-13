@@ -3,6 +3,7 @@
 namespace OrgChart\Shortcodes;
 
 use OrgChart\Models\Org;
+use OrgChart\OrgChartPlugin;
 
 class Orgchart extends Shortcode
 {
@@ -61,11 +62,16 @@ class Orgchart extends Shortcode
         $initial_depth = (int) $this->attributes['initialdepth'];
         $show_tree = $this->attributes['tree'] === 'show';
         $js_dependencies = ['jquery'];
-        
-        wp_localize_script('orgchart_plugin', 'org_data', $people);
-        wp_localize_script('orgchart_plugin', 'avatardata', compact('show_avatar'));
+
+        if (!wp_script_is('orgchart_plugin', 'registered')) {
+            (new OrgChartPlugin(\OrgChart\VERSION))->registerScripts();
+        }
+
         wp_enqueue_script('orgchart_plugin');
         wp_enqueue_style('orgchart_plugin');
+
+        wp_add_inline_script('orgchart_plugin', 'const org_data = ' . wp_json_encode($people) . ';', 'before');
+        wp_add_inline_script('orgchart_plugin', 'const avatardata = ' . wp_json_encode(compact('show_avatar')) . ';', 'before');
         
         ob_start();
         include(plugin_dir_path(dirname(__FILE__)) . 'Views/orgchart-display.php');
