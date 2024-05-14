@@ -36,8 +36,8 @@ $state-danger-bg:                #f2dede !default;
 $badge-font-size:             12px !default;
 $badge-color:                 #fff !default;
 $badge-link-hover-color:      #fff !default;
-$badge-bg:                    $utd-warm-gray4 !default;
-$badge-active-color:          $utd-flame-orange !default;
+$badge-bg:                    $gray-10 !default;
+$badge-active-color:          $utd-web-orange !default;
 $badge-active-bg:             #fff !default;
 $badge-font-weight:           bold !default;
 $badge-line-height:           1 !default;
@@ -434,7 +434,7 @@ a.badge {
 
 #orgchart_search_box {
   padding: 8px 15px;
-  border: 0px solid #ddd;
+  border: 1px solid $gray-10;
   border-radius: 0;
   background-color: rgba(213, 210, 202, 0.3);
   min-width: 100px;
@@ -443,9 +443,9 @@ a.badge {
 
 #orgchart_search_btn {
   padding:6px 15px;
-  border:2px solid rgb(105, 190, 40);
+  border:2px solid $utd-green;
   border-radius: 0;
-  background-color: rgb(105, 190, 40);
+  background-color: $utd-green;
   color:#ffffff;
 
   @media (max-width:420px) {
@@ -455,9 +455,9 @@ a.badge {
 
 #orgchart_search_clr {
   padding:6px 15px;
-  border:2px solid $utd-flame-orange;
+  border:2px solid $raspberry;
   border-radius: 0;
-  background-color: $utd-flame-orange;
+  background-color: $raspberry;
   color:#fafafa;
 
   @media (max-width:420px) {

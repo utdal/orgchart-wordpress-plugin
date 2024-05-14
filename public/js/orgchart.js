@@ -201,7 +201,7 @@ var orgChartPlugin = (function(window, $, undefined) {
     }
 
     if (data.email) {
-      contact_info += "<a href='mailto:" + data.email + "'>" + "<i class='fa fa-envelope-o symbol'></i>" + "</a>";
+      contact_info += `<a href='mailto:${data.email}' aria-label='Email ${data.name}'><i class='fa fa-envelope-o symbol'></i></a>`;
     }
 
     contact_info += "</div>";
@@ -300,6 +300,8 @@ var orgChartPlugin = (function(window, $, undefined) {
     if ($('#org-initialcontact').data('initialcontact') === 'show' && ($('#contact-btn').length === 0 || $('#contact-btn').hasClass('active'))) {
       setGraphicalOrgChartContact(true);
     }
+
+    $('#orgchart_graphical table').attr('role', 'presentation');
 
     // Remove  event handler for topEdge click 
     $('.topEdge').off(); 

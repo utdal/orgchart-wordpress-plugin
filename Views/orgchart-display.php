@@ -1,11 +1,11 @@
 <?php if($show_search): ?>
     <div id="orgchart_search">
         <div class="input-group">
-            <input id="orgchart_search_box" type="search" placeholder="Search…">
+            <input id="orgchart_search_box" type="search" aria-label="search for a person" placeholder="Search…">
             <!-- <input id="orgchart_search_btn" type="button" value="Search"> -->
-            <button type="submit" id="orgchart_search_btn"><i class="fa fa-search"></i></button>
+            <button type="submit" id="orgchart_search_btn" aria-label="search"><i class="fa fa-search"></i></button>
             <!-- <input id="orgchart_search_clr" type="button" value="Clear"> -->
-            <button type="submit" id="orgchart_search_clr"><i class="fa fa-times"></i></button>
+            <button type="submit" id="orgchart_search_clr" aria-label="clear search"><i class="fa fa-times"></i></button>
         </div>
         <div id="orgchart_search_results"></div>
     </div>

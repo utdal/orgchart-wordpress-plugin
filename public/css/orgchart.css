@@ -47,7 +47,6 @@ Re Mods Plugin orgchart CSS (generated from Sass)
 }
 
 #action-panel input[type=range] {
-  -webkit-appearance: none;
   width: 100%;
   border: none;
   background-color: transparent;
@@ -55,7 +54,7 @@ Re Mods Plugin orgchart CSS (generated from Sass)
 }
 #action-panel input[type=range]::-webkit-slider-thumb {
   box-shadow: 1px 1px 1px #B7B1A9, 0px 0px 1px #a6a6a6;
-  border: 1px solid #B7B1A9;
+  border: 1px solid #767676;
   height: 18px;
   width: 18px;
   border-radius: 18px;
@@ -66,7 +65,7 @@ Re Mods Plugin orgchart CSS (generated from Sass)
 }
 #action-panel input[type=range]::-moz-range-thumb {
   box-shadow: 1px 1px 1px #B7B1A9, 0px 0px 1px #a6a6a6;
-  border: 1px solid #B7B1A9;
+  border: 1px solid #767676;
   height: 18px;
   width: 18px;
   border-radius: 18px;
@@ -75,7 +74,7 @@ Re Mods Plugin orgchart CSS (generated from Sass)
 }
 #action-panel input[type=range]::-ms-thumb {
   box-shadow: 1px 1px 1px #B7B1A9, 0px 0px 1px #a6a6a6;
-  border: 1px solid #B7B1A9;
+  border: 1px solid #767676;
   height: 18px;
   width: 18px;
   border-radius: 18px;
@@ -86,14 +85,14 @@ Re Mods Plugin orgchart CSS (generated from Sass)
   width: 100%;
   height: 8px;
   cursor: pointer;
-  background: #dddddd;
+  background: #767676;
   border-radius: 2px;
 }
 #action-panel input[type=range]::-moz-range-track {
   width: 100%;
   height: 8px;
   cursor: pointer;
-  background: #dddddd;
+  background: #767676;
   border-radius: 2px;
 }
 #action-panel input[type=range]::-ms-track {
@@ -109,32 +108,32 @@ Re Mods Plugin orgchart CSS (generated from Sass)
   border-radius: 4px;
 }
 #action-panel input[type=range]::-ms-fill-upper {
-  background: #dddddd;
+  background: #767676;
   border-radius: 4px;
 }
 #action-panel input[type=range]:focus, #action-panel input[type=range]:hover {
   outline: none;
 }
 #action-panel input[type=range]:focus::-webkit-slider-thumb, #action-panel input[type=range]:hover::-webkit-slider-thumb {
-  border-color: #E98300;
+  border-color: #E87500;
 }
 #action-panel input[type=range]:focus::-moz-range-thumb, #action-panel input[type=range]:hover::-moz-range-thumb {
-  border-color: #E98300;
+  border-color: #E87500;
 }
 #action-panel input[type=range]:focus::-ms-thumb, #action-panel input[type=range]:hover::-ms-thumb {
-  border-color: #E98300;
+  border-color: #E87500;
 }
 #action-panel input[type=range]:focus::-webkit-slider-runnable-track, #action-panel input[type=range]:hover::-webkit-slider-runnable-track {
-  background: #E98300;
+  background: #E87500;
 }
 #action-panel input[type=range]:focus::-moz-range-track, #action-panel input[type=range]:hover::-moz-range-track {
-  background: #E98300;
+  background: #E87500;
 }
 #action-panel input[type=range]:focus::-ms-fill-lower, #action-panel input[type=range]:hover::-ms-fill-lower {
-  background: #dddddd;
+  background: #767676;
 }
 #action-panel input[type=range]:focus::-ms-fill-upper, #action-panel input[type=range]:hover::-ms-fill-upper {
-  background: #E98300;
+  background: #E87500;
 }
 
 #action-panel select {
@@ -149,7 +148,7 @@ Re Mods Plugin orgchart CSS (generated from Sass)
   max-width: 100%;
   box-sizing: border-box;
   margin: 0;
-  border: 1px solid #B7B1A9;
+  border: 1px solid #767676;
   border-radius: 10px;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -390,7 +389,7 @@ button.list-group-item-danger.active:focus {
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
-  background-color: #B7B1A9;
+  background-color: #767676;
   border-radius: 10px;
   clear: left;
   margin-right: 3px;
@@ -413,7 +412,7 @@ button.list-group-item-danger.active:focus {
   padding: 1px 5px;
 }
 .list-group-item.active > .badge, .nav-pills > .active > a > .badge {
-  color: #C75B12;
+  color: #c95100;
   background-color: #fff;
 }
 .list-group-item > .badge {
@@ -584,7 +583,7 @@ a.badge:hover, a.badge:focus {
 
 #orgchart_search_box {
   padding: 8px 15px;
-  border: 0px solid #ddd;
+  border: 1px solid #767676;
   border-radius: 0;
   background-color: rgba(213, 210, 202, 0.3);
   min-width: 100px;
@@ -593,9 +592,9 @@ a.badge:hover, a.badge:focus {
 
 #orgchart_search_btn {
   padding: 6px 15px;
-  border: 2px solid rgb(105, 190, 40);
+  border: 2px solid #154734;
   border-radius: 0;
-  background-color: rgb(105, 190, 40);
+  background-color: #154734;
   color: #ffffff;
 }
 @media (max-width: 420px) {
@@ -606,9 +605,9 @@ a.badge:hover, a.badge:focus {
 
 #orgchart_search_clr {
   padding: 6px 15px;
-  border: 2px solid #C75B12;
+  border: 2px solid #D40F4A;
   border-radius: 0;
-  background-color: #C75B12;
+  background-color: #D40F4A;
   color: #fafafa;
 }
 @media (max-width: 420px) {
@@ -1304,7 +1303,7 @@ a.badge:hover, a.badge:focus {
 }
 #action-panel .action-panel-btn {
   padding: 5px 10px;
-  background: #69BE28;
+  background: #154734;
   color: #fff;
   font-size: 14px;
   line-height: 1.3;
@@ -1321,11 +1320,11 @@ a.badge:hover, a.badge:focus {
   border-radius: 10px;
 }
 #action-panel .action-panel-btn:hover, #action-panel .action-panel-btn:focus {
-  background: #E98300;
-  border-color: #E98300;
+  background: #c95100;
+  border-color: #c95100;
 }
 #action-panel .action-panel-btn.active, #action-panel .action-panel-btn:active {
-  background: #E98300;
+  background: #c95100;
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.25);
   border-color: rgba(0, 0, 0, 0.25);
 }

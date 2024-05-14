@@ -650,7 +650,7 @@
 
   .action-panel-btn {
     padding: 5px 10px;
-    background: $utd-sapling-green;
+    background: $utd-green;
     color: #fff;
     font-size: $settings-font-size;
     line-height: $settings-lineheight;
@@ -666,12 +666,12 @@
     border-radius: $settings-roundness;
 
     &:hover, &:focus {
-      background: $utd-solar-orange;
-      border-color: $utd-solar-orange;
+      background: $utd-web-orange;
+      border-color: $utd-web-orange;
     }
 
     &.active, &:active {
-      background: $utd-solar-orange;
+      background: $utd-web-orange;
       box-shadow: inset 0 3px 5px rgba(0,0,0,0.25);
       border-color: rgba(0,0,0,0.25);
     }
