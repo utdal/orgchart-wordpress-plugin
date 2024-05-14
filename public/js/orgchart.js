@@ -808,10 +808,6 @@ var orgChartPlugin = (function(window, $, undefined) {
       }
 
       let source = document.querySelector('#orgchart_graphical div.orgchart > table > tbody');
-      if (!source) { // insert a tbody if needed
-        source = document.querySelector('#orgchart_graphical > .orgchart > table').createTBody();
-        document.querySelectorAll('#orgchart_graphical > .orgchart > table > tr').forEach((tr) => source.append(tr));
-      }
       let mediaQuery = window.matchMedia("(max-device-width: 1024px)");
       if (mediaQuery.matches) {
         takeLowResScreenshot(source); // low resolution for smartphones, tablets
