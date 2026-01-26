@@ -23,6 +23,7 @@ class Orgchart extends Shortcode
         'export'    => 'hide',
         'settings_labels' => 'show',
         'avatar'    => 'show',
+        'avatar_loading' => 'lazy',
         'fullscreen'    => 'hide',
         'initialcontact'    => 'show',
         'initialdepth'  => 5,
@@ -43,7 +44,7 @@ class Orgchart extends Shortcode
         $this->attributes['tag'] = $this->attributes['tag'] ? explode(',', $this->attributes['tag']) : [];
         $org = new Org([
             'tag_slug__in'  => $this->attributes['tag'],
-            ], $this->attributes['linkto'], ($this->attributes['avatar'] === 'show'));
+            ], $this->attributes['linkto'], ($this->attributes['avatar'] === 'show'), ($this->attributes['avatar_loading'] === 'lazy'));
         $people = $org->getPeople();
         $show_search = $this->attributes['search'] === 'show';
         $show_scrolltop = $this->attributes['scrolltop'] === 'show';

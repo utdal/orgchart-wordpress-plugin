@@ -38,7 +38,7 @@ class Person
      * 
      * @param WP_Post $person_post post of custom type 'person'
      */
-    public function __construct($person_post, $link_to_path = null, $show_avatar = true)
+    public function __construct($person_post, $link_to_path = null, $show_avatar = true, $lazy_loading = true)
     {
         $this->id = $person_post->ID;
         $this->name = $person_post->post_title;
@@ -58,8 +58,8 @@ class Person
         $this->tags = get_the_tags($this->id) ? $this->tagObjectsToNames(get_the_tags($this->id)) : [];
         $this->hide_headshot = get_post_meta($this->id, '_person_hide_headshot', true);
         $this->headshot = get_post_meta($this->id, '_thumbnail_id', true);
-        $this->headshotimg = get_the_post_thumbnail( $this->id, 'thumbnail', array('class' => 'person-avatar', 'alt' => $this->name));
-        $this->placeholderimg = '<img class="person-avatar" alt="' . $this->slug . '" src="' . plugin_dir_url( __DIR__ ) . '/public/images/avatar-placeholder.png">';
+        $this->headshotimg = get_the_post_thumbnail( $this->id, 'thumbnail', array('class' => 'person-avatar', 'alt' => $this->name, 'loading' => $lazy_loading ? 'lazy' : 'eager'));
+        $this->placeholderimg = '<img class="person-avatar" alt="' . $this->slug . '" loading="' . ($lazy_loading ? 'lazy' : 'eager') . '" src="' . plugin_dir_url( __DIR__ ) . '/public/images/avatar-placeholder.png">';
         $this->url = get_post_meta($this->id, '_person_url', true);
         $this->url_title = get_post_meta($this->id, '_person_url_title', true);
         $this->url2 = get_post_meta($this->id, '_person_url2', true);

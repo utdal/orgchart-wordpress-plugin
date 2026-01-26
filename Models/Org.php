@@ -16,17 +16,20 @@ class Org
     
     protected $avatar = true;
 
+    protected $lazy_loading = true;
+
     /** @var array people in the org */
     public $people = [];
 
     /**
      * Org class constructor.
      */
-    public function __construct(array $query_config = [], $link_to_path = null, $avatar = true)
+    public function __construct(array $query_config = [], $link_to_path = null, $avatar = true, $lazy_loading = true)
     {
         $this->query_config = array_merge($this->query_config, $query_config);
         $this->link_to_path = $link_to_path;
         $this->avatar = $avatar;
+        $this->lazy_loading = $lazy_loading;
         $this->addPeople();
         $this->organizePeople();
     }
@@ -41,7 +44,7 @@ class Org
         $people_posts = get_posts($this->query_config);
 
         foreach ($people_posts as $person_post) {
-            $this->people[] = new Person($person_post, $this->link_to_path, $this->avatar);
+            $this->people[] = new Person($person_post, $this->link_to_path, $this->avatar, $this->lazy_loading);
         }
     }
 
