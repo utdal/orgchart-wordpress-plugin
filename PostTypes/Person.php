@@ -10,9 +10,10 @@ class Person extends CustomPost
     /** @var array WordPress custom post type settings */
     public $settings = [
         'description'           => '',
-        'public'                => false,
+        'public'                => true,
         'show_ui'               => true,
         'show_in_menu'          => true,
+        'show_in_rest'          => true,
         'capability_type'       => 'post',
         'map_meta_cap'          => true,
         'hierarchical'          => true,
@@ -27,11 +28,22 @@ class Person extends CustomPost
             'revisions',
             'thumbnail',
             'page-attributes',
+            'custom-fields',
         ],
         'taxonomies' => ['post_tag'],
         'extras' => [
             'enter_title_here'  => "Enter person's name here.",
         ],
+    ];
+
+    /** @var array Settings for the meta box container for custom fields */
+    public $metabox_settings = [
+        'id' => "person_custom_fields_box",
+        'title' => 'Person Attributes',
+        'object_types' => ['person'],
+        'context' => 'advanced',
+        'priority' => 'high',
+        'mb_callback_args' => ['__block_editor_compatible_meta_box' => true],
     ];
 
     /** @var array Custom field settings (CMB2) */

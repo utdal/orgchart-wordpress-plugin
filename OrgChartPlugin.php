@@ -59,6 +59,9 @@ class OrgChartPlugin
 		// Register custom post types
 		add_action('init', [$this, 'registerCustomPosts']);
 
+		// Register custom post types to CPTUI for custom taxonomies
+		add_filter('cptui_get_post_types_for_taxonomies', [$this, 'getCustomPosts']);
+
 		// Register custom fields
 		add_action('cmb2_admin_init', [$this, 'registerCustomFields']);
 
@@ -106,6 +109,25 @@ class OrgChartPlugin
 		foreach ($this->custom_posts as $custom_post) {
 			$custom_post->register();
 		}
+	}
+
+	/**
+	 * Get Custom Post Type objects, and (optionally) append to an existing list.
+	 * 
+	 * @param array<int,\WP_Post_Type> $post_types existing list to populate
+	 * @return array<int,\WP_Post_Type>
+	 */
+	public function getCustomPosts(array $post_types = []): array
+	{
+		$post_type_names = wp_list_pluck($post_types, 'name');
+
+		foreach ($this->custom_posts as $custom_post) {
+			if (!in_array($custom_post->name, $post_type_names)) {
+				$post_types[] = get_post_type_object($custom_post->name);
+			};
+		}
+
+		return array_filter($post_types);
 	}
 
 	/**

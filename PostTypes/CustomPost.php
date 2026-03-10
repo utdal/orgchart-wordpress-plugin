@@ -121,6 +121,28 @@ abstract class CustomPost
     }
 
     /**
+     * Gets the terms of the given taxonomy for the current custom post.
+     *
+     * @param string $tax
+     * @return array<int,\WP_Term>|false
+     */
+    public function getTaxonomy(string $tax)
+    {
+        return get_the_terms(get_the_ID(), trim($tax));
+    }
+
+    /**
+     * Gets the terms of the given taxonomies for the current custom post
+     *
+     * @param array $taxonomies
+     * @return array<string,array<int,\WP_Term>>
+     */
+    public function getTaxonomies(array $taxonomies)
+    {
+        return array_combine($taxonomies, array_map([$this, 'getTaxonomy'], $taxonomies));
+    }
+
+    /**
      * Generates a set of default labels based on the singular and plural names.
      * 
      * @return array

@@ -113,7 +113,8 @@ Shortcode Attributes:
 | header=       | "true"   | Displays each tag as a header for the list of people with that tag. |
 | columns=      | "1"      | Divide the people into this many columns. Each column is wrapped in a div. |
 | column_class= | "column" | The class to apply to each column div. Only used if columns > 1. |
-| mail-link=    | "true"   | Whether to make the email a `mailto:` link |
+| mail_link=    | "true"   | Whether to make the email a `mailto:` link |
+| data_taxonomies | ""     | A comma-separated list of taxonomy slugs to include as HTML data-attributes on each Person, e.g. `<div class="person" data-taxonomy-post_tag="staff">` |
 
 # Customizing for Your Theme
 
@@ -126,6 +127,10 @@ You can customize the template used to display each person with the `[re_person_
 _Recommended_: You can override any of this plugin's CSS classes on your theme. Note that shortcode CSS is only loaded on pages that use that shortcode.
 
 Or you can modify this plugin's CSS directly. They are located in the `public/css` folder. This is not recommended, however, because your changes will get overwritten if you download a newer version of this plugin.
+
+## Taxonomies
+
+You can add your own custom taxonomies to the Person custom post type using plugins like Advanced Custom Fields or CPTUI and render them in the Person List as data-attributes (see Usage > [Person Lists](#person-lists) above), for use with your own theme or site's javascript. To also display these in the `[re_person_list]` view, [customize your view](#dom) and utilize the `$person->getTaxonomy($taxonomy_slug)` and `$person->getTaxonomies($taxonomy_slugs)` PHP functions.
 
 # Contributing
 

@@ -11,8 +11,14 @@ $person_url = $person->_person_url;
 $person_url_title = $person->_person_url_title;
 $person_url2 = $person->_person_url2;
 $person_url_title2 = $person->_person_url_title2;
+$person_taxonomies = $person->getTaxonomies($taxonomies);
 ?>
-<div class="<?= $class ?>">
+<div
+  class="<?= $class ?>"
+  <?php foreach ($person_taxonomies as $taxonomy => $terms): ?>
+    data-taxonomy-<?= $taxonomy ?>="<?= $terms ? implode(',', wp_list_pluck($terms, 'slug')) : '' ?>"
+  <?php endforeach; ?>
+>
   
   <div class="person-info">
     
@@ -22,7 +28,7 @@ $person_url_title2 = $person->_person_url_title2;
     
     <?php if($this->show_avatar): ?>
       <?php if(has_post_thumbnail()): ?>
-          <?php the_post_thumbnail('thumbnail', ['class', 'person-avatar']); ?>
+          <?php the_post_thumbnail('thumbnail', ['class' => 'person-avatar']); ?>
       <?php else: ?>
           <?php echo '<img class="person-avatar" alt="' . get_the_title() . '" src="' . plugin_dir_url( __DIR__)  . 'public/images/avatar-placeholder.png">'; ?>
       <?php endif; ?>

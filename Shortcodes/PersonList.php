@@ -21,6 +21,7 @@ class PersonList extends Shortcode
         'list_class'    => 'person-list',   // CSS class to apply to the overall list
         'column_class'  => 'column',        // CSS class to apply to each column
         'image_size'    => 'thumbnail',     // The size of the featured image to load
+        'data_taxonomies' => '',            // CSV of custom taxonomies to show
     ];
 
     /** @var array Filters to apply to the shortcode attributes. */
@@ -31,6 +32,7 @@ class PersonList extends Shortcode
         'avatar'    => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         'columns'   => FILTER_VALIDATE_INT,
         'list_class'=> FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+        'data_taxonomies' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
     ];
 
     /**
@@ -46,6 +48,7 @@ class PersonList extends Shortcode
         if($this->avatar !== 'show') {
             $this->show_avatar = false;
         }
+        $this->taxonomies = ($this->data_taxonomies !== '') ? explode(',', $this->data_taxonomies) : [];
         set_query_var('person_options', $this->attributes); // pass $this->attributes as $person_options to the template
         $tags = explode(',', $this->attributes['tag']);
         foreach ($tags as $tag) {
