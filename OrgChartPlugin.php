@@ -40,15 +40,6 @@ class OrgChartPlugin
 		$this->custom_posts[] = new PersonCustomPost();
 		$this->shortcodes[] = new PersonList();
         $this->shortcodes[] = new Orgchart();
-		$this->load_dependencies();
-	}
-
-	/**
-	 * Load the required dependencies for this plugin.
-	 */
-	private function load_dependencies()
-	{
-		require_once plugin_dir_path(__FILE__) . 'includes/cmb2/init.php';
 	}
 
 	/**

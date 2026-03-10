@@ -1,16 +1,25 @@
 {
-    "name" : "utdallasresearch/orgchart-wordpress-plugin",
+    "name" : "utdal/orgchart-wordpress-plugin",
     "type" : "wordpress-plugin",
     "description": "UT Dallas Research Org Chart Wordpress plugin",
     "keywords": ["orgchart", "wordpress", "UT Dallas", "UTD"],
-    "homepage": "http://github.com/utdallasresearch/orgchart-wordpress-plugin",
+    "homepage": "http://github.com/utdal/orgchart-wordpress-plugin",
     "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "OrgChart\\": "./"
+        },
+        "files": [
+            "vendor/cmb2/cmb2/init.php"
+        ]
+    },
     "authors": [{
         "name": "Wun Chiou",
         "email": "wun@utdallas.edu",
         "role": "Developer"
     }],
     "require": {
-        "php": ">=5.6"
+        "php": ">=8.0",
+        "cmb2/cmb2": "^2.11"
     }
 }

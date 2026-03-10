@@ -15,7 +15,8 @@ This plugin can be installed normally just like any other WordPress plugin. Alte
 
 ### Regular Install
 
-- Download the repository as a zip archive, and place it in your WordPress plugins folder.
+- Download the repository as a zip archive, and extract it in your WordPress plugins folder.
+- cd into this plugin's folder, run `composer install --optimize-autoloader`
 - Activate the plugin in the admin panel
 
 ### Composer Install
@@ -26,13 +27,13 @@ If you're managing your plugins with [Composer](https://getcomposer.org), this p
 {
   "repositories": [
     {
-      "url": "git@github.com:utdallasresearch/orgchart-wordpress-plugin.git",
+      "url": "git@github.com:utdal/orgchart-wordpress-plugin.git",
       "type": "git"
     }
   ],
   "require": {
     "composer/installers": "^1.3.0",
-    "utdallasresearch/orgchart-wordpress-plugin": "dev-master"
+    "utdal/orgchart-wordpress-plugin": "dev-master"
   },
   "extra": {
     "installer­paths" : {
