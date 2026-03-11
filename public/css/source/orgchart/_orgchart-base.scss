@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "variables" as *;
+@use '../common/link_icons';
 // Research Organizational Chart Styles
 // --------------------------------------------------
 
@@ -14,7 +17,7 @@ $list-group-hover-bg:           #f5f5f5 !default;
 $list-group-active-color:       #fff !default;
 $list-group-active-bg:          $utd-stratos-blue !default;
 $list-group-active-border:      $list-group-active-bg !default;
-$list-group-active-text-color:  lighten($list-group-active-bg, 40%) !default;
+$list-group-active-text-color:  color.adjust($list-group-active-bg, $lightness: 40%) !default;
 
 $list-group-disabled-color:      $utd-warm-gray4 !default;
 $list-group-disabled-bg:         $utd-warm-gray2 !default;
@@ -172,7 +175,7 @@ button.list-group-item {
     &:hover,
     &:focus {
       color: $color;
-      background-color: darken($background, 5%);
+      background-color: color.adjust($background, $lightness: -5%);
     }
     &.active,
     &.active:hover,
@@ -507,10 +510,6 @@ a.badge {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     @media (max-width:768px) {
       z-index: 100;

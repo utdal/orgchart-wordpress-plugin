@@ -2,18 +2,18 @@
 /*!
 Re Mods Plugin orgchart CSS (generated from Sass)
 */
-#orgchart_search_results a:not(.hide-default-icon):before, #orgchart.treeview .orgchart-person-links a:not(.hide-default-icon):before, #orgchart.treeview .orgchart-phone-number a:not(.hide-default-icon):before {
+#orgchart.treeview .orgchart-phone-number a:not(.hide-default-icon):before, #orgchart.treeview .orgchart-person-links a:not(.hide-default-icon):before, #orgchart_search_results a:not(.hide-default-icon):before {
   font-family: FontAwesome;
   content: "\f0ac ";
 }
-#orgchart_search_results a[href*="mailto:"]:before, #orgchart.treeview .orgchart-person-links a[href*="mailto:"]:before, #orgchart.treeview .orgchart-phone-number a[href*="mailto:"]:before {
+#orgchart.treeview .orgchart-phone-number a[href*="mailto:"]:before, #orgchart.treeview .orgchart-person-links a[href*="mailto:"]:before, #orgchart_search_results a[href*="mailto:"]:before {
   content: "\f0e0 ";
 }
-#orgchart_search_results a[href*="tel:"]:before, #orgchart.treeview .orgchart-person-links a[href*="tel:"]:before, #orgchart.treeview .orgchart-phone-number a[href*="tel:"]:before {
+#orgchart.treeview .orgchart-phone-number a[href*="tel:"]:before, #orgchart.treeview .orgchart-person-links a[href*="tel:"]:before, #orgchart_search_results a[href*="tel:"]:before {
   content: "\f095 ";
 }
 @media screen and (min-width: 639px) {
-  #orgchart_search_results a[href*="tel:"].no-desktop-link, #orgchart.treeview .orgchart-person-links a[href*="tel:"].no-desktop-link, #orgchart.treeview .orgchart-phone-number a[href*="tel:"].no-desktop-link {
+  #orgchart.treeview .orgchart-phone-number a[href*="tel:"].no-desktop-link, #orgchart.treeview .orgchart-person-links a[href*="tel:"].no-desktop-link, #orgchart_search_results a[href*="tel:"].no-desktop-link {
     color: inherit;
     border: inherit;
     text-decoration: none;
@@ -21,165 +21,29 @@ Re Mods Plugin orgchart CSS (generated from Sass)
     cursor: pointer;
   }
 }
-#orgchart_search_results a[href*=twitter]:before, #orgchart.treeview .orgchart-person-links a[href*=twitter]:before, #orgchart.treeview .orgchart-phone-number a[href*=twitter]:before {
+#orgchart.treeview .orgchart-phone-number a[href*=twitter]:before, #orgchart.treeview .orgchart-person-links a[href*=twitter]:before, #orgchart_search_results a[href*=twitter]:before {
   content: "\f099 ";
 }
-#orgchart_search_results a[href*=github]:before, #orgchart.treeview .orgchart-person-links a[href*=github]:before, #orgchart.treeview .orgchart-phone-number a[href*=github]:before {
+#orgchart.treeview .orgchart-phone-number a[href*=github]:before, #orgchart.treeview .orgchart-person-links a[href*=github]:before, #orgchart_search_results a[href*=github]:before {
   content: "\f09b ";
 }
-#orgchart_search_results a[href*=facebook]:before, #orgchart.treeview .orgchart-person-links a[href*=facebook]:before, #orgchart.treeview .orgchart-phone-number a[href*=facebook]:before {
+#orgchart.treeview .orgchart-phone-number a[href*=facebook]:before, #orgchart.treeview .orgchart-person-links a[href*=facebook]:before, #orgchart_search_results a[href*=facebook]:before {
   content: "\f09a ";
 }
-#orgchart_search_results a[href*=linkedin]:before, #orgchart.treeview .orgchart-person-links a[href*=linkedin]:before, #orgchart.treeview .orgchart-phone-number a[href*=linkedin]:before {
+#orgchart.treeview .orgchart-phone-number a[href*=linkedin]:before, #orgchart.treeview .orgchart-person-links a[href*=linkedin]:before, #orgchart_search_results a[href*=linkedin]:before {
   content: "\f08c ";
 }
-#orgchart_search_results a[href*=instagram]:before, #orgchart.treeview .orgchart-person-links a[href*=instagram]:before, #orgchart.treeview .orgchart-phone-number a[href*=instagram]:before {
+#orgchart.treeview .orgchart-phone-number a[href*=instagram]:before, #orgchart.treeview .orgchart-person-links a[href*=instagram]:before, #orgchart_search_results a[href*=instagram]:before {
   content: "\f16d ";
 }
-#orgchart_search_results a[href*=youtube]:before, #orgchart.treeview .orgchart-person-links a[href*=youtube]:before, #orgchart.treeview .orgchart-phone-number a[href*=youtube]:before {
+#orgchart.treeview .orgchart-phone-number a[href*=youtube]:before, #orgchart.treeview .orgchart-person-links a[href*=youtube]:before, #orgchart_search_results a[href*=youtube]:before {
   content: "\f167 ";
 }
-#orgchart_search_results a[href*=google]:before, #orgchart.treeview .orgchart-person-links a[href*=google]:before, #orgchart.treeview .orgchart-phone-number a[href*=google]:before {
+#orgchart.treeview .orgchart-phone-number a[href*=google]:before, #orgchart.treeview .orgchart-person-links a[href*=google]:before, #orgchart_search_results a[href*=google]:before {
   content: "\f1a0 ";
 }
-#orgchart_search_results a[href*=weibo]:before, #orgchart.treeview .orgchart-person-links a[href*=weibo]:before, #orgchart.treeview .orgchart-phone-number a[href*=weibo]:before {
+#orgchart.treeview .orgchart-phone-number a[href*=weibo]:before, #orgchart.treeview .orgchart-person-links a[href*=weibo]:before, #orgchart_search_results a[href*=weibo]:before {
   content: "\f18a ";
-}
-
-#action-panel input[type=range] {
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-#action-panel input[type=range]::-webkit-slider-thumb {
-  box-shadow: 1px 1px 1px #B7B1A9, 0px 0px 1px #a6a6a6;
-  border: 1px solid #767676;
-  height: 18px;
-  width: 18px;
-  border-radius: 18px;
-  background: #ffffff;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -5px;
-}
-#action-panel input[type=range]::-moz-range-thumb {
-  box-shadow: 1px 1px 1px #B7B1A9, 0px 0px 1px #a6a6a6;
-  border: 1px solid #767676;
-  height: 18px;
-  width: 18px;
-  border-radius: 18px;
-  background: #ffffff;
-  cursor: pointer;
-}
-#action-panel input[type=range]::-ms-thumb {
-  box-shadow: 1px 1px 1px #B7B1A9, 0px 0px 1px #a6a6a6;
-  border: 1px solid #767676;
-  height: 18px;
-  width: 18px;
-  border-radius: 18px;
-  background: #ffffff;
-  cursor: pointer;
-}
-#action-panel input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8px;
-  cursor: pointer;
-  background: #767676;
-  border-radius: 2px;
-}
-#action-panel input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 8px;
-  cursor: pointer;
-  background: #767676;
-  border-radius: 2px;
-}
-#action-panel input[type=range]::-ms-track {
-  width: 100%;
-  height: 8px;
-  cursor: pointer;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-#action-panel input[type=range]::-ms-fill-lower {
-  background: #cecece;
-  border-radius: 4px;
-}
-#action-panel input[type=range]::-ms-fill-upper {
-  background: #767676;
-  border-radius: 4px;
-}
-#action-panel input[type=range]:focus, #action-panel input[type=range]:hover {
-  outline: none;
-}
-#action-panel input[type=range]:focus::-webkit-slider-thumb, #action-panel input[type=range]:hover::-webkit-slider-thumb {
-  border-color: #E87500;
-}
-#action-panel input[type=range]:focus::-moz-range-thumb, #action-panel input[type=range]:hover::-moz-range-thumb {
-  border-color: #E87500;
-}
-#action-panel input[type=range]:focus::-ms-thumb, #action-panel input[type=range]:hover::-ms-thumb {
-  border-color: #E87500;
-}
-#action-panel input[type=range]:focus::-webkit-slider-runnable-track, #action-panel input[type=range]:hover::-webkit-slider-runnable-track {
-  background: #E87500;
-}
-#action-panel input[type=range]:focus::-moz-range-track, #action-panel input[type=range]:hover::-moz-range-track {
-  background: #E87500;
-}
-#action-panel input[type=range]:focus::-ms-fill-lower, #action-panel input[type=range]:hover::-ms-fill-lower {
-  background: #767676;
-}
-#action-panel input[type=range]:focus::-ms-fill-upper, #action-panel input[type=range]:hover::-ms-fill-upper {
-  background: #E87500;
-}
-
-#action-panel select {
-  display: block;
-  font-size: 12px;
-  font-family: sans-serif;
-  font-weight: 700;
-  color: #444;
-  line-height: 1.3;
-  padding: 0.6em 1.4em 0.5em 0.8em;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  border: 1px solid #767676;
-  border-radius: 10px;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: #f5f5f5;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
-  background-repeat: no-repeat, repeat;
-  background-position: right 0.7em top 50%, 0 0;
-  background-size: 0.65em auto, 100%;
-  cursor: pointer;
-}
-#action-panel select::-ms-expand {
-  display: none;
-}
-#action-panel select:hover, #action-panel select:focus {
-  border-color: #E98300;
-  outline: none;
-}
-#action-panel select option {
-  font-weight: normal;
-}
-*[dir=rtl] #action-panel select, :root:lang(ar) #action-panel select, :root:lang(iw) #action-panel select {
-  background-position: left 0.7em top 50%, 0 0;
-  padding: 0.6em 0.8em 0.5em 1.4em;
-}
-#action-panel select:disabled, #action-panel select[aria-disabled=true] {
-  color: graytext;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
-}
-#action-panel select:disabled:hover, #action-panel select[aria-disabled=true] {
-  border-color: #aaa;
 }
 
 .list-group {
@@ -253,7 +117,7 @@ button.list-group-item {
   color: inherit;
 }
 .list-group-item.active .list-group-item-text, .list-group-item.active:hover .list-group-item-text, .list-group-item.active:focus .list-group-item-text {
-  color: #abe8ff;
+  color: rgb(171, 231.9189189189, 255);
 }
 
 .list-group-item-success {
@@ -273,7 +137,7 @@ a.list-group-item-success:hover, a.list-group-item-success:focus,
 button.list-group-item-success:hover,
 button.list-group-item-success:focus {
   color: #008542;
-  background-color: #d0e9c6;
+  background-color: rgb(207.8888888889, 232.9166666667, 197.5833333333);
 }
 a.list-group-item-success.active, a.list-group-item-success.active:hover, a.list-group-item-success.active:focus,
 button.list-group-item-success.active,
@@ -301,7 +165,7 @@ a.list-group-item-info:hover, a.list-group-item-info:focus,
 button.list-group-item-info:hover,
 button.list-group-item-info:focus {
   color: #00A1DE;
-  background-color: #c4e3f3;
+  background-color: rgb(195.9347826087, 227.0217391304, 242.5652173913);
 }
 a.list-group-item-info.active, a.list-group-item-info.active:hover, a.list-group-item-info.active:focus,
 button.list-group-item-info.active,
@@ -329,7 +193,7 @@ a.list-group-item-warning:hover, a.list-group-item-warning:focus,
 button.list-group-item-warning:hover,
 button.list-group-item-warning:focus {
   color: #8a6d3b;
-  background-color: #faf2cc;
+  background-color: rgb(249.5322580645, 242.2419354839, 203.9677419355);
 }
 a.list-group-item-warning.active, a.list-group-item-warning.active:hover, a.list-group-item-warning.active:focus,
 button.list-group-item-warning.active,
@@ -357,7 +221,7 @@ a.list-group-item-danger:hover, a.list-group-item-danger:focus,
 button.list-group-item-danger:hover,
 button.list-group-item-danger:focus {
   color: #a94442;
-  background-color: #ebcccc;
+  background-color: rgb(234.7934782609, 203.7065217391, 203.7065217391);
 }
 a.list-group-item-danger.active, a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus,
 button.list-group-item-danger.active,
@@ -677,6 +541,142 @@ a.badge:hover, a.badge:focus {
   line-height: inherit;
 }
 
+#action-panel input[type=range] {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+#action-panel input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #B7B1A9, 0px 0px 1px #a6a6a6;
+  border: 1px solid #767676;
+  height: 18px;
+  width: 18px;
+  border-radius: 18px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px;
+}
+#action-panel input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #B7B1A9, 0px 0px 1px #a6a6a6;
+  border: 1px solid #767676;
+  height: 18px;
+  width: 18px;
+  border-radius: 18px;
+  background: #ffffff;
+  cursor: pointer;
+}
+#action-panel input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #B7B1A9, 0px 0px 1px #a6a6a6;
+  border: 1px solid #767676;
+  height: 18px;
+  width: 18px;
+  border-radius: 18px;
+  background: #ffffff;
+  cursor: pointer;
+}
+#action-panel input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #767676;
+  border-radius: 2px;
+}
+#action-panel input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #767676;
+  border-radius: 2px;
+}
+#action-panel input[type=range]::-ms-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+#action-panel input[type=range]::-ms-fill-lower {
+  background: #cecece;
+  border-radius: 4px;
+}
+#action-panel input[type=range]::-ms-fill-upper {
+  background: #767676;
+  border-radius: 4px;
+}
+#action-panel input[type=range]:focus, #action-panel input[type=range]:hover {
+  outline: none;
+}
+#action-panel input[type=range]:focus::-webkit-slider-thumb, #action-panel input[type=range]:hover::-webkit-slider-thumb {
+  border-color: #E87500;
+}
+#action-panel input[type=range]:focus::-moz-range-thumb, #action-panel input[type=range]:hover::-moz-range-thumb {
+  border-color: #E87500;
+}
+#action-panel input[type=range]:focus::-ms-thumb, #action-panel input[type=range]:hover::-ms-thumb {
+  border-color: #E87500;
+}
+#action-panel input[type=range]:focus::-webkit-slider-runnable-track, #action-panel input[type=range]:hover::-webkit-slider-runnable-track {
+  background: #E87500;
+}
+#action-panel input[type=range]:focus::-moz-range-track, #action-panel input[type=range]:hover::-moz-range-track {
+  background: #E87500;
+}
+#action-panel input[type=range]:focus::-ms-fill-lower, #action-panel input[type=range]:hover::-ms-fill-lower {
+  background: #767676;
+}
+#action-panel input[type=range]:focus::-ms-fill-upper, #action-panel input[type=range]:hover::-ms-fill-upper {
+  background: #E87500;
+}
+
+#action-panel select {
+  display: block;
+  font-size: 12px;
+  font-family: sans-serif;
+  font-weight: 700;
+  color: #444;
+  line-height: 1.3;
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: 1px solid #767676;
+  border-radius: 10px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #f5f5f5;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
+  cursor: pointer;
+}
+#action-panel select::-ms-expand {
+  display: none;
+}
+#action-panel select:hover, #action-panel select:focus {
+  border-color: #E98300;
+  outline: none;
+}
+#action-panel select option {
+  font-weight: normal;
+}
+*[dir=rtl] #action-panel select, :root:lang(ar) #action-panel select, :root:lang(iw) #action-panel select {
+  background-position: left 0.7em top 50%, 0 0;
+  padding: 0.6em 0.8em 0.5em 1.4em;
+}
+#action-panel select:disabled, #action-panel select[aria-disabled=true] {
+  color: graytext;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+}
+#action-panel select:disabled:hover, #action-panel select[aria-disabled=true] {
+  border-color: #aaa;
+}
+
 /*
  * jQuery OrgChart Plugin
  * https://github.com/dabeng/OrgChart
@@ -697,8 +697,6 @@ a.badge:hover, a.badge:focus {
  */
 .orgchart {
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
   user-select: none;
   background-color: rgba(0, 0, 0, 0); /* default - transparent */
   background-size: 10px 10px;
@@ -720,21 +718,12 @@ a.badge:hover, a.badge:focus {
 
 .orgchart.b2t {
   transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
 }
 
 .orgchart.l2r {
   position: absolute;
   transform: rotate(-90deg) rotateY(180deg);
-  -ms-transform: rotate(-90deg) rotateY(180deg);
-  -moz-transform: rotate(-90deg) rotateY(180deg);
-  -webkit-transform: rotate(-90deg) rotateY(180deg);
   transform-origin: left top;
-  -ms-transform-origin: left top;
-  -moz-transform-origin: left top;
-  -webkit-transform-origin: left top;
 }
 
 .orgchart .verticalNodes ul {
@@ -803,13 +792,7 @@ a.badge:hover, a.badge:focus {
 .orgchart.r2l {
   position: absolute;
   transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
   transform-origin: left top;
-  -ms-transform-origin: left top;
-  -moz-transform-origin: left top;
-  -webkit-transform-origin: left top;
 }
 
 .orgchart > .spinner {
@@ -943,36 +926,18 @@ a.badge:hover, a.badge:focus {
 
 .orgchart.b2t .node .title {
   transform: rotate(-180deg);
-  -ms-transform: rotate(-180deg);
-  -moz-transform: rotate(-180deg);
-  -webkit-transform: rotate(-180deg);
   transform-origin: center bottom;
-  -ms-transform-origin: center bottom;
-  -moz-transform-origin: center bottom;
-  -webkit-transform-origin: center bottom;
 }
 
 .orgchart.l2r .node .title {
   transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
-  -ms-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
-  -moz-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
-  -webkit-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
   transform-origin: bottom center;
-  -ms-transform-origin: bottom center;
-  -moz-transform-origin: bottom center;
-  -webkit-transform-origin: bottom center;
   width: 120px;
 }
 
 .orgchart.r2l .node .title {
   transform: rotate(-90deg) translate(-40px, -40px);
-  -ms-transform: rotate(-90deg) translate(-40px, -40px);
-  -moz-transform: rotate(-90deg) translate(-40px, -40px);
-  -webkit-transform: rotate(-90deg) translate(-40px, -40px);
   transform-origin: bottom center;
-  -ms-transform-origin: bottom center;
-  -moz-transform-origin: bottom center;
-  -webkit-transform-origin: bottom center;
   width: 120px;
 }
 
@@ -1018,36 +983,18 @@ a.badge:hover, a.badge:focus {
 
 .orgchart.b2t .node .content {
   transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
   transform-origin: center top;
-  -ms-transform-origin: center top;
-  -moz-transform-origin: center top;
-  -webkit-transform-origin: center top;
 }
 
 .orgchart.l2r .node .content {
   transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
-  -ms-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
-  -moz-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
-  -webkit-transform: rotate(-90deg) translate(-40px, -40px) rotateY(180deg);
   transform-origin: top center;
-  -ms-transform-origin: top center;
-  -moz-transform-origin: top center;
-  -webkit-transform-origin: top center;
   width: 120px;
 }
 
 .orgchart.r2l .node .content {
   transform: rotate(-90deg) translate(-40px, -40px);
-  -ms-transform: rotate(-90deg) translate(-40px, -40px);
-  -moz-transform: rotate(-90deg) translate(-40px, -40px);
-  -webkit-transform: rotate(-90deg) translate(-40px, -40px);
   transform-origin: top center;
-  -ms-transform-origin: top center;
-  -moz-transform-origin: top center;
-  -webkit-transform-origin: top center;
   width: 120px;
 }
 
@@ -1057,7 +1004,6 @@ a.badge:hover, a.badge:focus {
   color: rgba(68, 157, 68, 0.5);
   cursor: default;
   transition: 0.2s;
-  -webkit-transition: 0.2s;
 }
 
 .orgchart.noncollapsable .node .edge {
@@ -1071,7 +1017,6 @@ a.badge:hover, a.badge:focus {
 
 .orgchart .node .verticalEdge {
   width: calc(100% - 10px);
-  width: -moz-calc(100% - 10px);
   left: 5px;
 }
 
@@ -1088,7 +1033,6 @@ a.badge:hover, a.badge:focus {
   display: none;
   width: 15px;
   height: calc(100% - 10px);
-  height: -moz-calc(100% - 10px);
   top: 5px;
 }
 
@@ -1106,7 +1050,6 @@ a.badge:hover, a.badge:focus {
   display: none;
   position: absolute;
   top: calc(50% - 7px);
-  top: -moz-calc(50% - 7px);
 }
 
 .orgchart .node .rightEdge::before {
@@ -1155,8 +1098,6 @@ a.badge:hover, a.badge:focus {
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
   user-select: none;
   color: #fff;
   background-color: #69BE28;
@@ -1268,7 +1209,6 @@ a.badge:hover, a.badge:focus {
 }
 #orgchart_graphical .orgchart {
   border: none;
-  /* admin node */
 }
 #orgchart_graphical .orgchart .second-menu-icon {
   transition: opacity 0.5s;
@@ -1312,8 +1252,6 @@ a.badge:hover, a.badge:focus {
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
   user-select: none;
   background-image: none;
   border: none;
@@ -1405,4 +1343,4 @@ a.badge:hover, a.badge:focus {
   justify-content: flex-end;
 }
 
-/*# sourceMappingURL=orgchart.css.map*/
+/*# sourceMappingURL=orgchart.css.map */

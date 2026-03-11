@@ -145,7 +145,7 @@ Prerequisites:
 
 Then, from the root of the plugin folder, install all the project dependencies with `npm install`.
 
-This should install the Laravel Mix Webpack task-runner. To compile the Sass, from the root of the plugin folder, run `npm run dev`. If you'd like to have it auto-compile while you're working instead, run `npm run watch`.
+This should install the Sass compiler. To compile the Sass, from the root of the plugin folder, run `npm run dev`. If you'd like to have it auto-compile while you're working instead, run `npm run watch`.
 
 ## Updating JS libraries
 
