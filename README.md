@@ -94,6 +94,7 @@ Shortcode Attributes:
 | tag=            | ""       | Only include People with the specified tag. (Useful for showing departments.) |
 | linkto=         | ""       | In directory tree, this specifies the url path to the page with the graphical orgchart (if they're on different pages). |
 | avatar=         | "show"   | If enabled, displays the featured image of the person OR a generic placeholder image |
+| avatar_loading= | "lazy"   | Enable lazy loading of avatar images. Any value other than "lazy" will disable lazy loading. |
 
 ## Person Lists
 
